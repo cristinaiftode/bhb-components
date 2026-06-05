@@ -1,0 +1,180 @@
+/* ============================================================
+   Button — bhb-components
+   Source spec: docs/button-spec-for-figma.md
+   Figma: file fUcrmr5PRAIQulDadSGsB8, page "Button"
+============================================================ */
+
+.bhb-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease-out,
+    color 0.25s ease-out,
+    border-color 0.25s ease-out;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bhb-button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.bhb-button:disabled {
+  cursor: default;
+}
+
+/* ---------- Sizes ---------- */
+
+.bhb-button--size-large {
+  height: 48px;
+}
+
+.bhb-button--size-medium {
+  height: 40px;
+}
+
+.bhb-button--size-small {
+  height: 32px;
+}
+
+/* ---------- Variants ---------- */
+
+/* Primary */
+.bhb-button--primary {
+  background-color: var(--brand);
+  color: var(--white);
+}
+
+.bhb-button--primary:hover:not(:disabled),
+.bhb-button--primary:active:not(:disabled) {
+  background-color: var(--brand-shade);
+}
+
+.bhb-button--primary:disabled {
+  color: color-mix(in srgb, var(--white) 35%, transparent);
+}
+
+/* Secondary */
+.bhb-button--secondary {
+  background-color: var(--cloud-grey);
+  color: var(--black-grey);
+}
+
+.bhb-button--secondary:hover:not(:disabled),
+.bhb-button--secondary:active:not(:disabled) {
+  background-color: var(--rain-grey);
+}
+
+.bhb-button--secondary:disabled {
+  color: color-mix(in srgb, var(--black-grey) 35%, transparent);
+}
+
+/* Ghost */
+.bhb-button--ghost {
+  background-color: var(--white);
+  color: var(--brand);
+}
+
+.bhb-button--ghost:hover:not(:disabled),
+.bhb-button--ghost:active:not(:disabled) {
+  background-color: var(--snow);
+}
+
+.bhb-button--ghost:disabled {
+  color: color-mix(in srgb, var(--brand) 35%, transparent);
+}
+
+/* Danger */
+.bhb-button--danger {
+  background-color: var(--alert);
+  color: var(--white);
+}
+
+.bhb-button--danger:hover:not(:disabled),
+.bhb-button--danger:active:not(:disabled) {
+  background-color: var(--alert-shade);
+}
+
+.bhb-button--danger:disabled {
+  color: color-mix(in srgb, var(--white) 35%, transparent);
+}
+
+/* ---------- Icon slots ---------- */
+
+.bhb-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.bhb-button__label {
+  display: inline-block;
+}
+
+/* Icon-only — square button, larger icon */
+.bhb-button--icon-only {
+  padding: 0;
+  gap: 0;
+}
+
+.bhb-button--icon-only.bhb-button--size-large {
+  width: 48px;
+}
+
+.bhb-button--icon-only.bhb-button--size-medium {
+  width: 40px;
+}
+
+.bhb-button--icon-only.bhb-button--size-small {
+  width: 32px;
+}
+
+.bhb-button--icon-only .bhb-button__icon {
+  font-size: 24px;
+}
+
+/* ---------- Loading ---------- */
+
+.bhb-button--loading {
+  cursor: default;
+}
+
+.bhb-button__spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: bhb-button-spin 0.7s linear infinite;
+}
+
+@keyframes bhb-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bhb-button {
+    transition: none;
+  }
+
+  .bhb-button__spinner {
+    animation-duration: 2s;
+  }
+}

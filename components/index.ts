@@ -4,4 +4,6 @@
  * Naming convention: BEM-style with `bhb-` prefix
  * (e.g. .bhb-button, .bhb-button--primary, .bhb-button__label).
  */
-export {};
+
+export { Button } from './Button/Button';
+export type { ButtonProps, ButtonVariant, ButtonSize } from './Button/Button';

@@ -136,11 +136,68 @@ Pattern: `bhb-text-[caps-][bold-]<size>`. Full list in [tokens/typography.css](t
 
 *Filled in by `component-from-figma` as components are added.*
 
-### Button (coming next)
+### Button
 
-Figma source: file `fUcrmr5PRAIQulDadSGsB8`, page "Button", Component Set "Button" with three properties:
-- `Variant`: Primary | Secondary | Ghost | Danger
-- `Size`: Large (Medium/Small to be added)
-- `State`: Rest | Hover | Focus | Disabled | Loading
+Standard button component. Use for all clickable CTAs and actions.
 
-20 variants built. See [docs/button-spec-for-figma.md](docs/button-spec-for-figma.md) for the full spec.
+**Import:**
+```tsx
+import { Button } from 'bhb-components';
+```
+
+**Variants:**
+
+| Variant | Use for | Background (rest → hover) | Text |
+|---|---|---|---|
+| `primary` (default) | Main CTA, "Speichern & Weiter" | `--brand` → `--brand-shade` | `--white` |
+| `secondary` | Neutral / cancel, "Abbrechen" | `--cloud-grey` → `--rain-grey` | `--black-grey` |
+| `ghost` | Low-emphasis tertiary action | `--white` → `--snow` | `--brand` |
+| `danger` | Destructive action, "Löschen" | `--alert` → `--alert-shade` | `--white` |
+
+**Sizes:** `large` (48px, default), `medium` (40px), `small` (32px). All share 18px horizontal padding.
+
+**Modes:**
+- `loading` — replaces label with a spinner, sets `aria-busy`, blocks clicks
+- `disabled` — native, drops text to 35% opacity
+- `iconLeft` / `iconRight` — passes a ReactNode (e.g., `<FontAwesomeIcon icon={faSave} />`) before/after the label
+- `iconOnly` — hides the label, renders children as a centered 24px icon, button becomes square
+
+**Usage:**
+
+```tsx
+// Standard
+<Button onClick={save}>Speichern & Weiter</Button>
+
+// Variant + size
+<Button variant="danger" size="small" onClick={remove}>Löschen</Button>
+
+// With icon
+<Button iconLeft={<FontAwesomeIcon icon={faSave} />}>Speichern</Button>
+
+// Loading
+<Button variant="primary" loading>Speichern & Weiter</Button>
+
+// Icon-only (square)
+<Button iconOnly variant="ghost" aria-label="Menü öffnen">
+  <FontAwesomeIcon icon={faBars} />
+</Button>
+```
+
+**CSS class skeleton:**
+
+```css
+.bhb-button { /* base — flex, height by size, padding 0 18px, font Lato bold 14, border-radius 0 */ }
+.bhb-button--primary | --secondary | --ghost | --danger
+.bhb-button--size-large | --size-medium | --size-small
+.bhb-button--loading | --icon-only
+.bhb-button__label
+.bhb-button__icon
+.bhb-button__spinner
+```
+
+**Notes:**
+- Focus ring uses `outline: 2px solid var(--brand); outline-offset: 2px;` Known limitation: Primary variant has weak contrast (Brand-on-Brand) — designer to refine when needed.
+- Loading spinner is CSS-only (`currentColor` ring) — no SVG dependency. Inherits the button's text color so it works on every variant.
+- The component extends `React.ButtonHTMLAttributes<HTMLButtonElement>` — pass any native button attribute (`onClick`, `type`, `aria-*`, etc.).
+
+**Figma source:** file `fUcrmr5PRAIQulDadSGsB8`, page "Button", Component Set `3225:6` with three variant properties (Variant / Size / State). 20 variants built. Full spec: [docs/button-spec-for-figma.md](docs/button-spec-for-figma.md).

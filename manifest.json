@@ -73,5 +73,56 @@
       ]
     }
   },
-  "components": {}
+  "components": {
+    "Button": {
+      "description": "Standard button — Primary (brand CTA), Secondary (neutral), Ghost (low-emphasis), Danger (destructive). Supports loading, disabled, and icon (left / right / only) modes.",
+      "import": "import { Button } from 'bhb-components';",
+      "file": "components/Button/Button.tsx",
+      "props": {
+        "variant": {
+          "type": "enum",
+          "values": ["primary", "secondary", "ghost", "danger"],
+          "default": "primary"
+        },
+        "size": {
+          "type": "enum",
+          "values": ["large", "medium", "small"],
+          "default": "large",
+          "notes": "Heights: large=48px, medium=40px, small=32px. Horizontal padding 18px on all sizes. Medium/Small not yet built in Figma but supported in code."
+        },
+        "iconLeft": { "type": "ReactNode", "optional": true, "notes": "Slot for an icon rendered before the label." },
+        "iconRight": { "type": "ReactNode", "optional": true, "notes": "Slot for an icon rendered after the label." },
+        "iconOnly": { "type": "boolean", "default": false, "notes": "When true, hides the label and renders the children as a centered 24px icon. Button becomes a square." },
+        "loading": { "type": "boolean", "default": false, "notes": "Replaces the label with a CSS spinner. Sets aria-busy and disables the button." },
+        "disabled": { "type": "boolean", "default": false, "notes": "Native HTML disabled attribute. Text drops to 35% opacity (handled by CSS color-mix)." }
+      },
+      "extends": "React.ButtonHTMLAttributes<HTMLButtonElement>",
+      "styling": {
+        "borderRadius": "0",
+        "fontFamily": "var(--font-family-base) (Lato)",
+        "fontWeight": "var(--font-weight-bold) (700)",
+        "fontSize": "var(--font-size-m) (14px)",
+        "transition": "0.25s ease-out on bg / color / border",
+        "focusRing": "2px var(--brand) outline with 2px offset (CSS :focus-visible)"
+      },
+      "colorMapping": {
+        "primary":   { "bg": "--brand",      "bgHover": "--brand-shade",       "text": "--white" },
+        "secondary": { "bg": "--cloud-grey", "bgHover": "--rain-grey",         "text": "--black-grey" },
+        "ghost":     { "bg": "--white",      "bgHover": "--snow",              "text": "--brand" },
+        "danger":    { "bg": "--alert",      "bgHover": "--alert-shade",       "text": "--white" }
+      },
+      "accessibility": {
+        "focusVisible": "Native outline-offset focus ring",
+        "ariaBusy": "Set to true when loading=true",
+        "disabledHandling": "Uses native disabled attribute, not aria-disabled"
+      },
+      "usage": "<Button variant=\"primary\" onClick={save}>Speichern & Weiter</Button>",
+      "figma": {
+        "fileKey": "fUcrmr5PRAIQulDadSGsB8",
+        "componentSetId": "3225:6",
+        "page": "Button",
+        "variantCount": 20
+      }
+    }
+  }
 }
