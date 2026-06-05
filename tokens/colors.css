@@ -1,11 +1,28 @@
-/* Color tokens — populated by figma-tokens-extract.
- *
- * Source: https://www.figma.com/design/fUcrmr5PRAIQulDadSGsB8/Styles---Components-Webapp
- * Variable collection: "Color" (1 mode: Default)
- *
- * Run `figma-tokens-extract` to fill this file with --brand, --alert, --cloud-grey, etc.
- */
+/* ============================================================
+   COLOR TOKENS — extracted from Figma file
+   "Styles - Components Webapp" (fUcrmr5PRAIQulDadSGsB8)
+   Source collection: "Color" (1 mode: Default), 11 variables.
+   Generated: 2026-06-05 by figma-tokens-extract.
+   Do not edit hex values by hand — re-run the skill to refresh.
+============================================================ */
 
 :root {
-  /* placeholder — will be replaced */
+  /* Brand */
+  --brand:        #00A8FF;
+  --brand-shade:  #0097E6;
+
+  /* Alert (destructive / error) */
+  --alert:        #E84118;
+  --alert-shade:  #C23616;
+
+  /* Greys — sky-themed palette */
+  --black-grey:   #2F3640; /* primary text */
+  --jeans-grey:   #7F8FA6; /* secondary text */
+  --rain-grey:    #B1B8C2; /* borders, secondary hover */
+  --moon-grey:    #BCC3CE; /* disabled / subtle */
+  --cloud-grey:   #C8D0DC; /* secondary button bg */
+
+  /* Surfaces */
+  --snow:         #F9FAFF; /* very light blue-grey, ghost hover */
+  --white:        #FFFFFF; /* default surface */
 }

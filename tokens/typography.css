@@ -1,11 +1,93 @@
-/* Typography tokens — populated by figma-tokens-extract.
- *
- * Source: Figma local Text Styles.
- * Font family: Lato.
- * Type scale: XXXL/XXL/XXML/XL/L/M/S/XS at 40/28/26/19/16/14/12/10px.
- * Variants: regular weight, Bold/, Caps/, Caps+Bold/.
- */
+/* ============================================================
+   TYPOGRAPHY TOKENS — extracted from Figma file
+   "Styles - Components Webapp" (fUcrmr5PRAIQulDadSGsB8)
+   Source: 32 local Text Styles (Lato Regular/Bold + Caps variants).
+   Generated: 2026-06-05 by figma-tokens-extract.
+============================================================ */
 
 :root {
-  /* placeholder */
+  /* Font family */
+  --font-family-base: "Lato", system-ui, -apple-system, sans-serif;
+
+  /* Font sizes — XXXL → XS */
+  --font-size-xxxl: 40px;
+  --font-size-xxl:  28px;
+  --font-size-xxml: 26px;
+  --font-size-xl:   19px;
+  --font-size-l:    16px;
+  --font-size-m:    14px;
+  --font-size-s:    12px;
+  --font-size-xs:   10px;
+
+  /* Line heights — paired with each size */
+  --line-height-xxxl: 56px;
+  --line-height-xxl:  40px;
+  --line-height-xxml: 38px;
+  --line-height-xl:   26px;
+  --line-height-l:    22px;
+  --line-height-m:    20px;
+  --line-height-s:    16px;
+  --line-height-xs:   14px;
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-bold:    700;
+
+  /* Letter spacing — only caps variants use non-zero */
+  --letter-spacing-default:   0;
+  --letter-spacing-caps-xxxl: 2px;
+  --letter-spacing-caps-xxl:  1px;
+  --letter-spacing-caps-xxml: 0.6px;
+  --letter-spacing-caps:      0.4px; /* used for XL / L / M / S / XS caps */
 }
+
+/* ============================================================
+   Text style helper classes — one per Figma text style.
+   Apply to any element to get the exact Figma style.
+============================================================ */
+
+.bhb-text {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-default);
+}
+
+/* Regular weight */
+.bhb-text-xxxl { font-size: var(--font-size-xxxl); line-height: var(--line-height-xxxl); }
+.bhb-text-xxl  { font-size: var(--font-size-xxl);  line-height: var(--line-height-xxl);  }
+.bhb-text-xxml { font-size: var(--font-size-xxml); line-height: var(--line-height-xxml); }
+.bhb-text-xl   { font-size: var(--font-size-xl);   line-height: var(--line-height-xl);   }
+.bhb-text-l    { font-size: var(--font-size-l);    line-height: var(--line-height-l);    }
+.bhb-text-m    { font-size: var(--font-size-m);    line-height: var(--line-height-m);    }
+.bhb-text-s    { font-size: var(--font-size-s);    line-height: var(--line-height-s);    }
+.bhb-text-xs   { font-size: var(--font-size-xs);   line-height: var(--line-height-xs);   }
+
+/* Bold weight */
+.bhb-text-bold-xxxl { font-size: var(--font-size-xxxl); line-height: var(--line-height-xxxl); font-weight: var(--font-weight-bold); }
+.bhb-text-bold-xxl  { font-size: var(--font-size-xxl);  line-height: var(--line-height-xxl);  font-weight: var(--font-weight-bold); }
+.bhb-text-bold-xxml { font-size: var(--font-size-xxml); line-height: var(--line-height-xxml); font-weight: var(--font-weight-bold); }
+.bhb-text-bold-xl   { font-size: var(--font-size-xl);   line-height: var(--line-height-xl);   font-weight: var(--font-weight-bold); }
+.bhb-text-bold-l    { font-size: var(--font-size-l);    line-height: var(--line-height-l);    font-weight: var(--font-weight-bold); }
+.bhb-text-bold-m    { font-size: var(--font-size-m);    line-height: var(--line-height-m);    font-weight: var(--font-weight-bold); }
+.bhb-text-bold-s    { font-size: var(--font-size-s);    line-height: var(--line-height-s);    font-weight: var(--font-weight-bold); }
+.bhb-text-bold-xs   { font-size: var(--font-size-xs);   line-height: var(--line-height-xs);   font-weight: var(--font-weight-bold); }
+
+/* Caps (regular weight, uppercase, letter-spacing) */
+.bhb-text-caps-xxxl { font-size: var(--font-size-xxxl); line-height: var(--line-height-xxxl); letter-spacing: var(--letter-spacing-caps-xxxl); text-transform: uppercase; }
+.bhb-text-caps-xxl  { font-size: var(--font-size-xxl);  line-height: var(--line-height-xxl);  letter-spacing: var(--letter-spacing-caps-xxl);  text-transform: uppercase; }
+.bhb-text-caps-xxml { font-size: var(--font-size-xxml); line-height: var(--line-height-xxml); letter-spacing: var(--letter-spacing-caps-xxml); text-transform: uppercase; }
+.bhb-text-caps-xl   { font-size: var(--font-size-xl);   line-height: var(--line-height-xl);   letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-l    { font-size: var(--font-size-l);    line-height: var(--line-height-l);    letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-m    { font-size: var(--font-size-m);    line-height: var(--line-height-m);    letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-s    { font-size: var(--font-size-s);    line-height: var(--line-height-s);    letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-xs   { font-size: var(--font-size-xs);   line-height: var(--line-height-xs);   letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+
+/* Caps + Bold */
+.bhb-text-caps-bold-xxxl { font-size: var(--font-size-xxxl); line-height: var(--line-height-xxxl); font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps-xxxl); text-transform: uppercase; }
+.bhb-text-caps-bold-xxl  { font-size: var(--font-size-xxl);  line-height: var(--line-height-xxl);  font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps-xxl);  text-transform: uppercase; }
+.bhb-text-caps-bold-xxml { font-size: var(--font-size-xxml); line-height: var(--line-height-xxml); font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps-xxml); text-transform: uppercase; }
+.bhb-text-caps-bold-xl   { font-size: var(--font-size-xl);   line-height: var(--line-height-xl);   font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-bold-l    { font-size: var(--font-size-l);    line-height: var(--line-height-l);    font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-bold-m    { font-size: var(--font-size-m);    line-height: var(--line-height-m);    font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-bold-s    { font-size: var(--font-size-s);    line-height: var(--line-height-s);    font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }
+.bhb-text-caps-bold-xs   { font-size: var(--font-size-xs);   line-height: var(--line-height-xs);   font-weight: var(--font-weight-bold); letter-spacing: var(--letter-spacing-caps);      text-transform: uppercase; }

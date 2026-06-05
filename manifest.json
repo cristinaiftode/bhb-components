@@ -18,9 +18,60 @@
     "language": "de"
   },
   "tokens": {
-    "colors": {},
+    "colors": {
+      "brand":       "#00A8FF",
+      "brand-shade": "#0097E6",
+      "alert":       "#E84118",
+      "alert-shade": "#C23616",
+      "black-grey":  "#2F3640",
+      "jeans-grey":  "#7F8FA6",
+      "rain-grey":   "#B1B8C2",
+      "moon-grey":   "#BCC3CE",
+      "cloud-grey":  "#C8D0DC",
+      "snow":        "#F9FAFF",
+      "white":       "#FFFFFF"
+    },
     "spacing": {},
-    "typography": {}
+    "typography": {
+      "fontFamily": "Lato",
+      "fontSizes": {
+        "xxxl": "40px",
+        "xxl":  "28px",
+        "xxml": "26px",
+        "xl":   "19px",
+        "l":    "16px",
+        "m":    "14px",
+        "s":    "12px",
+        "xs":   "10px"
+      },
+      "lineHeights": {
+        "xxxl": "56px",
+        "xxl":  "40px",
+        "xxml": "38px",
+        "xl":   "26px",
+        "l":    "22px",
+        "m":    "20px",
+        "s":    "16px",
+        "xs":   "14px"
+      },
+      "fontWeights": {
+        "regular": 400,
+        "bold":    700
+      },
+      "letterSpacing": {
+        "default":    "0",
+        "caps-xxxl":  "2px",
+        "caps-xxl":   "1px",
+        "caps-xxml":  "0.6px",
+        "caps":       "0.4px"
+      },
+      "helperClasses": [
+        "bhb-text-xxxl", "bhb-text-xxl", "bhb-text-xxml", "bhb-text-xl", "bhb-text-l", "bhb-text-m", "bhb-text-s", "bhb-text-xs",
+        "bhb-text-bold-xxxl", "bhb-text-bold-xxl", "bhb-text-bold-xxml", "bhb-text-bold-xl", "bhb-text-bold-l", "bhb-text-bold-m", "bhb-text-bold-s", "bhb-text-bold-xs",
+        "bhb-text-caps-xxxl", "bhb-text-caps-xxl", "bhb-text-caps-xxml", "bhb-text-caps-xl", "bhb-text-caps-l", "bhb-text-caps-m", "bhb-text-caps-s", "bhb-text-caps-xs",
+        "bhb-text-caps-bold-xxxl", "bhb-text-caps-bold-xxl", "bhb-text-caps-bold-xxml", "bhb-text-caps-bold-xl", "bhb-text-caps-bold-l", "bhb-text-caps-bold-m", "bhb-text-caps-bold-s", "bhb-text-caps-bold-xs"
+      ]
+    }
   },
   "components": {}
 }
