@@ -21,7 +21,10 @@
       "Bash(git init *)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(grep -n '#[0-9a-fA-F]\\\\{3,\\\\}' components/Button/Button.css)"
+      "Bash(grep -n '#[0-9a-fA-F]\\\\{3,\\\\}' components/Button/Button.css)",
+      "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__get_code_connect_suggestions",
+      "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__get_context_for_code_connect",
+      "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__add_code_connect_map"
     ]
   }
 }

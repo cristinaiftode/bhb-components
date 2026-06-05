@@ -121,7 +121,12 @@
         "fileKey": "fUcrmr5PRAIQulDadSGsB8",
         "componentSetId": "3225:6",
         "page": "Button",
-        "variantCount": 20
+        "variantCount": 20,
+        "codeConnect": {
+          "template": "components/Button/Button.figma.ts",
+          "registered": false,
+          "blockedBy": "Component Set not yet published to a Figma team library. Once published, re-run figma-code-connect to register the mapping with Figma's MCP."
+        }
       }
     }
   }
