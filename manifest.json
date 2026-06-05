@@ -124,8 +124,11 @@
         "variantCount": 20,
         "codeConnect": {
           "template": "components/Button/Button.figma.ts",
-          "registered": false,
-          "blockedBy": "Component Set not yet published to a Figma team library. Once published, re-run figma-code-connect to register the mapping with Figma's MCP."
+          "registered": true,
+          "registeredAt": "2026-06-05",
+          "label": "React",
+          "mappedNodes": 20,
+          "notes": "Simple source mapping is registered for all 20 variants — designers see the component path in Dev Mode. The local .figma.ts template is the source of truth for rich snippet rendering."
         }
       }
     }

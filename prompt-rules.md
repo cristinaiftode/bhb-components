@@ -202,4 +202,4 @@ import { Button } from 'bhb-components';
 
 **Figma source:** file `fUcrmr5PRAIQulDadSGsB8`, page "Button", Component Set `3225:6` with three variant properties (Variant / Size / State). 20 variants built. Full spec: [docs/button-spec-for-figma.md](docs/button-spec-for-figma.md).
 
-**Code Connect:** template at [components/Button/Button.figma.ts](components/Button/Button.figma.ts) maps the Figma Component Set → code component. Property mapping: Variant→`variant`, Size→`size`, State→`disabled`/`loading` booleans (Rest/Hover/Focus are CSS-only). The mapping is **not yet registered with Figma's MCP** — the Component Set needs to be published to a team library first (right-click in Figma → "Publish to team library"). Once published, re-run `figma-code-connect` to complete the registration.
+**Code Connect:** template at [components/Button/Button.figma.ts](components/Button/Button.figma.ts) maps the Figma Component Set → code component. Property mapping: Variant→`variant`, Size→`size`, State→`disabled`/`loading` booleans (Rest/Hover/Focus are CSS-only). **Registered on 2026-06-05** — all 20 variants link to `components/Button/Button.tsx` in Figma Dev Mode.
