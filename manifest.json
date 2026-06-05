@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ai-component-manifest.org/v1",
+  "$description": "Component manifest for bhb-components — designed to be consumed by AI tools (Claude Code, Claude.ai, Figma Make, v0, Lovable, etc.) for prototyping BuchhaltungsButler flows.",
+  "library": {
+    "name": "bhb-components",
+    "package": "bhb-components",
+    "repo": "",
+    "framework": "React 18 + TypeScript (Vite)",
+    "styling": "css-variables",
+    "tokenFiles": [
+      "tokens/colors.css",
+      "tokens/spacing.css",
+      "tokens/typography.css",
+      "tokens/index.css"
+    ],
+    "barrelExport": "components/index.ts",
+    "classPrefix": "bhb-",
+    "language": "de"
+  },
+  "tokens": {
+    "colors": {},
+    "spacing": {},
+    "typography": {}
+  },
+  "components": {}
+}

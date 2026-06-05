@@ -1,0 +1,10 @@
+/* Spacing tokens — populated by figma-tokens-extract.
+ *
+ * Production uses a $br[N] scale ($br8, $br12, $br18, $br24, etc.).
+ * If the Figma file doesn't have spacing Variables yet, the scan will skip this
+ * and we'll add it later when spacing tokens are designed.
+ */
+
+:root {
+  /* placeholder */
+}

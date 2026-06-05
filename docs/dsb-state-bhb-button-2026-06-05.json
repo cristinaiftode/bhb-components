@@ -1,0 +1,45 @@
+{
+  "runId": "bhb-button-2026-06-05",
+  "fileKey": "fUcrmr5PRAIQulDadSGsB8",
+  "phase": "phase3-base-complete",
+  "step": "large-size-all-variants-and-states",
+  "entities": {
+    "collections": {
+      "Color": "VariableCollectionId:3221:6"
+    },
+    "modes": {
+      "Color/Default": "3221:0"
+    },
+    "variables": {
+      "Brand": "VariableID:3221:7",
+      "Brand shade": "VariableID:3221:8",
+      "Alert": "VariableID:3221:9",
+      "Alert shade": "VariableID:3221:10",
+      "Black grey": "VariableID:3221:11",
+      "Jeans grey": "VariableID:3221:12",
+      "Rain grey": "VariableID:3221:13",
+      "Moon grey": "VariableID:3221:14",
+      "Cloud grey": "VariableID:3221:15",
+      "Snow": "VariableID:3221:16",
+      "White": "VariableID:3221:17"
+    },
+    "pages": {
+      "Button": "3222:6"
+    },
+    "componentSets": {
+      "Button": "3225:6"
+    },
+    "componentProperties": {
+      "Variant": ["Primary", "Secondary", "Ghost", "Danger"],
+      "Size": ["Large"],
+      "State": ["Rest", "Hover", "Focus", "Disabled", "Loading"]
+    },
+    "variantCounts": {
+      "Large": 20,
+      "Medium": 0,
+      "Small": 0
+    }
+  },
+  "completedSteps": ["phase0-discovery", "phase1-variables", "phase2-button-page", "phase3a-base-component", "phase3b-large-all-states-and-variants"],
+  "remainingWork": ["medium-size-20-variants", "small-size-20-variants", "icon-props-instanceswap", "loading-spinner-refinement", "focus-ring-primary-contrast-fix"]
+}

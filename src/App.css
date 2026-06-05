@@ -1,0 +1,18 @@
+main {
+  font-family: var(--bhb-font-family, Lato, system-ui, sans-serif);
+  padding: 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--black-grey, #2F3640);
+}
+
+h1 {
+  font-weight: 700;
+}
+
+code {
+  background: var(--cloud-grey, #C8D0DC);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0;
+  font-size: 0.875em;
+}
