@@ -25,7 +25,15 @@
       "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__get_code_connect_suggestions",
       "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__get_context_for_code_connect",
       "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__add_code_connect_map",
-      "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__get_code_connect_map"
+      "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__get_code_connect_map",
+      "Bash(npm install *)",
+      "Bash(curl -s -o bhb-base.png \"https://www.figma.com/api/mcp/asset/f524060f-b521-4f0f-a845-ac0dd92e4b4b\")",
+      "Bash(curl -s -o bhb-input.png \"https://www.figma.com/api/mcp/asset/087fd81e-1655-46d9-b3fc-b2dc01faa1b9\")",
+      "Bash(curl -s -o bhb-inputicon.png \"https://www.figma.com/api/mcp/asset/43543f08-061c-44c7-a609-a36f19bca3b3\")",
+      "Bash(curl -s -o bhb-select.png \"https://www.figma.com/api/mcp/asset/e78c190e-6647-40de-8f95-2d81e105353a\")",
+      "Bash(curl -s -o bhb-datepicker.png \"https://www.figma.com/api/mcp/asset/ee53cf4e-b618-438b-aea6-7faa88308ae2\")",
+      "Bash(grep -nE '#[0-9a-fA-F]{3,8}' components/Input/Input.css components/InputWithIcon/InputWithIcon.css components/Textarea/Textarea.css components/Select/Select.css components/DatePicker/DatePicker.css components/Checkbox/Checkbox.css components/RadioButton/RadioButton.css)",
+      "Bash(grep -rnE '#[0-9a-fA-F]{3,8}' components/Input components/InputWithIcon components/Textarea components/Select components/DatePicker components/Checkbox components/RadioButton)"
     ]
   }
 }

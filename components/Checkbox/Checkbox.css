@@ -1,0 +1,99 @@
+/* ============================================================
+   Checkbox — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 32:1477 (checkbox)
+   States: Default / Hover / Focus / Disabled / Readonly  ×  isChecked True / False
+============================================================ */
+
+.bhb-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--black-grey);
+  cursor: pointer;
+  user-select: none;
+}
+
+.bhb-checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.bhb-checkbox__box {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  border-radius: 0;
+  transition: border-color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.bhb-checkbox__check {
+  color: var(--white);
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
+}
+
+.bhb-checkbox:hover .bhb-checkbox__box {
+  border-color: var(--brand);
+}
+
+.bhb-checkbox__input:focus-visible + .bhb-checkbox__box {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-color: var(--brand);
+}
+
+.bhb-checkbox__input:checked + .bhb-checkbox__box {
+  background: var(--black-grey);
+  border-color: var(--black-grey);
+}
+
+.bhb-checkbox__input:checked + .bhb-checkbox__box .bhb-checkbox__check {
+  opacity: 1;
+}
+
+.bhb-checkbox__input:disabled + .bhb-checkbox__box {
+  background: var(--moon-grey);
+  border-color: var(--rain-grey);
+}
+
+.bhb-checkbox__input:disabled:checked + .bhb-checkbox__box {
+  background: var(--jeans-grey);
+  border-color: var(--jeans-grey);
+}
+
+.bhb-checkbox__input:disabled + .bhb-checkbox__box .bhb-checkbox__check {
+  color: var(--moon-grey);
+}
+
+.bhb-checkbox--disabled,
+.bhb-checkbox--readonly {
+  cursor: default;
+  color: var(--jeans-grey);
+}
+
+.bhb-checkbox--readonly .bhb-checkbox__input {
+  pointer-events: none;
+}
+
+.bhb-checkbox__label {
+  color: var(--jeans-grey);
+}
+
+.bhb-checkbox__input:checked ~ .bhb-checkbox__label {
+  color: var(--black-grey);
+}

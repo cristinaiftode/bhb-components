@@ -190,3 +190,14 @@ code {
   font-weight: var(--font-weight-bold);
   margin-bottom: 4px;
 }
+
+/* Form-style grid for inputs (vertical fields, 2 columns) */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  margin: 0 0 1rem;
+}

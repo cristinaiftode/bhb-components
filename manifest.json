@@ -74,6 +74,114 @@
     }
   },
   "components": {
+    "Input": {
+      "description": "Single-line text input with optional label, helper text, and error message. Wraps a native <input>. States: Default / Placeholder / Hover / Focus / Disabled / Readonly / Error.",
+      "import": "import { Input } from 'bhb-components';",
+      "file": "components/Input/Input.tsx",
+      "props": {
+        "label": { "type": "string", "optional": true },
+        "helperText": { "type": "string", "optional": true, "notes": "Small helper text below the field." },
+        "error": { "type": "string", "optional": true, "notes": "Error message; presence triggers error state (red border, red text)." },
+        "prompt": { "type": "boolean", "default": false, "notes": "Figma Type=Prompt variant. Currently identical to default visually; reserved for future divergence." },
+        "disabled": { "type": "boolean" },
+        "readOnly": { "type": "boolean" }
+      },
+      "extends": "React.InputHTMLAttributes<HTMLInputElement>",
+      "usage": "<Input label=\"Email\" placeholder=\"name@firma.de\" />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "32:1521", "page": "Forms" }
+    },
+    "InputWithIcon": {
+      "description": "Input with leading and/or trailing icon slots. All other behavior matches Input.",
+      "import": "import { InputWithIcon } from 'bhb-components';",
+      "file": "components/InputWithIcon/InputWithIcon.tsx",
+      "props": {
+        "iconLeft": { "type": "ReactNode", "optional": true },
+        "iconRight": { "type": "ReactNode", "optional": true },
+        "label": { "type": "string", "optional": true },
+        "helperText": { "type": "string", "optional": true },
+        "error": { "type": "string", "optional": true },
+        "prompt": { "type": "boolean", "default": false }
+      },
+      "extends": "React.InputHTMLAttributes<HTMLInputElement>",
+      "usage": "<InputWithIcon label=\"Suche\" iconLeft={<FontAwesomeIcon icon={faSearch} />} />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "37:1910", "page": "Forms" }
+    },
+    "Textarea": {
+      "description": "Multi-line text input. Same prop interface as Input plus native textarea attributes (rows, cols).",
+      "import": "import { Textarea } from 'bhb-components';",
+      "file": "components/Textarea/Textarea.tsx",
+      "props": {
+        "label": { "type": "string", "optional": true },
+        "helperText": { "type": "string", "optional": true },
+        "error": { "type": "string", "optional": true },
+        "prompt": { "type": "boolean", "default": false },
+        "rows": { "type": "number", "default": 3 }
+      },
+      "extends": "React.TextareaHTMLAttributes<HTMLTextAreaElement>",
+      "usage": "<Textarea label=\"Notiz\" rows={5} />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "42:795", "page": "Forms" }
+    },
+    "Select": {
+      "description": "Native <select> with custom chevron. Accepts options as a prop or as <option> children. Use placeholder to render an empty default option.",
+      "import": "import { Select } from 'bhb-components';",
+      "file": "components/Select/Select.tsx",
+      "props": {
+        "options": { "type": "SelectOption[]", "optional": true, "notes": "Array of { value, label, disabled? }" },
+        "placeholder": { "type": "string", "optional": true, "notes": "Renders as a disabled empty <option>." },
+        "label": { "type": "string", "optional": true },
+        "helperText": { "type": "string", "optional": true },
+        "error": { "type": "string", "optional": true },
+        "prompt": { "type": "boolean", "default": false }
+      },
+      "extends": "React.SelectHTMLAttributes<HTMLSelectElement>",
+      "usage": "<Select label=\"Land\" placeholder=\"Bitte wählen\" options={[{ value: 'de', label: 'Deutschland' }]} />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "42:561", "page": "Forms" }
+    },
+    "DatePicker": {
+      "description": "Date input — v1 is a text field with German format (TT.MM.JJJJ) placeholder and calendar icon. Full calendar popover is a future iteration.",
+      "import": "import { DatePicker } from 'bhb-components';",
+      "file": "components/DatePicker/DatePicker.tsx",
+      "props": {
+        "label": { "type": "string", "optional": true },
+        "helperText": { "type": "string", "optional": true },
+        "error": { "type": "string", "optional": true },
+        "prompt": { "type": "boolean", "default": false },
+        "placeholder": { "type": "string", "default": "TT.MM.JJJJ" }
+      },
+      "extends": "React.InputHTMLAttributes<HTMLInputElement>",
+      "usage": "<DatePicker label=\"Geburtsdatum\" />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "42:674", "page": "Forms" }
+    },
+    "Checkbox": {
+      "description": "Checkbox with optional inline label. Visually hidden native input + custom-styled box for cross-browser consistency.",
+      "import": "import { Checkbox } from 'bhb-components';",
+      "file": "components/Checkbox/Checkbox.tsx",
+      "props": {
+        "label": { "type": "ReactNode", "optional": true },
+        "checked": { "type": "boolean", "optional": true },
+        "defaultChecked": { "type": "boolean", "optional": true },
+        "disabled": { "type": "boolean" },
+        "readOnly": { "type": "boolean" }
+      },
+      "extends": "React.InputHTMLAttributes<HTMLInputElement>",
+      "usage": "<Checkbox label=\"Newsletter abonnieren\" />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "32:1477", "page": "Forms" }
+    },
+    "RadioButton": {
+      "description": "Radio button with optional inline label. Group multiple via shared `name` attribute, control via `checked` + `onChange`.",
+      "import": "import { RadioButton } from 'bhb-components';",
+      "file": "components/RadioButton/RadioButton.tsx",
+      "props": {
+        "label": { "type": "ReactNode", "optional": true },
+        "name": { "type": "string", "notes": "Required for radio group behavior." },
+        "value": { "type": "string" },
+        "checked": { "type": "boolean", "optional": true },
+        "disabled": { "type": "boolean" }
+      },
+      "extends": "React.InputHTMLAttributes<HTMLInputElement>",
+      "usage": "<RadioButton name=\"plan\" value=\"basic\" label=\"Basic\" checked={plan === 'basic'} onChange={...} />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "32:1500", "page": "Forms" }
+    },
     "Button": {
       "description": "Standard button — Primary (brand CTA), Secondary (neutral), Ghost (low-emphasis), Danger (destructive). Supports loading, disabled, and icon (left / right / only) modes.",
       "import": "import { Button } from 'bhb-components';",

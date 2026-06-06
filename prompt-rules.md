@@ -203,3 +203,67 @@ import { Button } from 'bhb-components';
 **Figma source:** file `fUcrmr5PRAIQulDadSGsB8`, page "Button", Component Set `3225:6` with three variant properties (Variant / Size / State). 20 variants built. Full spec: [docs/button-spec-for-figma.md](docs/button-spec-for-figma.md).
 
 **Code Connect:** template at [components/Button/Button.figma.ts](components/Button/Button.figma.ts) maps the Figma Component Set → code component. Property mapping: Variant→`variant`, Size→`size`, State→`disabled`/`loading` booleans (Rest/Hover/Focus are CSS-only). **Registered on 2026-06-05** — all 20 variants link to `components/Button/Button.tsx` in Figma Dev Mode.
+
+### Forms components
+
+Seven form-family components, all sharing the same labeling + helper + error pattern. Each wraps a native HTML element for accessibility and behavior, with custom styling on top.
+
+**Shared props across the input family** (`Input`, `InputWithIcon`, `Textarea`, `Select`, `DatePicker`):
+- `label?: string` — uppercase label above the field
+- `helperText?: string` — small text below
+- `error?: string` — error message; presence triggers red border + red text
+- `prompt?: boolean` — Figma `Type=Prompt` variant. Currently visually identical to default; reserved for future divergence.
+- `disabled?: boolean`, `readOnly?: boolean` — native attributes
+
+**Shared visual treatment:**
+- Field height: 48px (matches Button Large) for inputs / 80px min for textarea
+- Border: 1px rain-grey, transitions to brand on hover/focus, alert on error
+- Border-radius: 0 (square — matches Button)
+- Focus: 1px inset box-shadow doubles the border to 2px visually; outer `outline` ring on `:focus-visible`
+- Font: Lato 14px (`var(--font-size-m)`)
+- Label uses `bhb-text-caps-bold-s`-equivalent inline styles
+- All states bound to existing color tokens
+
+#### Input
+```tsx
+<Input label="Email" placeholder="name@firma.de" error="Bitte E-Mail eingeben" />
+```
+
+#### InputWithIcon
+```tsx
+<InputWithIcon label="Suche" iconLeft={<FontAwesomeIcon icon={faSearch} />} />
+<InputWithIcon label="Token" iconRight={<FontAwesomeIcon icon={faShieldHalved} />} />
+```
+
+#### Textarea
+```tsx
+<Textarea label="Notiz" rows={5} />
+```
+
+#### Select
+Native `<select>` with custom chevron. Pass `options` (array of `{value, label, disabled?}`) or use `<option>` children directly.
+```tsx
+<Select label="Land" placeholder="Bitte wählen" options={[
+  { value: 'de', label: 'Deutschland' },
+  { value: 'at', label: 'Österreich' },
+]} />
+```
+
+#### DatePicker
+Currently a text input with German format placeholder (`TT.MM.JJJJ`) + calendar icon. Full calendar popover is a future iteration — for now, pair it with a state hook and validate the string yourself.
+```tsx
+<DatePicker label="Geburtsdatum" />
+```
+
+#### Checkbox
+```tsx
+<Checkbox label="Newsletter abonnieren" />
+<Checkbox label="AGB akzeptiert" defaultChecked />
+```
+
+#### RadioButton
+Group via shared `name` attribute. Control via `checked` + `onChange`.
+```tsx
+<RadioButton name="plan" value="basic" label="Basic" checked={plan === 'basic'} onChange={...} />
+<RadioButton name="plan" value="pro"   label="Pro"   checked={plan === 'pro'}   onChange={...} />
+```

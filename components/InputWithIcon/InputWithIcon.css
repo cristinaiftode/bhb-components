@@ -1,0 +1,127 @@
+/* ============================================================
+   InputWithIcon — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 37:1910 (inputWithIcon)
+   Input with leading and/or trailing icon slots.
+============================================================ */
+
+.bhb-input-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-family-base);
+  color: var(--black-grey);
+}
+
+.bhb-input-icon__label {
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+  color: var(--jeans-grey);
+}
+
+.bhb-input-icon__field {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  border: 1px solid var(--rain-grey);
+  border-radius: 0;
+  background: var(--white);
+  transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.bhb-input-icon__field:hover {
+  border-color: var(--brand);
+}
+
+.bhb-input-icon__field:focus-within {
+  border-color: var(--brand);
+  box-shadow: inset 0 0 0 1px var(--brand);
+}
+
+.bhb-input-icon__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  color: var(--jeans-grey);
+  font-size: var(--font-size-m);
+  line-height: 1;
+}
+
+.bhb-input-icon__icon--left {
+  margin-left: 12px;
+}
+
+.bhb-input-icon__icon--right {
+  margin-right: 12px;
+}
+
+.bhb-input-icon__field:hover .bhb-input-icon__icon,
+.bhb-input-icon__field:focus-within .bhb-input-icon__icon {
+  color: var(--brand);
+}
+
+.bhb-input-icon__control {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0 12px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--black-grey);
+  outline: none;
+}
+
+.bhb-input-icon__control::placeholder {
+  color: var(--jeans-grey);
+}
+
+.bhb-input-icon--disabled .bhb-input-icon__field {
+  background: var(--moon-grey);
+}
+
+.bhb-input-icon--disabled .bhb-input-icon__control,
+.bhb-input-icon--disabled .bhb-input-icon__icon {
+  color: var(--jeans-grey);
+  cursor: default;
+}
+
+.bhb-input-icon--readonly .bhb-input-icon__field {
+  background: var(--snow);
+}
+
+.bhb-input-icon--error .bhb-input-icon__field,
+.bhb-input-icon--error .bhb-input-icon__field:hover,
+.bhb-input-icon--error .bhb-input-icon__field:focus-within {
+  border-color: var(--alert);
+  box-shadow: inset 0 0 0 1px var(--alert);
+}
+
+.bhb-input-icon--error .bhb-input-icon__control,
+.bhb-input-icon--error .bhb-input-icon__icon {
+  color: var(--alert);
+}
+
+.bhb-input-icon--error .bhb-input-icon__control::placeholder {
+  color: var(--alert);
+}
+
+.bhb-input-icon__helper {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  color: var(--jeans-grey);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
+}
+
+.bhb-input-icon--error .bhb-input-icon__helper {
+  color: var(--alert);
+}
