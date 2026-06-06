@@ -1,11 +1,22 @@
 import { useState } from 'react';
 import {
+  AnalyticsIcon,
+  BellIcon,
   Button,
   Checkbox,
+  ClipboardListIcon,
+  ColumnsIcon,
   DatePicker,
+  ExchangeIcon,
+  FileInvoiceIcon,
+  FilePlusIcon,
   Footer,
+  HomeIcon,
+  IndustryIcon,
   Input,
   InputWithIcon,
+  Logo,
+  QuestionCircleIcon,
   RadioButton,
   Select,
   Sidebar,
@@ -181,42 +192,48 @@ export function ComponentsPage() {
       </p>
       <div className="sidebar-preview">
         <Sidebar
-          logo={<span style={{ fontWeight: 700 }}>BB</span>}
+          logo={<Logo width={40} />}
           userName="Peter Berg"
           organization="Beispiel GmbH"
           onSettingsClick={() => {}}
           sections={[
             {
               items: [
-                { id: 'home', label: 'Startseite', icon: <span aria-hidden>⌂</span>, active: true },
+                { id: 'home', label: 'Startseite', icon: <HomeIcon />, active: true },
               ],
             },
             {
               title: 'Dokumente',
               items: [
-                { id: 'belege', label: 'Belegverwaltung', icon: <span aria-hidden>▤</span> },
-                { id: 'rechnung', label: 'Rechnungsstellung', icon: <span aria-hidden>+</span> },
+                { id: 'belege', label: 'Belegverwaltung', icon: <FileInvoiceIcon /> },
+                { id: 'rechnung', label: 'Rechnungsstellung', icon: <FilePlusIcon /> },
               ],
             },
             {
               title: 'Buchen',
               items: [
-                { id: 'zahlungen', label: 'Zahlungen', icon: <span aria-hidden>⇄</span> },
-                { id: 'belege2', label: 'Belege', icon: <span aria-hidden>▤</span> },
-                { id: 'erweitert', label: 'Erweitert', icon: <span aria-hidden>⊞</span> },
+                { id: 'zahlungen', label: 'Zahlungen', icon: <ExchangeIcon /> },
+                { id: 'belege2', label: 'Belege', icon: <FileInvoiceIcon /> },
+                { id: 'erweitert', label: 'Erweitert', icon: <ColumnsIcon /> },
+              ],
+            },
+            {
+              title: 'Anlagegüter',
+              items: [
+                { id: 'anlagen', label: 'Anlagenverwaltung', icon: <IndustryIcon /> },
               ],
             },
             {
               title: 'Auswertungen',
               items: [
-                { id: 'abschluss', label: 'Abschluss', icon: <span aria-hidden>▥</span> },
-                { id: 'controlling', label: 'Controlling', icon: <span aria-hidden>▪</span> },
+                { id: 'abschluss', label: 'Abschluss', icon: <ClipboardListIcon /> },
+                { id: 'controlling', label: 'Controlling', icon: <AnalyticsIcon /> },
               ],
             },
           ]}
           footerItems={[
-            { id: 'notif', label: 'Benachrichtigungen', icon: <span aria-hidden>♬</span> },
-            { id: 'help', label: 'Hilfe & Kontakt', icon: <span aria-hidden>?</span> },
+            { id: 'notif', label: 'Benachrichtigungen', icon: <BellIcon /> },
+            { id: 'help', label: 'Hilfe & Kontakt', icon: <QuestionCircleIcon /> },
           ]}
         />
       </div>

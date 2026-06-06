@@ -268,6 +268,41 @@ Group via shared `name` attribute. Control via `checked` + `onChange`.
 <RadioButton name="plan" value="pro"   label="Pro"   checked={plan === 'pro'}   onChange={...} />
 ```
 
+### Logo + Icons
+
+#### Logo
+BHB brand mark (white banderole rectangle + dark "Fliege" bow tie). The bow tie uses `currentColor`. Default width 40px; height auto-scales to 5:4 aspect.
+```tsx
+import { Logo } from 'bhb-components';
+<Logo width={40} />
+<Logo width={60} glyphOnly />   // just the bow tie, transparent bg
+```
+
+#### Icons
+~30 SVG icon components, all monochrome via `currentColor`. They accept `size`, `className`, and any other `<svg>` attribute. Pass them as ReactNodes into any component that takes an icon slot (Button.iconLeft, Sidebar item.icon, InputWithIcon.iconLeft, etc.).
+
+```tsx
+import { HomeIcon, TrashIcon, BellIcon } from 'bhb-components';
+
+<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>
+<Sidebar sections={[{ items: [{ id: 'home', label: 'Startseite', icon: <HomeIcon /> }] }]} />
+```
+
+**Intent coloring:** for status icons (success, warning, error), set the color on the parent element so the icon inherits via `currentColor`. Do NOT add color directly to the icon as a prop — keep token discipline.
+
+```tsx
+<span style={{ color: 'var(--alert)' }}>
+  <ExclamationTriangleIcon />
+</span>
+```
+
+**Available icons** (grouped):
+- *Nav:* HomeIcon, FileInvoiceIcon, FilePlusIcon, ExchangeIcon, ColumnsIcon, IndustryIcon, ClipboardListIcon, AnalyticsIcon, BellIcon, QuestionCircleIcon, CogIcon
+- *Status / common:* CheckIcon, CheckCircleIcon, TimesIcon, TrashIcon, ExclamationTriangleIcon, InfoCircleIcon, ArrowLeftIcon, SyncIcon, RedoIcon, ListIcon, LockIcon, LightbulbIcon, CommentIcon, CutIcon, EraserIcon, FileIcon, FileTimesIcon, TruckIcon, LandmarkIcon
+- *Popup-footer (24×24):* ShieldCheckIcon, CommentCheckIcon, FilePdfIcon, FileCodeIcon, HandHoldingUsdIcon, MoneyBillWaveIcon
+
+If you need an icon not on this list, add it to `components/icons/icons.tsx` following the existing pattern (use `currentColor` for fills, no hex codes).
+
 ### Layout components
 
 #### Sidebar

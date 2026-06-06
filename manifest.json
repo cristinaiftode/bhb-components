@@ -182,6 +182,39 @@
       "usage": "<RadioButton name=\"plan\" value=\"basic\" label=\"Basic\" checked={plan === 'basic'} onChange={...} />",
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "32:1500", "page": "Forms" }
     },
+    "Logo": {
+      "description": "BHB (BuchhaltungsButler) brand mark. Two-part: a white 'banderole' rectangle with a dark 'Fliege' (bow tie) centered on it. The bow tie uses currentColor so callers can recolor it via CSS. Set glyphOnly=true to render only the Fliege without the white background.",
+      "import": "import { Logo } from 'bhb-components';",
+      "file": "components/Logo/Logo.tsx",
+      "props": {
+        "width": { "type": "number", "default": 40, "notes": "Height auto-scales to preserve the 5:4 aspect ratio." },
+        "glyphOnly": { "type": "boolean", "default": false, "notes": "When true, omits the white banderole rectangle." }
+      },
+      "usage": "<Logo width={40} />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "source": "designer-provided SVG" }
+    },
+    "Icons": {
+      "description": "SVG icon set, ~30 components, all monochrome via `currentColor`. Pass any icon as a React node into Button.iconLeft, Sidebar item.icon, InputWithIcon.iconLeft, etc. All icons accept { size?: number; className?: string; ...SVGAttributes } props.",
+      "import": "import { HomeIcon, BellIcon, TrashIcon /* ... */ } from 'bhb-components';",
+      "file": "components/icons/icons.tsx",
+      "props": {
+        "size": { "type": "number", "default": 20, "notes": "Renders width in px; height auto-scales to viewBox aspect." },
+        "className": { "type": "string", "optional": true },
+        "...rest": { "type": "SVGAttributes<SVGSVGElement>", "notes": "Spread onto the <svg> element." }
+      },
+      "available": [
+        "HomeIcon", "FileInvoiceIcon", "FilePlusIcon", "ExchangeIcon", "ColumnsIcon",
+        "IndustryIcon", "ClipboardListIcon", "AnalyticsIcon", "BellIcon", "QuestionCircleIcon",
+        "CogIcon", "CheckIcon", "CheckCircleIcon", "TimesIcon", "TrashIcon",
+        "ExclamationTriangleIcon", "InfoCircleIcon", "ArrowLeftIcon", "SyncIcon", "RedoIcon",
+        "ListIcon", "LockIcon", "LightbulbIcon", "CommentIcon", "CutIcon", "EraserIcon",
+        "FileIcon", "FileTimesIcon", "TruckIcon", "LandmarkIcon",
+        "ShieldCheckIcon", "CommentCheckIcon", "FilePdfIcon", "FileCodeIcon",
+        "HandHoldingUsdIcon", "MoneyBillWaveIcon"
+      ],
+      "intentColoring": "All icons use currentColor for fills. For success/warning/error coloring, set color on the parent: <ExclamationTriangleIcon style={{ color: 'var(--alert)' }} />. Do not hardcode hex; use tokens.",
+      "usage": "<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>"
+    },
     "Sidebar": {
       "description": "Primary vertical navigation. Dark navy background, optional user header (logo + name + organization + settings), sectioned menu items with icons, and an optional list of footer items pinned at the bottom (Notifications, Help, etc.).",
       "import": "import { Sidebar } from 'bhb-components';",

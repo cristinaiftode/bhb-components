@@ -34,3 +34,49 @@ export type { SidebarProps, SidebarItem, SidebarSection } from './Sidebar/Sideba
 
 export { Footer } from './Footer/Footer';
 export type { FooterProps, FooterLink } from './Footer/Footer';
+
+export { Logo } from './Logo/Logo';
+export type { LogoProps } from './Logo/Logo';
+
+export {
+  // Sidebar / nav icons
+  HomeIcon,
+  FileInvoiceIcon,
+  FilePlusIcon,
+  ExchangeIcon,
+  ColumnsIcon,
+  IndustryIcon,
+  ClipboardListIcon,
+  AnalyticsIcon,
+  BellIcon,
+  QuestionCircleIcon,
+  CogIcon,
+  // Common UI icons
+  CheckIcon,
+  CheckCircleIcon,
+  TimesIcon,
+  TrashIcon,
+  ExclamationTriangleIcon,
+  InfoCircleIcon,
+  ArrowLeftIcon,
+  SyncIcon,
+  RedoIcon,
+  ListIcon,
+  LockIcon,
+  LightbulbIcon,
+  CommentIcon,
+  CutIcon,
+  EraserIcon,
+  FileIcon,
+  FileTimesIcon,
+  TruckIcon,
+  LandmarkIcon,
+  // Action / popup-footer icons (24×24)
+  ShieldCheckIcon,
+  CommentCheckIcon,
+  FilePdfIcon,
+  FileCodeIcon,
+  HandHoldingUsdIcon,
+  MoneyBillWaveIcon,
+} from './icons/icons';
+export type { IconProps } from './icons/icons';
