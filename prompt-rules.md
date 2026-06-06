@@ -267,3 +267,43 @@ Group via shared `name` attribute. Control via `checked` + `onChange`.
 <RadioButton name="plan" value="basic" label="Basic" checked={plan === 'basic'} onChange={...} />
 <RadioButton name="plan" value="pro"   label="Pro"   checked={plan === 'pro'}   onChange={...} />
 ```
+
+### Layout components
+
+#### Sidebar
+Primary vertical navigation. 298px wide, dark navy (`--black-grey`) background, white text. Sectioned menu items (with uppercase section titles in `--jeans-grey`), optional user header at the top, optional footer items pinned at the bottom.
+
+Items render as `<a>` when `href` is provided, otherwise `<button>`. Active items get a `color-mix(brand, 16%)` background + brand text + bold weight.
+
+```tsx
+<Sidebar
+  userName="Peter Berg"
+  organization="Beispiel GmbH"
+  onSettingsClick={openSettings}
+  sections={[
+    { items: [{ id: 'home', label: 'Startseite', icon: <Icon/>, active: true, href: '/' }] },
+    { title: 'Dokumente', items: [
+        { id: 'belege', label: 'Belegverwaltung', icon: <Icon/>, href: '/belege' },
+        { id: 'rechnung', label: 'Rechnungsstellung', icon: <Icon/>, href: '/rechnung' },
+    ]},
+  ]}
+  footerItems={[
+    { id: 'notif', label: 'Benachrichtigungen', icon: <Icon/> },
+    { id: 'help',  label: 'Hilfe & Kontakt',  icon: <Icon/> },
+  ]}
+/>
+```
+
+#### Footer
+Thin horizontal bar. Inline links separated by `·` dots on the left, copyright on the right.
+
+```tsx
+<Footer
+  links={[
+    { label: 'Impressum', href: '/impressum' },
+    { label: 'Datenschutz', href: '/datenschutz' },
+    { label: 'AGB', href: '/agb' },
+  ]}
+  copyright="© 2026 BuchhaltungsButler"
+/>
+```

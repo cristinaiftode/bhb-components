@@ -201,3 +201,19 @@ code {
   border: 1px solid var(--rain-grey);
   margin: 0 0 1rem;
 }
+
+/* Sidebar preview — bounded height container so the full-app component doesn't dominate the showcase */
+.sidebar-preview {
+  display: inline-flex;
+  height: 600px;
+  border: 1px solid var(--rain-grey);
+  margin: 0 0 1rem;
+  overflow: hidden;
+}
+
+/* Footer preview — wider container with background so it stands apart */
+.footer-preview {
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  margin: 0 0 1rem;
+}

@@ -33,7 +33,10 @@
       "Bash(curl -s -o bhb-select.png \"https://www.figma.com/api/mcp/asset/e78c190e-6647-40de-8f95-2d81e105353a\")",
       "Bash(curl -s -o bhb-datepicker.png \"https://www.figma.com/api/mcp/asset/ee53cf4e-b618-438b-aea6-7faa88308ae2\")",
       "Bash(grep -nE '#[0-9a-fA-F]{3,8}' components/Input/Input.css components/InputWithIcon/InputWithIcon.css components/Textarea/Textarea.css components/Select/Select.css components/DatePicker/DatePicker.css components/Checkbox/Checkbox.css components/RadioButton/RadioButton.css)",
-      "Bash(grep -rnE '#[0-9a-fA-F]{3,8}' components/Input components/InputWithIcon components/Textarea components/Select components/DatePicker components/Checkbox components/RadioButton)"
+      "Bash(grep -rnE '#[0-9a-fA-F]{3,8}' components/Input components/InputWithIcon components/Textarea components/Select components/DatePicker components/Checkbox components/RadioButton)",
+      "Bash(curl -s -o /tmp/bhb-sidebar.png \"https://www.figma.com/api/mcp/asset/f542ebaa-a5e5-4c1a-ab73-a7565dece826\")",
+      "Bash(curl -s -o /tmp/bhb-footer.png \"https://www.figma.com/api/mcp/asset/3a5f8e2e-72ac-43d2-994d-794d5b3e26ca\")",
+      "Bash(grep -nE '#[0-9a-fA-F]{3,8}' components/Sidebar/Sidebar.css components/Footer/Footer.css)"
     ]
   }
 }

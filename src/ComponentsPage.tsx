@@ -3,10 +3,12 @@ import {
   Button,
   Checkbox,
   DatePicker,
+  Footer,
   Input,
   InputWithIcon,
   RadioButton,
   Select,
+  Sidebar,
   Textarea,
   type ButtonSize,
   type ButtonVariant,
@@ -168,6 +170,75 @@ export function ComponentsPage() {
         <Checkbox label="Label" defaultChecked />
         <Checkbox label="Label" disabled />
         <Checkbox label="Label" disabled defaultChecked />
+      </div>
+
+      {/* ============ Sidebar ============ */}
+      <h2>Sidebar</h2>
+      <p className="component-intro">
+        Primary vertical navigation. Sectioned items with icons, user header on top, footer
+        links pinned to the bottom.
+        <code>{`import { Sidebar } from 'bhb-components';`}</code>
+      </p>
+      <div className="sidebar-preview">
+        <Sidebar
+          logo={<span style={{ fontWeight: 700 }}>BB</span>}
+          userName="Peter Berg"
+          organization="Beispiel GmbH"
+          onSettingsClick={() => {}}
+          sections={[
+            {
+              items: [
+                { id: 'home', label: 'Startseite', icon: <span aria-hidden>⌂</span>, active: true },
+              ],
+            },
+            {
+              title: 'Dokumente',
+              items: [
+                { id: 'belege', label: 'Belegverwaltung', icon: <span aria-hidden>▤</span> },
+                { id: 'rechnung', label: 'Rechnungsstellung', icon: <span aria-hidden>+</span> },
+              ],
+            },
+            {
+              title: 'Buchen',
+              items: [
+                { id: 'zahlungen', label: 'Zahlungen', icon: <span aria-hidden>⇄</span> },
+                { id: 'belege2', label: 'Belege', icon: <span aria-hidden>▤</span> },
+                { id: 'erweitert', label: 'Erweitert', icon: <span aria-hidden>⊞</span> },
+              ],
+            },
+            {
+              title: 'Auswertungen',
+              items: [
+                { id: 'abschluss', label: 'Abschluss', icon: <span aria-hidden>▥</span> },
+                { id: 'controlling', label: 'Controlling', icon: <span aria-hidden>▪</span> },
+              ],
+            },
+          ]}
+          footerItems={[
+            { id: 'notif', label: 'Benachrichtigungen', icon: <span aria-hidden>♬</span> },
+            { id: 'help', label: 'Hilfe & Kontakt', icon: <span aria-hidden>?</span> },
+          ]}
+        />
+      </div>
+
+      {/* ============ Footer ============ */}
+      <h2>Footer</h2>
+      <p className="component-intro">
+        Thin horizontal app footer with inline links + copyright.
+        <code>{`import { Footer } from 'bhb-components';`}</code>
+      </p>
+      <div className="footer-preview">
+        <Footer
+          links={[
+            { label: 'Impressum', href: '#' },
+            { label: 'Datenschutz', href: '#' },
+            { label: 'AGB', href: '#' },
+            { label: 'Kontakt', href: '#' },
+            { label: 'Hilfe', href: '#' },
+            { label: 'Ideen & Roadmap', href: '#' },
+          ]}
+          copyright="© 2026 BuchhaltungsButler"
+        />
       </div>
 
       {/* ============ RadioButton ============ */}

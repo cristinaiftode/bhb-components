@@ -1,0 +1,66 @@
+/* ============================================================
+   Footer — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 7:845 (Footer)
+   Thin horizontal bar: links on the left, copyright on the right.
+============================================================ */
+
+.bhb-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 16px;
+  background: transparent;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  color: var(--jeans-grey);
+}
+
+.bhb-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bhb-footer__item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.bhb-footer__item + .bhb-footer__item::before {
+  content: '·';
+  margin: 0 12px;
+  color: var(--rain-grey);
+  pointer-events: none;
+}
+
+.bhb-footer__link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--jeans-grey);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.bhb-footer__link:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.bhb-footer__link:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.bhb-footer__copyright {
+  white-space: nowrap;
+  color: var(--jeans-grey);
+}

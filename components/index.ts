@@ -28,3 +28,9 @@ export type { CheckboxProps } from './Checkbox/Checkbox';
 
 export { RadioButton } from './RadioButton/RadioButton';
 export type { RadioButtonProps } from './RadioButton/RadioButton';
+
+export { Sidebar } from './Sidebar/Sidebar';
+export type { SidebarProps, SidebarItem, SidebarSection } from './Sidebar/Sidebar';
+
+export { Footer } from './Footer/Footer';
+export type { FooterProps, FooterLink } from './Footer/Footer';
