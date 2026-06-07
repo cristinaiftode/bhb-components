@@ -28,6 +28,17 @@ prompt-rules.md Rules for AI tools generating code against this library
 CLAUDE.md       Project rules loaded at the start of every Claude Code session
 ```
 
+## Fonts
+
+The library uses **Lato** (400 and 700 weights). It's loaded from Google Fonts in
+`index.html` via a `<link>` tag with `display=swap` so text shows immediately in a
+system fallback and swaps to Lato when it arrives. No font files are bundled — the
+browser fetches them from `fonts.googleapis.com` on first load.
+
+If you're using `bhb-components` inside your own app (not this showcase), make sure
+your app's HTML loads Lato too — either via the same Google Fonts link or by
+self-hosting the font files.
+
 ## Related
 
 - **Figma file:** https://www.figma.com/design/fUcrmr5PRAIQulDadSGsB8/Styles---Components-Webapp
