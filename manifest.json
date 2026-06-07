@@ -21,8 +21,13 @@
     "colors": {
       "brand":       "#00A8FF",
       "brand-shade": "#0097E6",
-      "alert":       "#E84118",
-      "alert-shade": "#C23616",
+      "alert":         "#E84118",
+      "alert-shade":   "#C23616",
+      "success":       "#4CD137",
+      "success-shade": "#44BD32",
+      "warning":       "#E1B12C",
+      "warning-shade": "#B98F1E",
+      "warning-light": "#FBF6DC",
       "black-grey":  "#2F3640",
       "jeans-grey":  "#7F8FA6",
       "rain-grey":   "#B1B8C2",
@@ -214,6 +219,31 @@
       ],
       "intentColoring": "All icons use currentColor for fills. For success/warning/error coloring, set color on the parent: <ExclamationTriangleIcon style={{ color: 'var(--alert)' }} />. Do not hardcode hex; use tokens.",
       "usage": "<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>"
+    },
+    "Message": {
+      "description": "Alert / banner. 3 positions (content / stack / inline) × 7 types (success / info / warning / warning-light / error / brand / inactive). Use stack for top-of-page event surfaces (with × close), content for inline form-level state flags, inline for static informational strips.",
+      "import": "import { Message } from 'bhb-components';",
+      "file": "components/Message/Message.tsx",
+      "props": {
+        "type": { "type": "enum", "values": ["success", "info", "warning", "warning-light", "error", "brand", "inactive"], "default": "info" },
+        "position": { "type": "enum", "values": ["content", "stack", "inline"], "default": "stack" },
+        "onClose": { "type": "() => void", "optional": true, "notes": "When provided AND position=stack, renders a × close button." },
+        "icon": { "type": "ReactNode | null", "optional": true, "notes": "Overrides the default icon for the type. Pass null to suppress." },
+        "closeLabel": { "type": "string", "default": "Schließen", "notes": "aria-label for the close button." },
+        "children": { "type": "ReactNode", "notes": "Message text." }
+      },
+      "defaultIcons": {
+        "success": "CheckIcon",
+        "info": "InfoCircleIcon",
+        "warning": "InfoCircleIcon",
+        "warning-light": "InfoCircleIcon",
+        "error": "ExclamationTriangleIcon",
+        "brand": "InfoCircleIcon",
+        "inactive": "InfoCircleIcon"
+      },
+      "aria": "role='alert' for error/warning types, role='status' for the rest.",
+      "usage": "<Message type=\"success\" position=\"stack\" onClose={dismiss}>Erfolgreich gespeichert</Message>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "14:887", "page": "Components" }
     },
     "Layout": {
       "description": "App shell composing Sidebar + main content + Footer. CSS grid with sidebar (auto width, full height) and main content (1fr); optional footer pins to the bottom of the main content area. Matches BuchhaltungsButler app structure from Figma 17:113.",

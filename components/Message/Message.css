@@ -1,0 +1,108 @@
+/* ============================================================
+   Message — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 14:887 (Message)
+   3 positions × 7 types of message (alert / banner).
+============================================================ */
+
+.bhb-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-bold);
+}
+
+.bhb-message__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.bhb-message__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.bhb-message__close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.85;
+  transition: opacity 0.15s ease-out;
+}
+
+.bhb-message__close:hover,
+.bhb-message__close:focus-visible {
+  opacity: 1;
+}
+
+.bhb-message__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ---------- Position: content (minimal, transparent bg) ---------- */
+
+.bhb-message--content {
+  padding: 0;
+  background: transparent;
+  font-weight: var(--font-weight-bold);
+}
+
+.bhb-message--content.bhb-message--success  { color: var(--success); }
+.bhb-message--content.bhb-message--info     { color: var(--jeans-grey); }
+.bhb-message--content.bhb-message--warning  { color: var(--warning); }
+.bhb-message--content.bhb-message--error    { color: var(--alert-shade); }
+.bhb-message--content.bhb-message--brand    { color: var(--brand); }
+.bhb-message--content.bhb-message--inactive { color: var(--moon-grey); }
+
+/* ---------- Position: stack (full-width banner with close) ---------- */
+
+.bhb-message--stack {
+  padding: 12px 16px;
+  color: var(--white);
+}
+
+.bhb-message--stack.bhb-message--success  { background: var(--success); }
+.bhb-message--stack.bhb-message--info     { background: var(--jeans-grey); }
+.bhb-message--stack.bhb-message--warning  { background: var(--warning); }
+.bhb-message--stack.bhb-message--error    { background: var(--alert); }
+.bhb-message--stack.bhb-message--brand    { background: var(--brand); }
+.bhb-message--stack.bhb-message--inactive { background: var(--moon-grey); }
+
+/* warning-light keeps the cream bg + dark text even in stack */
+.bhb-message--stack.bhb-message--warning-light {
+  background: var(--warning-light);
+  color: var(--black-grey);
+}
+
+/* ---------- Position: inline (full-width banner, no icon, no close) ---------- */
+
+.bhb-message--inline {
+  padding: 22px 16px;
+  color: var(--white);
+}
+
+.bhb-message--inline.bhb-message--success  { background: var(--success); }
+.bhb-message--inline.bhb-message--info     { background: var(--jeans-grey); }
+.bhb-message--inline.bhb-message--warning  { background: var(--warning); }
+.bhb-message--inline.bhb-message--warning-light {
+  background: var(--warning-light);
+  color: var(--black-grey);
+}
+.bhb-message--inline.bhb-message--error    { background: var(--alert); }
+.bhb-message--inline.bhb-message--brand    { background: var(--brand); }
+.bhb-message--inline.bhb-message--inactive { background: var(--moon-grey); }

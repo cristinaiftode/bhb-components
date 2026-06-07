@@ -17,6 +17,7 @@ import {
   InputWithIcon,
   Layout,
   Logo,
+  Message,
   QuestionCircleIcon,
   RadioButton,
   Select,
@@ -226,6 +227,41 @@ export function ComponentsPage() {
         <Checkbox label="Label" defaultChecked />
         <Checkbox label="Label" disabled />
         <Checkbox label="Label" disabled defaultChecked />
+      </div>
+
+      {/* ============ Message ============ */}
+      <h2>Message</h2>
+      <p className="component-intro">
+        Alert / banner. 3 positions × 7 types. Stack is the default; pass{' '}
+        <code>onClose</code> to render a × button.
+        <code>{`import { Message } from 'bhb-components';`}</code>
+      </p>
+
+      <h3 className="showcase-h3">Position = content (inline state flag)</h3>
+      <div className="message-stack">
+        <Message type="success" position="content">Success Message Content</Message>
+        <Message type="info" position="content">Info Message Content</Message>
+        <Message type="warning" position="content">Warning Message Content</Message>
+        <Message type="error" position="content">Error Message Content</Message>
+      </div>
+
+      <h3 className="showcase-h3">Position = stack (banner + close)</h3>
+      <div className="message-stack">
+        <Message type="success" onClose={() => {}}>Success Message Content</Message>
+        <Message type="info" onClose={() => {}}>Info Message Content</Message>
+        <Message type="warning" onClose={() => {}}>Warning Message Content</Message>
+        <Message type="error" onClose={() => {}}>Error Message Content</Message>
+      </div>
+
+      <h3 className="showcase-h3">Position = inline (no icon, no close)</h3>
+      <div className="message-stack">
+        <Message type="success" position="inline">Success Message Inline</Message>
+        <Message type="info" position="inline">Info Message Inline</Message>
+        <Message type="warning" position="inline">Warning Message Inline</Message>
+        <Message type="warning-light" position="inline">Warning Light Message Inline</Message>
+        <Message type="error" position="inline">Error Message Inline</Message>
+        <Message type="brand" position="inline">Brand Message Inline</Message>
+        <Message type="inactive" position="inline">Inactive Message Inline</Message>
       </div>
 
       {/* ============ Sidebar ============ */}

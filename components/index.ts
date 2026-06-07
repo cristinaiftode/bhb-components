@@ -38,6 +38,9 @@ export type { FooterProps, FooterLink } from './Footer/Footer';
 export { Layout } from './Layout/Layout';
 export type { LayoutProps } from './Layout/Layout';
 
+export { Message } from './Message/Message';
+export type { MessageProps, MessageType, MessagePosition } from './Message/Message';
+
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
 

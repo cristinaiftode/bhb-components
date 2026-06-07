@@ -42,7 +42,8 @@
       "mcp__Claude_in_Chrome__navigate",
       "mcp__Claude_in_Chrome__browser_batch",
       "Bash(curl -s -o /tmp/bhb-footer-v2.png \"https://www.figma.com/api/mcp/asset/33665389-86ba-4456-b85c-4d3321566333\")",
-      "Bash(curl -s -o /tmp/bhb-background.png \"https://www.figma.com/api/mcp/asset/3bfc9f5c-7c5a-4b4a-8ace-7537565249da\")"
+      "Bash(curl -s -o /tmp/bhb-background.png \"https://www.figma.com/api/mcp/asset/3bfc9f5c-7c5a-4b4a-8ace-7537565249da\")",
+      "Bash(curl -s -o /tmp/bhb-message.png \"https://www.figma.com/api/mcp/asset/231dad2b-23ff-435d-a1f0-5a17b56e736c\")"
     ]
   }
 }

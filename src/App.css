@@ -232,6 +232,14 @@ code {
   overflow: hidden;
 }
 
+/* Message showcase: vertical stack of banners, full row width per row */
+.message-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 1.5rem;
+}
+
 .layout-preview__placeholder {
   display: flex;
   align-items: center;

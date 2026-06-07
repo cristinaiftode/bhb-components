@@ -303,6 +303,27 @@ import { HomeIcon, TrashIcon, BellIcon } from 'bhb-components';
 
 If you need an icon not on this list, add it to `components/icons/icons.tsx` following the existing pattern (use `currentColor` for fills, no hex codes).
 
+### Feedback components
+
+#### Message
+Alert / banner component (Figma 14:887). Three positions × seven types.
+
+**Positions:**
+- `content` — minimal, transparent bg, icon + colored text. Use to flag a state next to a form field or inside another container.
+- `stack` (default) — full-width colored banner with icon + text + optional close button. Use at the top of a page or modal.
+- `inline` — full-width colored banner without icon or close. Use as a static informational strip.
+
+**Types:** `success` (green), `info` (jeans-grey), `warning` (mustard yellow), `warning-light` (pale yellow cream bg, dark text), `error` (alert red), `brand` (brand blue), `inactive` (moon-grey).
+
+```tsx
+<Message type="success" onClose={dismiss}>Erfolgreich gespeichert</Message>
+<Message type="error" position="content">Pflichtfeld</Message>
+<Message type="brand" position="inline">Neue Funktion verfügbar</Message>
+<Message type="warning-light" position="inline">Sanfter Hinweis</Message>
+```
+
+Each `type` has a default icon (CheckIcon for success, ExclamationTriangleIcon for error, InfoCircleIcon for everything else). Pass `icon={...}` to override or `icon={null}` to suppress.
+
 ### Layout components
 
 #### Sidebar
