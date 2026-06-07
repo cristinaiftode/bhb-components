@@ -419,14 +419,16 @@
   min-width: 0;
 }
 
-/* Trailing "⋯" matches MultiSelection segment styling (steel-grey bg, white) */
+/* Trailing "⋯" segment — Figma 19:839 uses a darker tone (#3A424D) than the
+   other steel-grey actions to set the overflow button apart. We use
+   --black-grey (very close, and a token we already own). */
 .eingangsbelege__multibar-more {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
   width: 56px;
-  background: var(--steel-grey);
+  background: var(--black-grey);
   color: var(--white);
   border: none;
   cursor: pointer;
@@ -437,10 +439,57 @@
 }
 
 .eingangsbelege__multibar-more:hover {
-  background: var(--black-grey);
+  background: var(--ink);
 }
 
 .eingangsbelege__multibar-more:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: -2px;
+}
+
+/* ---------- Overflow popover (Figma 19:841) ----------
+   A SettingsMenu instance with placement='top' opens above the trigger.
+   This page-scoped override switches the item hover from the default
+   (color shift to brand-blue) to Figma's pattern: steel-grey bg + white
+   text/icon for the hovered item. Only affects this one menu via class. */
+
+.eingangsbelege__overflow-menu .bhb-settings-menu__section {
+  padding: 0;
+  gap: 0;
+  border-bottom: none;
+}
+
+.eingangsbelege__overflow-menu .bhb-settings-menu__items {
+  gap: 0;
+}
+
+.eingangsbelege__overflow-menu .bhb-settings-menu__item {
+  padding: 12px;
+  gap: 8px;
+  color: var(--steel-grey);
+  border-radius: 0;
+  transition: background-color 0.12s ease-out, color 0.12s ease-out;
+}
+
+.eingangsbelege__overflow-menu .bhb-settings-menu__item:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.eingangsbelege__overflow-menu .bhb-settings-menu__item:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.eingangsbelege__overflow-menu .bhb-settings-menu__item:hover {
+  background: var(--steel-grey);
+  color: var(--white);
+}
+
+/* Caret matches the bg of whatever item it sits below. With placement=top
+   the caret is at the menu's bottom (under the last item). When the last
+   item is hovered, the caret should follow that hover. */
+.eingangsbelege__overflow-menu .bhb-settings-menu__item:last-child:hover ~ .bhb-settings-menu__caret--top,
+.eingangsbelege__overflow-menu:has(.bhb-settings-menu__item:last-child:hover) .bhb-settings-menu__caret--top {
+  background: var(--steel-grey);
 }

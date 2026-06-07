@@ -56,6 +56,14 @@ export interface SettingsMenuProps {
   align?: 'center' | 'start' | 'end';
   /** Menu width in pixels. */
   width?: number;
+  /**
+   * Vertical placement of the menu relative to the trigger.
+   * - `bottom` (default) — menu opens below the trigger, caret on top
+   * - `top`    — menu opens above the trigger, caret on bottom (use for
+   *              triggers near the bottom of the viewport, e.g. overflow
+   *              buttons on a sticky bottom toolbar)
+   */
+  placement?: 'bottom' | 'top';
   /** Optional callback fired after any item is clicked (after the item's own onClick). */
   onItemClick?: (item: SettingsMenuItem) => void;
   className?: string;
@@ -66,11 +74,13 @@ export const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   children,
   align = 'center',
   width = 260,
+  placement = 'bottom',
   onItemClick,
   className,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [anchor, setAnchor] = React.useState<DOMRect | null>(null);
+  const [menuHeight, setMenuHeight] = React.useState(0);
   const triggerRef = React.useRef<HTMLElement | null>(null);
   const menuRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -145,12 +155,20 @@ export const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
     close();
   };
 
-  // Position: menu sits ~8px below the trigger (room for the caret), aligned
-  // by the `align` prop. Always clamped to the viewport.
+  // Measure menu height so 'top' placement can position above the trigger.
+  // Falls back to 0 on the first render; the next paint will use the real value.
+  const setMenuRef = React.useCallback((node: HTMLDivElement | null) => {
+    menuRef.current = node;
+    if (node) setMenuHeight(node.offsetHeight);
+  }, []);
+
+  // Position: menu sits ~12px from the trigger (with room for an 8px caret),
+  // aligned by the `align` prop and placed above OR below per `placement`.
+  // Always clamped to the viewport.
   let style: React.CSSProperties | null = null;
   let caretLeft = '50%';
   if (open && anchor) {
-    const gap = 12; // distance from trigger bottom to top edge of menu (caret occupies ~8px)
+    const gap = 12;
     const triggerCenter = anchor.left + anchor.width / 2;
     let left: number;
     if (align === 'end') {
@@ -162,7 +180,10 @@ export const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
     }
     const maxLeft = window.innerWidth - width - 8;
     left = Math.max(8, Math.min(left, maxLeft));
-    const top = anchor.bottom + gap;
+    const top =
+      placement === 'top'
+        ? anchor.top - gap - menuHeight
+        : anchor.bottom + gap;
     style = { top, left, width };
     // Position caret over the trigger center, regardless of menu clamping
     const caretX = Math.max(16, Math.min(width - 16, triggerCenter - left));
@@ -175,13 +196,20 @@ export const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
       {open && style
         ? ReactDOM.createPortal(
             <div
-              ref={menuRef}
+              ref={setMenuRef}
               role="menu"
-              className={cx('bhb-settings-menu', className)}
+              className={cx(
+                'bhb-settings-menu',
+                `bhb-settings-menu--${placement}`,
+                className,
+              )}
               style={style}
             >
               <div
-                className="bhb-settings-menu__caret"
+                className={cx(
+                  'bhb-settings-menu__caret',
+                  `bhb-settings-menu__caret--${placement}`,
+                )}
                 style={{ left: caretLeft }}
                 aria-hidden="true"
               />

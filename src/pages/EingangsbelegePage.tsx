@@ -16,7 +16,6 @@ import {
   FileImportIcon,
   FileInvoiceIcon,
   FilePlusIcon,
-  Footer,
   HomeIcon,
   IndustryIcon,
   Input,
@@ -31,6 +30,7 @@ import {
   QuestionCircleIcon,
   RedoIcon,
   Select,
+  SettingsMenu,
   Sidebar,
   SignInIcon,
   SyncIcon,
@@ -96,14 +96,6 @@ const COMPANY_MENU: SettingsMenuSection[] = [
       { id: 'out', label: 'Abmelden', icon: <SignInIcon /> },
     ],
   },
-];
-
-const FOOTER_LINKS = [
-  { label: 'Impressum', href: '#' },
-  { label: 'Datenschutz', href: '#' },
-  { label: 'AGB', href: '#' },
-  { label: 'Kontakt', href: '#' },
-  { label: 'Hilfe', href: '#' },
 ];
 
 /* ---------- Belege data ---------- */
@@ -221,12 +213,8 @@ export function EingangsbelegePage({ onBack }: EingangsbelegePageProps) {
     [],
   );
 
-  const footer = (
-    <Footer links={FOOTER_LINKS} copyright="© 2026 BuchhaltungsButler" />
-  );
-
   return (
-    <Layout sidebar={sidebar} footer={footer} flush>
+    <Layout sidebar={sidebar} flush>
       <div className="eingangsbelege">
         {/* -------------------- Top toolbar -------------------- */}
         <header className="eingangsbelege__toolbar">
@@ -384,11 +372,18 @@ export function EingangsbelegePage({ onBack }: EingangsbelegePageProps) {
                 { id: 'map', label: 'Zuordnen', icon: <LandmarkIcon /> },
               ]}
             />
-            <ContextMenu
-              triggerOnClick
-              items={[
-                { id: 'delete', label: 'Löschen', icon: <TrashIcon /> },
-                { id: 'transfer', label: 'Überweisen', icon: <MoneyBillWaveIcon /> },
+            <SettingsMenu
+              placement="top"
+              align="end"
+              width={181}
+              className="eingangsbelege__overflow-menu"
+              sections={[
+                {
+                  items: [
+                    { id: 'delete', label: 'Löschen', icon: <TrashIcon size={14} /> },
+                    { id: 'transfer', label: 'Überweisen', icon: <MoneyBillWaveIcon size={18} /> },
+                  ],
+                },
               ]}
             >
               <button
@@ -398,7 +393,7 @@ export function EingangsbelegePage({ onBack }: EingangsbelegePageProps) {
               >
                 <span aria-hidden="true">⋯</span>
               </button>
-            </ContextMenu>
+            </SettingsMenu>
           </div>
         )}
       </div>
