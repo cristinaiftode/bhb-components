@@ -232,6 +232,16 @@ code {
   overflow: hidden;
 }
 
+/* MultiSelection preview: wrap with a subtle outline + horizontal scroll for
+   narrow viewports so the full 9-action toolbar is always visible. */
+.multiselection-preview {
+  padding: 16px;
+  border: 1px solid var(--rain-grey);
+  background: var(--snow);
+  margin: 0 0 1rem;
+  overflow-x: auto;
+}
+
 /* Tooltip playground: spread the 4 triggers out so the tooltips have room
    on all sides (don't crowd left/right placements against the page edges). */
 .tooltip-playground {

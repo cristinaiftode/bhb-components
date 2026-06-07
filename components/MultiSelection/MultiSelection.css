@@ -1,0 +1,122 @@
+/* ============================================================
+   MultiSelection — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 19:299 (Multiple selection)
+   Batch-action toolbar: count badge + label on the left, action buttons on the right.
+============================================================ */
+
+.bhb-multi-selection {
+  display: inline-flex;
+  align-items: stretch;
+  height: 42px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  background: var(--white);
+}
+
+/* ---------- Count segment (dark left segment) ---------- */
+
+.bhb-multi-selection__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  background: var(--jeans-grey);
+  color: var(--white);
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+}
+
+.bhb-multi-selection__count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: var(--black-grey);
+  color: var(--white);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+.bhb-multi-selection__count-label {
+  font-weight: var(--font-weight-regular);
+}
+
+/* ---------- Action segments ---------- */
+
+.bhb-multi-selection__actions {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.bhb-multi-selection__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  height: 100%;
+  background: var(--white);
+  border: none;
+  border-right: 1px solid var(--rain-grey);
+  font-family: inherit;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-regular);
+  color: var(--black-grey);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.bhb-multi-selection__action:last-child {
+  border-right: none;
+}
+
+.bhb-multi-selection__action:hover:not(:disabled):not(.bhb-multi-selection__action--active) {
+  background: var(--snow);
+}
+
+.bhb-multi-selection__action:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}
+
+.bhb-multi-selection__action:disabled {
+  color: var(--moon-grey);
+  cursor: default;
+}
+
+.bhb-multi-selection__action--active {
+  background: var(--success);
+  color: var(--white);
+  font-weight: var(--font-weight-bold);
+}
+
+.bhb-multi-selection__action--active:hover:not(:disabled) {
+  background: var(--success-shade);
+}
+
+.bhb-multi-selection__action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  color: var(--jeans-grey);
+}
+
+.bhb-multi-selection__action--active .bhb-multi-selection__action-icon {
+  color: var(--white);
+}
+
+.bhb-multi-selection__action:disabled .bhb-multi-selection__action-icon {
+  color: var(--moon-grey);
+}
+
+.bhb-multi-selection__action-label {
+  display: inline-block;
+}

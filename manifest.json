@@ -220,6 +220,20 @@
       "intentColoring": "All icons use currentColor for fills. For success/warning/error coloring, set color on the parent: <ExclamationTriangleIcon style={{ color: 'var(--alert)' }} />. Do not hardcode hex; use tokens.",
       "usage": "<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>"
     },
+    "MultiSelection": {
+      "description": "Horizontal batch-action toolbar shown when N items are selected. Left segment shows the count badge + descriptive label (jeans-grey bg, white text). Right segments are action buttons with icon + label, separated by 1px rain-grey dividers. Mark one action as `active` to highlight it in success green (e.g. the primary 'Bestätigen').",
+      "import": "import { MultiSelection } from 'bhb-components';",
+      "file": "components/MultiSelection/MultiSelection.tsx",
+      "props": {
+        "count": { "type": "number", "notes": "Number shown in the round badge." },
+        "itemLabel": { "type": "string", "optional": true, "notes": "Phrase next to the count, e.g. 'ausgewählte Belege'. Also used as toolbar aria-label." },
+        "actions": { "type": "MultiSelectionAction[]", "notes": "Each item: { id, label, icon?, active?, disabled?, onClick? }" }
+      },
+      "styling": { "height": "42px", "countBg": "--jeans-grey", "badgeBg": "--black-grey", "actionBg": "--white", "actionActiveBg": "--success", "divider": "1px --rain-grey" },
+      "iconRecommendations": "Use icons from the library: CheckIcon (confirm), RedoIcon (redo), LockIcon (lock-alt), LightbulbIcon, TruckIcon, ListIcon, LandmarkIcon, MoneyBillWaveIcon, TrashIcon",
+      "usage": "<MultiSelection count={2} itemLabel=\"ausgewählte Belege\" actions={[{ id: 'confirm', label: 'Bestätigen', icon: <CheckIcon/>, active: true, onClick: ... }]} />",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "19:299", "page": "Components" }
+    },
     "Tooltip": {
       "description": "Interactive tooltip. Wraps a trigger element and shows a dark navy pill with white text on hover OR focus (keyboard accessible). 4 placements (top / bottom / left / right) with a triangle pointer that always points at the trigger. role=tooltip + aria-describedby on the trigger. Escape dismisses.",
       "import": "import { Tooltip } from 'bhb-components';",

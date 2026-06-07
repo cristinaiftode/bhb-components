@@ -44,6 +44,9 @@ export type { MessageProps, MessageType, MessagePosition } from './Message/Messa
 export { Tooltip } from './Tooltip/Tooltip';
 export type { TooltipProps, TooltipPlacement } from './Tooltip/Tooltip';
 
+export { MultiSelection } from './MultiSelection/MultiSelection';
+export type { MultiSelectionProps, MultiSelectionAction } from './MultiSelection/MultiSelection';
+
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
 

@@ -303,6 +303,28 @@ import { HomeIcon, TrashIcon, BellIcon } from 'bhb-components';
 
 If you need an icon not on this list, add it to `components/icons/icons.tsx` following the existing pattern (use `currentColor` for fills, no hex codes).
 
+### Data components
+
+#### MultiSelection
+Batch-action toolbar shown when N items are selected (Figma 19:299). Left segment = count badge + label on a `--jeans-grey` bg; right segments = icon+label action buttons with 1px `--rain-grey` dividers between them. Mark one action `active` to highlight it in `--success` green.
+
+```tsx
+const [selected, setSelected] = useState<string[]>(['a', 'b']);
+
+<MultiSelection
+  count={selected.length}
+  itemLabel="ausgewählte Belege"
+  actions={[
+    { id: 'confirm', label: 'Bestätigen', icon: <CheckIcon />, active: true, onClick: confirmAll },
+    { id: 'lock',    label: 'Festschreiben', icon: <LockIcon />, onClick: lockAll },
+    { id: 'assign',  label: 'Zuweisen', icon: <TruckIcon />, onClick: openAssignDialog },
+    { id: 'delete',  label: 'Löschen', icon: <TrashIcon />, onClick: deleteAll },
+  ]}
+/>
+```
+
+Hide the toolbar (don't render it at all) when `count === 0`. Inside it, use the existing icon set — CheckIcon, RedoIcon, LockIcon, LightbulbIcon, TruckIcon, ListIcon, LandmarkIcon, MoneyBillWaveIcon, TrashIcon are all available.
+
 ### Overlay components
 
 #### Tooltip

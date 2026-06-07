@@ -3,6 +3,7 @@ import {
   AnalyticsIcon,
   BellIcon,
   Button,
+  CheckIcon,
   Checkbox,
   ClipboardListIcon,
   ColumnsIcon,
@@ -15,15 +16,24 @@ import {
   IndustryIcon,
   Input,
   InputWithIcon,
+  LandmarkIcon,
   Layout,
+  LightbulbIcon,
+  ListIcon,
+  LockIcon,
   Logo,
   Message,
+  MoneyBillWaveIcon,
+  MultiSelection,
   QuestionCircleIcon,
   RadioButton,
+  RedoIcon,
   Select,
   Sidebar,
   Textarea,
   Tooltip,
+  TrashIcon,
+  TruckIcon,
   type ButtonSize,
   type ButtonVariant,
 } from '../components';
@@ -228,6 +238,31 @@ export function ComponentsPage() {
         <Checkbox label="Label" defaultChecked />
         <Checkbox label="Label" disabled />
         <Checkbox label="Label" disabled defaultChecked />
+      </div>
+
+      {/* ============ MultiSelection ============ */}
+      <h2>MultiSelection</h2>
+      <p className="component-intro">
+        Batch-action toolbar shown when N items are selected. Mark one action{' '}
+        <code>active</code> to highlight it green.
+        <code>{`import { MultiSelection } from 'bhb-components';`}</code>
+      </p>
+      <div className="multiselection-preview">
+        <MultiSelection
+          count={2}
+          itemLabel="ausgewählte Belege"
+          actions={[
+            { id: 'confirm', label: 'Bestätigen', icon: <CheckIcon />, active: true, onClick: () => {} },
+            { id: 'redo', label: 'Bestätigen', icon: <RedoIcon />, onClick: () => {} },
+            { id: 'lock', label: 'Festschreiben', icon: <LockIcon />, onClick: () => {} },
+            { id: 'refresh', label: 'Aktualisieren', icon: <LightbulbIcon />, onClick: () => {} },
+            { id: 'assign', label: 'Zuweisen', icon: <TruckIcon />, onClick: () => {} },
+            { id: 'account', label: 'Kontieren', icon: <ListIcon />, onClick: () => {} },
+            { id: 'allocate', label: 'Zuordnen', icon: <LandmarkIcon />, onClick: () => {} },
+            { id: 'transfer', label: 'Überweisen', icon: <MoneyBillWaveIcon />, onClick: () => {} },
+            { id: 'delete', label: 'Löschen', icon: <TrashIcon />, onClick: () => {} },
+          ]}
+        />
       </div>
 
       {/* ============ Tooltip ============ */}
