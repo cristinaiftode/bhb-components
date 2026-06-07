@@ -14,10 +14,12 @@
   /* Alert (destructive / error) */
   --alert:        #E84118;
   --alert-shade:  #C23616;
+  --alert-light:  #FFEBE5; /* faint red tint — Tag bg */
 
   /* Success (confirmation) */
   --success:       #4CD137;
   --success-shade: #44BD32;
+  --success-light: #E7FEE9; /* faint green tint — Tag bg */
 
   /* Warning (caution) */
   --warning:       #E1B12C;

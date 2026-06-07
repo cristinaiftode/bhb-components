@@ -59,6 +59,9 @@ export type { BackLinkProps } from './BackLink/BackLink';
 export { ContextMenu } from './ContextMenu/ContextMenu';
 export type { ContextMenuProps, ContextMenuItem } from './ContextMenu/ContextMenu';
 
+export { Tag } from './Tag/Tag';
+export type { TagProps, TagType } from './Tag/Tag';
+
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
 
@@ -84,7 +87,9 @@ export {
   TimesIcon,
   TrashIcon,
   ExclamationTriangleIcon,
+  ExclamationCircleIcon,
   InfoCircleIcon,
+  PaperPlaneIcon,
   ArrowLeftIcon,
   SyncIcon,
   RedoIcon,

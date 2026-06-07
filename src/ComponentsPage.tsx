@@ -42,6 +42,7 @@ import {
   Select,
   ShieldCheckIcon,
   Sidebar,
+  Tag,
   Textarea,
   Tooltip,
   TrashIcon,
@@ -553,6 +554,39 @@ export function ComponentsPage() {
         Tooltips are keyboard-accessible — press <code>Tab</code> to focus a button and the
         tooltip appears. <code>Esc</code> dismisses it.
       </p>
+
+      {/* ============ Tag ============ */}
+      <h2>Tag</h2>
+      <p className="component-intro">
+        Small inline status pill (24px). Use to flag the state of a row, record, or item
+        inside tables and lists. Four semantic variants ship with a default icon —
+        override via the <code>icon</code> prop or pass <code>icon={`{null}`}</code> to hide it.
+        <code>{`import { Tag } from 'bhb-components';`}</code>
+      </p>
+
+      <h3 className="showcase-h3">Variants (with default icons)</h3>
+      <div className="tag-row">
+        <Tag type="info">Info</Tag>
+        <Tag type="success">Success</Tag>
+        <Tag type="warning">Warning</Tag>
+        <Tag type="error">Error</Tag>
+      </div>
+
+      <h3 className="showcase-h3">In context — Buchungen-status labels</h3>
+      <div className="tag-row">
+        <Tag type="success">Bezahlt</Tag>
+        <Tag type="info">In Bearbeitung</Tag>
+        <Tag type="warning">Offen</Tag>
+        <Tag type="error">Überfällig</Tag>
+      </div>
+
+      <h3 className="showcase-h3">Custom icon &amp; icon-less</h3>
+      <div className="tag-row">
+        <Tag type="success" icon={<ShieldCheckIcon size={16} />}>Festgeschrieben</Tag>
+        <Tag type="info" icon={<CommentIcon size={16} />}>Kommentiert</Tag>
+        <Tag type="warning" icon={null}>Nur Text</Tag>
+        <Tag type="error" icon={<TrashIcon size={16} />}>Storniert</Tag>
+      </div>
 
       {/* ============ Message ============ */}
       <h2>Message</h2>

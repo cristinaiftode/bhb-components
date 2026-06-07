@@ -46,7 +46,12 @@
       "Bash(curl -s -o /tmp/bhb-message.png \"https://www.figma.com/api/mcp/asset/231dad2b-23ff-435d-a1f0-5a17b56e736c\")",
       "mcp__Claude_in_Chrome__read_network_requests",
       "Bash(curl -s -o /tmp/bhb-checkbox-v2.png \"https://www.figma.com/api/mcp/asset/c29f3b29-d87d-44f5-b595-c95e9aebc196\")",
-      "Bash(curl -s -o /tmp/bhb-radio-v2.png \"https://www.figma.com/api/mcp/asset/843973b1-7389-4fde-8700-cc3c7a6bed73\")"
+      "Bash(curl -s -o /tmp/bhb-radio-v2.png \"https://www.figma.com/api/mcp/asset/843973b1-7389-4fde-8700-cc3c7a6bed73\")",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(curl -s -o /tmp/figma-274-416.png \"https://www.figma.com/api/mcp/asset/7107797e-dac1-430b-ba83-d74f49a24a2b\")",
+      "mcp__78c037d0-16ef-47d7-9c05-d0bcd8063c14__get_design_context",
+      "Bash(npx tsc *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
     ]
   }
 }

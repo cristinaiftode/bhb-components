@@ -23,8 +23,10 @@
       "brand-shade": "#0097E6",
       "alert":         "#E84118",
       "alert-shade":   "#C23616",
+      "alert-light":   "#FFEBE5",
       "success":       "#4CD137",
       "success-shade": "#44BD32",
+      "success-light": "#E7FEE9",
       "warning":       "#E1B12C",
       "warning-shade": "#B98F1E",
       "warning-light": "#FBF6DC",
@@ -268,6 +270,19 @@
       },
       "usage": "<Popup open={open} onClose={close} title=\"Beleg bearbeiten\" footer={<><Button variant=\"secondary\" onClick={close}>Abbrechen</Button><Button variant=\"primary\" onClick={save}>Speichern</Button></>}><p>Body content…</p></Popup>",
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "23:1248", "page": "Components" }
+    },
+    "Tag": {
+      "description": "Small inline status pill (Figma 274:416). 24px tall, rounded 2px, with a leading 16×16 icon + label. 4 semantic variants: 'info' (mist bg + steel-grey text + paper-plane), 'success' (success-light + success-shade + check), 'warning' (warning-light + warning + exclamation-circle), 'error' (alert-light + alert-shade + exclamation-triangle). Use to flag the state of a row, record, or item inside tables and lists (e.g. 'Bezahlt', 'Offen', 'Überfällig'). Each variant ships with a default icon; pass `icon` to override or `icon={null}` to hide.",
+      "import": "import { Tag } from 'bhb-components';",
+      "file": "components/Tag/Tag.tsx",
+      "props": {
+        "type": { "type": "enum", "values": ["info", "success", "warning", "error"], "default": "info" },
+        "children": { "type": "ReactNode", "notes": "Label content — usually a short German status word." },
+        "icon": { "type": "ReactNode | null", "optional": true, "notes": "Override the default leading icon. Pass `null` to hide it." }
+      },
+      "styling": { "height": "24px", "padding": "2px 8px", "gap": "8px", "radius": "2px", "iconSize": "16px", "font": "Lato Regular 14/20" },
+      "usage": "<Tag type=\"success\">Bezahlt</Tag>  <Tag type=\"warning\">Offen</Tag>  <Tag type=\"error\">Überfällig</Tag>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "274:416", "page": "Components" }
     },
     "ContextMenu": {
       "description": "Right-click dropdown menu (Figma 184:492). Wraps a trigger element; right-clicking it opens the menu at the cursor position. Dark navy 280px-wide menu with icon + label items separated by thin dividers, portal-rendered, closes on Escape, outside click, or item selection.",

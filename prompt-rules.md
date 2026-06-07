@@ -306,6 +306,27 @@ If you need an icon not on this list, add it to `components/icons/icons.tsx` fol
 
 ### Data components
 
+#### Tag
+Small inline status pill (Figma 274:416). 24px tall, rounded 2px, with a leading 16×16 icon + short label. Use to flag the state of a row, record, or item — typically inside tables, lists, or alongside titles. Four semantic variants:
+
+| `type`      | bg                | text              | default icon         |
+|-------------|-------------------|-------------------|----------------------|
+| `'info'`    | `--mist`          | `--steel-grey`    | `<PaperPlaneIcon />` |
+| `'success'` | `--success-light` | `--success-shade` | `<CheckIcon />`      |
+| `'warning'` | `--warning-light` | `--warning`       | `<ExclamationCircleIcon />` |
+| `'error'`   | `--alert-light`   | `--alert-shade`   | `<ExclamationTriangleIcon />` |
+
+```tsx
+<Tag type="success">Bezahlt</Tag>
+<Tag type="warning">Offen</Tag>
+<Tag type="error">Überfällig</Tag>
+<Tag type="info">In Bearbeitung</Tag>
+```
+
+Pass `icon` to override the default leading icon; pass `icon={null}` to hide it entirely.
+
+Don't confuse with **Message** (full-width banner for page-level notifications). Tag is a tiny status chip that sits inside content; Message is a bordered banner that announces something to the user.
+
 #### MultiSelection
 Batch-action toolbar shown when N items are selected (Figma 19:299). 42px tall row.
 

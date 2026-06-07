@@ -450,6 +450,18 @@ code {
   margin: 0 0 1.5rem;
 }
 
+/* Tag showcase: horizontal row of pills, wraps on narrow viewports */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  margin: 0 0 1rem;
+}
+
 .layout-preview__placeholder {
   display: flex;
   align-items: center;

@@ -1,0 +1,54 @@
+/* ============================================================
+   Tag — small inline status pill (24px tall, rounded 2px).
+   Figma: node 274:416 ("Tag" — Type=Info/Success/Warning/Error).
+   ============================================================ */
+
+.bhb-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.bhb-tag__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.bhb-tag__label {
+  display: inline-block;
+}
+
+/* ---------- Variants ---------- */
+
+.bhb-tag--info {
+  background: var(--mist);
+  color: var(--steel-grey);
+}
+
+.bhb-tag--success {
+  background: var(--success-light);
+  color: var(--success-shade);
+}
+
+.bhb-tag--warning {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.bhb-tag--error {
+  background: var(--alert-light);
+  color: var(--alert-shade);
+}
