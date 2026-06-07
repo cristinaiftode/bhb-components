@@ -400,11 +400,11 @@ export function ComponentsPage() {
         title="Beleg ansehen"
         footerLeft={
           <>
-            <Button iconOnly variant="ghost" size="medium" aria-label="Kommentar"><CommentCheckIcon /></Button>
-            <Button iconOnly variant="ghost" size="medium" aria-label="PDF herunterladen"><FilePdfIcon /></Button>
-            <Button iconOnly variant="ghost" size="medium" aria-label="Quellcode"><FileCodeIcon /></Button>
-            <Button iconOnly variant="ghost" size="medium" aria-label="Festschreiben"><ShieldCheckIcon /></Button>
-            <Button iconOnly variant="ghost" size="medium" aria-label="Löschen"><TrashIcon /></Button>
+            <button type="button" className="popup-demo-tool" aria-label="Kommentar"><CommentCheckIcon /></button>
+            <button type="button" className="popup-demo-tool" aria-label="PDF herunterladen"><FilePdfIcon /></button>
+            <button type="button" className="popup-demo-tool" aria-label="Quellcode"><FileCodeIcon /></button>
+            <button type="button" className="popup-demo-tool" aria-label="Festschreiben"><ShieldCheckIcon /></button>
+            <button type="button" className="popup-demo-tool" aria-label="Löschen"><TrashIcon /></button>
           </>
         }
         footer={

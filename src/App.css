@@ -279,6 +279,32 @@ code {
   outline-offset: 2px;
 }
 
+/* Popup "tool icon" pattern — plain clickable icon in jeans-grey, transparent bg.
+   Matches Figma 27:1432 Frame 1 (the icon row in the Popup/Footer/2 Buttons + Icons
+   variant). Used in the Popup showcase as a footerLeft slot. */
+.popup-demo-tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--jeans-grey);
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.popup-demo-tool:hover {
+  color: var(--black-grey);
+}
+
+.popup-demo-tool:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
 /* MultiSelection interactive demo: toolbar pinned above a list of selectable rows. */
 .mselect-demo {
   background: var(--white);
