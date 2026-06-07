@@ -5,12 +5,17 @@
    Tag, MultiSelection, ContextMenu).
    ============================================================ */
 
+/* Full-bleed page: rows extend from sidebar to right edge.
+   The page itself has only vertical padding — each inner section adds its
+   own 32px horizontal padding so they line up while the row sections
+   (which paint backgrounds across the full width) can ignore that padding. */
 .eingangsbelege {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 40px 32px 24px;
+  padding: 40px 0 24px;
   gap: 24px;
+  background: var(--snow);
 }
 
 /* ---------- Bell icon (passed to Sidebar.headerExtra) ---------- */
@@ -52,6 +57,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  padding: 0 32px;
 }
 
 .eingangsbelege__toolbar-left {
@@ -131,6 +137,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  padding: 0 32px;
 }
 
 .eingangsbelege__filter-left {
@@ -203,12 +210,14 @@
 
 /* ---------- Column headers ---------- */
 
+/* Column headers are clustered on the left half of the row (matching Figma
+   exactly: DATUM at x=32, GEGENPARTEI at x=112, BETRAG at x=404). They're
+   sort affordances rather than strict column boundaries. */
 .eingangsbelege__cols {
   display: grid;
-  grid-template-columns: 156px 1fr 120px;
+  grid-template-columns: 80px 292px auto;
   align-items: center;
-  gap: 24px;
-  padding: 0 0 8px 80px;
+  padding: 0 32px 8px;
   border-bottom: 1px solid var(--rain-grey);
 }
 
@@ -260,26 +269,39 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  gap: 1px; /* 1px snow separator between rows (page bg shows through) */
 }
 
+/* Row is full-bleed. Split into two zones:
+   - .__row-main on the left has WHITE background and holds the row content
+   - .__row-aside on the right (72px wide) has SNOW background and shows the
+     status circle. This matches Figma 19:745 / 19:763 exactly. */
 .eingangsbelege__row {
-  position: relative;
   display: grid;
-  grid-template-columns: 32px 68px minmax(160px, 1fr) 100px 1px minmax(0, 1.6fr) 72px;
+  grid-template-columns: 1fr 72px;
+}
+
+.eingangsbelege__row-main {
+  background: var(--white);
+  padding: 20px 16px 20px 32px;
+  display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--rain-grey);
+  min-width: 0;
 }
 
-.eingangsbelege__row:last-child {
-  border-bottom: none;
+.eingangsbelege__row-aside {
+  background: var(--snow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .eingangsbelege__row-check {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex: 0 0 auto;
 }
 
 /* Document preview thumbnail */
@@ -318,6 +340,7 @@
   flex-direction: column;
   gap: 8px;
   min-width: 0;
+  flex: 0 0 200px;
 }
 
 .eingangsbelege__row-vendor {
@@ -349,12 +372,15 @@
   font-weight: var(--font-weight-bold);
   color: var(--black-grey);
   font-variant-numeric: tabular-nums;
+  flex: 0 0 80px;
+  text-align: right;
 }
 
 .eingangsbelege__row-sep {
   width: 1px;
   height: 96px;
   background: var(--rain-grey);
+  flex: 0 0 1px;
 }
 
 .eingangsbelege__row-desc {
@@ -362,16 +388,16 @@
   font-size: var(--font-size-m);
   line-height: var(--line-height-m);
   color: var(--black-grey);
+  flex: 0 0 340px;
 }
 
-/* Status circle on the far right — placeholder for a row-level indicator
-   (e.g. read/unread, mini avatar). Decorative for the demo. */
+/* Status circle inside the snow-coloured aside on the right. Visual
+   placeholder for a row-level indicator (read/unread, mini avatar). */
 .eingangsbelege__row-status {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background: var(--mist);
-  justify-self: center;
 }
 
 /* ---------- MultiSelection bar with trailing overflow ⋯ ---------- */

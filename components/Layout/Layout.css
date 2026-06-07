@@ -23,6 +23,17 @@
   grid-row: 1;
   padding: 32px;
   overflow: auto;
+  /* Defensive override: global `main { max-width / margin }` rules from a
+     consuming app should not shrink/center the Layout's inner main. */
+  max-width: none;
+  margin: 0;
+}
+
+/* Full-bleed: the consumer page is responsible for its own internal padding.
+   Used by data-heavy pages where rows extend from the sidebar to the right
+   edge of the viewport (Eingangsbelege etc.). */
+.bhb-layout__main--flush {
+  padding: 0;
 }
 
 .bhb-layout__footer {

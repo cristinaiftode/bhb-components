@@ -226,7 +226,7 @@ export function EingangsbelegePage({ onBack }: EingangsbelegePageProps) {
   );
 
   return (
-    <Layout sidebar={sidebar} footer={footer}>
+    <Layout sidebar={sidebar} footer={footer} flush>
       <div className="eingangsbelege">
         {/* -------------------- Top toolbar -------------------- */}
         <header className="eingangsbelege__toolbar">
@@ -338,28 +338,32 @@ export function EingangsbelegePage({ onBack }: EingangsbelegePageProps) {
         <ul className="eingangsbelege__rows">
           {INITIAL_BELEGE.map((b) => (
             <li key={b.id} className="eingangsbelege__row">
-              <div className="eingangsbelege__row-check">
-                <Checkbox
-                  checked={selected.has(b.id)}
-                  onChange={() => toggle(b.id)}
-                  aria-label={`${b.vendor} auswählen`}
-                />
-              </div>
-              <DocPreview />
-              <div className="eingangsbelege__row-info">
-                <div className="eingangsbelege__row-vendor">{b.vendor}</div>
-                <div className="eingangsbelege__row-date">
-                  <CalendarIcon size={12} aria-hidden="true" />
-                  <span>{b.date}</span>
+              <div className="eingangsbelege__row-main">
+                <div className="eingangsbelege__row-check">
+                  <Checkbox
+                    checked={selected.has(b.id)}
+                    onChange={() => toggle(b.id)}
+                    aria-label={`${b.vendor} auswählen`}
+                  />
                 </div>
-                <div className="eingangsbelege__row-tag">
-                  <Tag type="success">Bezahlt</Tag>
+                <DocPreview />
+                <div className="eingangsbelege__row-info">
+                  <div className="eingangsbelege__row-vendor">{b.vendor}</div>
+                  <div className="eingangsbelege__row-date">
+                    <CalendarIcon size={12} aria-hidden="true" />
+                    <span>{b.date}</span>
+                  </div>
+                  <div className="eingangsbelege__row-tag">
+                    <Tag type="success">Bezahlt</Tag>
+                  </div>
                 </div>
+                <div className="eingangsbelege__row-amount">{b.amount}</div>
+                <div className="eingangsbelege__row-sep" aria-hidden="true" />
+                <div className="eingangsbelege__row-desc">{b.description}</div>
               </div>
-              <div className="eingangsbelege__row-amount">{b.amount}</div>
-              <div className="eingangsbelege__row-sep" aria-hidden="true" />
-              <div className="eingangsbelege__row-desc">{b.description}</div>
-              <div className="eingangsbelege__row-status" aria-hidden="true" />
+              <div className="eingangsbelege__row-aside">
+                <div className="eingangsbelege__row-status" aria-hidden="true" />
+              </div>
             </li>
           ))}
         </ul>
