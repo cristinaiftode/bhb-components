@@ -36,7 +36,11 @@
       "Bash(grep -rnE '#[0-9a-fA-F]{3,8}' components/Input components/InputWithIcon components/Textarea components/Select components/DatePicker components/Checkbox components/RadioButton)",
       "Bash(curl -s -o /tmp/bhb-sidebar.png \"https://www.figma.com/api/mcp/asset/f542ebaa-a5e5-4c1a-ab73-a7565dece826\")",
       "Bash(curl -s -o /tmp/bhb-footer.png \"https://www.figma.com/api/mcp/asset/3a5f8e2e-72ac-43d2-994d-794d5b3e26ca\")",
-      "Bash(grep -nE '#[0-9a-fA-F]{3,8}' components/Sidebar/Sidebar.css components/Footer/Footer.css)"
+      "Bash(grep -nE '#[0-9a-fA-F]{3,8}' components/Sidebar/Sidebar.css components/Footer/Footer.css)",
+      "mcp__Claude_in_Chrome__computer",
+      "mcp__Claude_in_Chrome__find",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__browser_batch"
     ]
   }
 }

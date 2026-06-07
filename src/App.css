@@ -202,10 +202,13 @@ code {
   margin: 0 0 1rem;
 }
 
-/* Sidebar preview — bounded height container so the full-app component doesn't dominate the showcase */
+/* Sidebar preview — bounded height matching the Figma proportions so all nav items
+   fit AND empty space shows between the last section and the pinned footer. */
 .sidebar-preview {
-  display: inline-flex;
-  height: 600px;
+  display: flex;
+  align-items: stretch;
+  width: fit-content;
+  height: 880px;
   border: 1px solid var(--rain-grey);
   margin: 0 0 1rem;
   overflow: hidden;
