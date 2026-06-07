@@ -5,6 +5,9 @@ for AI-driven prototyping. Hand it to Claude.ai or Claude Code and ask for a fea
 result will look and feel like the real BHB product without you having to specify spacing,
 colors, or typography.
 
+🔗 **Live showcase:** https://cristinaiftode.github.io/bhb-components/
+&nbsp;&nbsp;&nbsp;&nbsp;Components tab → every component live · Tokens tab → color + type scale · Pages tab → full sample screen (Eingangsbelege)
+
 This is **not** the production code. It's a parallel React library that mirrors the
 production PHP/SCSS implementation visually, but is structured so an LLM can generate
 prototypes from it 1:1 with the Figma source of truth.
