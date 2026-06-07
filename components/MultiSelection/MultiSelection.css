@@ -1,29 +1,31 @@
 /* ============================================================
    MultiSelection — bhb-components
    Figma: file fUcrmr5PRAIQulDadSGsB8, node 19:299 (Multiple selection)
-   Batch-action toolbar: count badge + label on the left, action buttons on the right.
+   Layout: a single flex row with 1px gaps between segments — the gaps
+   reveal the wrapper's white background, producing the divider effect.
 ============================================================ */
 
 .bhb-multi-selection {
   display: inline-flex;
   align-items: stretch;
+  gap: 1px;
   height: 42px;
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-m);
-  line-height: var(--line-height-m);
   background: var(--white);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-s);     /* 12px — Figma is Lato Regular 12 */
+  line-height: var(--line-height-s);
+  font-weight: var(--font-weight-regular);
 }
 
-/* ---------- Count segment (dark left segment) ---------- */
+/* ---------- Count segment (left, mist bg) ---------- */
 
 .bhb-multi-selection__count {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 0 16px;
-  background: var(--jeans-grey);
-  color: var(--white);
-  font-weight: var(--font-weight-bold);
+  padding: 10px 12px;
+  background: var(--mist);
+  color: var(--steel-grey);
   white-space: nowrap;
 }
 
@@ -34,10 +36,10 @@
   width: 21px;
   height: 21px;
   border-radius: 50%;
-  background: var(--black-grey);
+  background: var(--ink);
   color: var(--white);
-  font-size: var(--font-size-m);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
   line-height: 1;
 }
 
@@ -47,57 +49,64 @@
 
 /* ---------- Action segments ---------- */
 
-.bhb-multi-selection__actions {
-  display: inline-flex;
-  align-items: stretch;
-}
-
 .bhb-multi-selection__action {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 0 14px;
-  height: 100%;
-  background: var(--white);
+  padding: 12px;
   border: none;
-  border-right: 1px solid var(--rain-grey);
   font-family: inherit;
-  font-size: var(--font-size-m);
-  line-height: var(--line-height-m);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
   font-weight: var(--font-weight-regular);
-  color: var(--black-grey);
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 0.15s ease-out, color 0.15s ease-out;
 }
 
-.bhb-multi-selection__action:last-child {
-  border-right: none;
+/* Tone: default (steel-grey bg, white text + icon) */
+.bhb-multi-selection__action--default {
+  background: var(--steel-grey);
+  color: var(--white);
 }
 
-.bhb-multi-selection__action:hover:not(:disabled):not(.bhb-multi-selection__action--active) {
+.bhb-multi-selection__action--default:hover:not(:disabled) {
+  background: var(--jeans-grey);
+}
+
+/* Tone: primary (success-shade green — the confirming action) */
+.bhb-multi-selection__action--primary {
+  background: var(--success-shade);
+  color: var(--white);
+}
+
+.bhb-multi-selection__action--primary:hover:not(:disabled) {
+  background: var(--success);
+}
+
+/* Tone: danger (snow bg, steel-grey text — destructive actions like Löschen) */
+.bhb-multi-selection__action--danger {
   background: var(--snow);
+  color: var(--steel-grey);
 }
 
+.bhb-multi-selection__action--danger:hover:not(:disabled) {
+  background: var(--mist);
+}
+
+/* Disabled */
+.bhb-multi-selection__action:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Focus ring (keyboard a11y) */
 .bhb-multi-selection__action:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: -2px;
 }
 
-.bhb-multi-selection__action:disabled {
-  color: var(--moon-grey);
-  cursor: default;
-}
-
-.bhb-multi-selection__action--active {
-  background: var(--success);
-  color: var(--white);
-  font-weight: var(--font-weight-bold);
-}
-
-.bhb-multi-selection__action--active:hover:not(:disabled) {
-  background: var(--success-shade);
-}
+/* ---------- Icon ---------- */
 
 .bhb-multi-selection__action-icon {
   display: inline-flex;
@@ -106,23 +115,12 @@
   flex: 0 0 auto;
   width: 14px;
   height: 14px;
-  color: var(--jeans-grey);
+  color: inherit;
 }
 
-/* Match Figma's 14px icon size regardless of what size the consumer passed
-   into the icon component. SVG width/height attributes lose to CSS, so this
-   normalises the visual without the consumer having to remember `size={14}`. */
 .bhb-multi-selection__action-icon > svg {
   width: 14px;
   height: 14px;
-}
-
-.bhb-multi-selection__action--active .bhb-multi-selection__action-icon {
-  color: var(--white);
-}
-
-.bhb-multi-selection__action:disabled .bhb-multi-selection__action-icon {
-  color: var(--moon-grey);
 }
 
 .bhb-multi-selection__action-label {

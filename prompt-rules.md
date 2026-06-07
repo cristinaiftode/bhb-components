@@ -307,7 +307,14 @@ If you need an icon not on this list, add it to `components/icons/icons.tsx` fol
 ### Data components
 
 #### MultiSelection
-Batch-action toolbar shown when N items are selected (Figma 19:299). Left segment = count badge + label on a `--jeans-grey` bg; right segments = icon+label action buttons with 1px `--rain-grey` dividers between them. Mark one action `active` to highlight it in `--success` green.
+Batch-action toolbar shown when N items are selected (Figma 19:299). 42px tall row.
+
+**Anatomy:** Left segment = round badge (`--ink` bg, white text) + label (`--steel-grey` text) on a `--mist` background. Right segments = icon + label action buttons. Segments are visually separated by 1px gaps showing the wrapper's white background — no borders.
+
+**Tone per action** (replaces the old `active` boolean):
+- `default` — `--steel-grey` bg, white text + icon. Used for most actions.
+- `primary` — `--success-shade` green bg, white text + icon. Use ONE per toolbar for the confirming action.
+- `danger` — `--snow` bg, `--steel-grey` text + icon. Use for destructive actions like Löschen.
 
 ```tsx
 const [selected, setSelected] = useState<string[]>(['a', 'b']);
@@ -316,15 +323,15 @@ const [selected, setSelected] = useState<string[]>(['a', 'b']);
   count={selected.length}
   itemLabel="ausgewählte Belege"
   actions={[
-    { id: 'confirm', label: 'Bestätigen', icon: <CheckIcon />, active: true, onClick: confirmAll },
+    { id: 'confirm', label: 'Bestätigen',  icon: <CheckIcon />, tone: 'primary', onClick: confirmAll },
     { id: 'lock',    label: 'Festschreiben', icon: <LockIcon />, onClick: lockAll },
-    { id: 'assign',  label: 'Zuweisen', icon: <TruckIcon />, onClick: openAssignDialog },
-    { id: 'delete',  label: 'Löschen', icon: <TrashIcon />, onClick: deleteAll },
+    { id: 'assign',  label: 'Zuweisen',    icon: <TruckIcon />, onClick: openAssignDialog },
+    { id: 'delete',  label: 'Löschen',     icon: <TrashIcon />, tone: 'danger', onClick: deleteAll },
   ]}
 />
 ```
 
-Hide the toolbar (don't render it at all) when `count === 0`. Inside it, use the existing icon set — CheckIcon, RedoIcon, LockIcon, LightbulbIcon, TruckIcon, ListIcon, LandmarkIcon, MoneyBillWaveIcon, TrashIcon are all available.
+Typography is Lato Regular 12px throughout (not bold). Hide the toolbar (don't render it at all) when `count === 0`.
 
 ### Overlay components
 

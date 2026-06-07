@@ -25,11 +25,14 @@
   --warning-light: #FBF6DC;
 
   /* Greys — sky-themed palette */
+  --ink:          #0A0F1E; /* near-black, used for high-contrast badges */
   --black-grey:   #2F3640; /* primary text */
+  --steel-grey:   #718093; /* secondary actions / toolbar segments */
   --jeans-grey:   #7F8FA6; /* secondary text */
   --rain-grey:    #B1B8C2; /* borders, secondary hover */
   --moon-grey:    #BCC3CE; /* disabled / subtle */
   --cloud-grey:   #C8D0DC; /* secondary button bg */
+  --mist:         #F0F2F5; /* very light grey — toolbar background */
 
   /* Surfaces */
   --snow:         #F9FAFF; /* very light blue-grey, ghost hover */

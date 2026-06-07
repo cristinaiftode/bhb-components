@@ -2,13 +2,19 @@ import React from 'react';
 import cx from 'classnames';
 import './MultiSelection.css';
 
+/**
+ * Visual intent for a batch action:
+ * - `default` (steel-grey bg, white text) — most actions
+ * - `primary` (success-shade green, white text) — the primary/confirming action
+ * - `danger`  (snow bg, steel-grey text) — destructive actions like "Löschen"
+ */
+export type MultiSelectionTone = 'default' | 'primary' | 'danger';
+
 export interface MultiSelectionAction {
   id: string;
   label: string;
   icon?: React.ReactNode;
-  /** Highlights the action with a success-green background. Use for the
-   *  primary/confirming action of the batch (e.g. "Bestätigen"). */
-  active?: boolean;
+  tone?: MultiSelectionTone;
   disabled?: boolean;
   onClick?: () => void;
 }
@@ -25,9 +31,10 @@ export interface MultiSelectionProps {
 
 /**
  * Batch-action toolbar shown when one or more items are selected (Figma 19:299).
- * Left segment: count badge + descriptive label. Right segments: action buttons
- * with icon + label, separated by thin dividers. Mark one action as `active` to
- * highlight it in success green (matches Figma's leftmost "Bestätigen").
+ * Left segment: count badge + label on a `--mist` background.
+ * Right segments: action buttons separated by 1px white gaps. Set `tone: 'primary'`
+ * on the confirming action to highlight in `--success-shade`; `tone: 'danger'`
+ * on destructive actions to render on a `--snow` background with steel-grey text.
  */
 export const MultiSelection: React.FunctionComponent<MultiSelectionProps> = ({
   count,
@@ -46,26 +53,25 @@ export const MultiSelection: React.FunctionComponent<MultiSelectionProps> = ({
         )}
       </div>
 
-      <div className="bhb-multi-selection__actions">
-        {actions.map(action => (
-          <button
-            key={action.id}
-            type="button"
-            className={cx('bhb-multi-selection__action', {
-              'bhb-multi-selection__action--active': action.active,
-            })}
-            onClick={action.onClick}
-            disabled={action.disabled}
-          >
-            {action.icon && (
-              <span className="bhb-multi-selection__action-icon" aria-hidden="true">
-                {action.icon}
-              </span>
-            )}
-            <span className="bhb-multi-selection__action-label">{action.label}</span>
-          </button>
-        ))}
-      </div>
+      {actions.map(action => (
+        <button
+          key={action.id}
+          type="button"
+          className={cx(
+            'bhb-multi-selection__action',
+            `bhb-multi-selection__action--${action.tone ?? 'default'}`,
+          )}
+          onClick={action.onClick}
+          disabled={action.disabled}
+        >
+          {action.icon && (
+            <span className="bhb-multi-selection__action-icon" aria-hidden="true">
+              {action.icon}
+            </span>
+          )}
+          <span className="bhb-multi-selection__action-label">{action.label}</span>
+        </button>
+      ))}
     </div>
   );
 };

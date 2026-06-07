@@ -313,7 +313,7 @@ export function ComponentsPage() {
               count={selected.size}
               itemLabel={selected.size === 1 ? 'ausgewählter Beleg' : 'ausgewählte Belege'}
               actions={[
-                { id: 'confirm',  label: 'Bestätigen',    icon: <CheckIcon />,         active: true, onClick: confirmSelected },
+                { id: 'confirm',  label: 'Bestätigen',    icon: <CheckIcon />,         tone: 'primary', onClick: confirmSelected },
                 { id: 'redo',     label: 'Bestätigen',    icon: <RedoIcon />,          onClick: clearSelection },
                 { id: 'lock',     label: 'Festschreiben', icon: <LockIcon />,          onClick: () => {} },
                 { id: 'refresh',  label: 'Aktualisieren', icon: <LightbulbIcon />,     onClick: () => {} },
@@ -321,7 +321,7 @@ export function ComponentsPage() {
                 { id: 'account',  label: 'Kontieren',     icon: <ListIcon />,          onClick: () => {} },
                 { id: 'allocate', label: 'Zuordnen',      icon: <LandmarkIcon />,      onClick: () => {} },
                 { id: 'transfer', label: 'Überweisen',    icon: <MoneyBillWaveIcon />, onClick: () => {} },
-                { id: 'delete',   label: 'Löschen',       icon: <TrashIcon />,         onClick: deleteSelected },
+                { id: 'delete',   label: 'Löschen',       icon: <TrashIcon />,         tone: 'danger', onClick: deleteSelected },
               ]}
             />
           ) : (

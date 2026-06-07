@@ -28,11 +28,14 @@
       "warning":       "#E1B12C",
       "warning-shade": "#B98F1E",
       "warning-light": "#FBF6DC",
+      "ink":         "#0A0F1E",
       "black-grey":  "#2F3640",
+      "steel-grey":  "#718093",
       "jeans-grey":  "#7F8FA6",
       "rain-grey":   "#B1B8C2",
       "moon-grey":   "#BCC3CE",
       "cloud-grey":  "#C8D0DC",
+      "mist":        "#F0F2F5",
       "snow":        "#F9FAFF",
       "white":       "#FFFFFF"
     },
@@ -228,9 +231,9 @@
       "props": {
         "count": { "type": "number", "notes": "Number shown in the round badge." },
         "itemLabel": { "type": "string", "optional": true, "notes": "Phrase next to the count, e.g. 'ausgewählte Belege'. Also used as toolbar aria-label." },
-        "actions": { "type": "MultiSelectionAction[]", "notes": "Each item: { id, label, icon?, active?, disabled?, onClick? }" }
+        "actions": { "type": "MultiSelectionAction[]", "notes": "Each item: { id, label, icon?, tone?: 'default' | 'primary' | 'danger', disabled?, onClick? }" }
       },
-      "styling": { "height": "42px", "countBg": "--jeans-grey", "badgeBg": "--black-grey", "actionBg": "--white", "actionActiveBg": "--success", "divider": "1px --rain-grey" },
+      "styling": { "height": "42px", "countBg": "--mist", "badgeBg": "--ink", "defaultActionBg": "--steel-grey (white text)", "primaryActionBg": "--success-shade", "dangerActionBg": "--snow (steel-grey text)", "divider": "1px gap showing white wrapper" },
       "iconRecommendations": "Use icons from the library: CheckIcon (confirm), RedoIcon (redo), LockIcon (lock-alt), LightbulbIcon, TruckIcon, ListIcon, LandmarkIcon, MoneyBillWaveIcon, TrashIcon",
       "usage": "<MultiSelection count={2} itemLabel=\"ausgewählte Belege\" actions={[{ id: 'confirm', label: 'Bestätigen', icon: <CheckIcon/>, active: true, onClick: ... }]} />",
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "19:299", "page": "Components" }
