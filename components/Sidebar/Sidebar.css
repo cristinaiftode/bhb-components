@@ -73,6 +73,39 @@
   margin-top: 2px;
 }
 
+/* Button variant: when companyMenu is wired up, the whole row is clickable.
+   Reset native button styles, add subtle hover + focus affordances. */
+.bhb-sidebar__user-row--button {
+  width: 100%;
+  padding: 4px 6px;
+  margin-left: -6px;
+  margin-right: -6px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease-out;
+}
+
+.bhb-sidebar__user-row--button:hover {
+  background: color-mix(in srgb, var(--white) 10%, transparent);
+}
+
+.bhb-sidebar__user-row--button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* When the row is the trigger, the cog inside loses its individual hover
+   state — hovering anywhere on the row makes the cog brighten in sync. */
+.bhb-sidebar__user-row--button:hover .bhb-sidebar__settings {
+  color: var(--white);
+}
+
 .bhb-sidebar__user-org {
   font-size: var(--font-size-m);
   line-height: var(--line-height-m);

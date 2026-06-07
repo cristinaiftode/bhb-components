@@ -47,8 +47,13 @@ export interface SettingsMenuProps {
    * positioned below the trigger with the caret pointing at it.
    */
   children: React.ReactElement;
-  /** Horizontal alignment of the menu relative to the trigger. */
-  align?: 'center' | 'end';
+  /**
+   * Horizontal alignment of the menu relative to the trigger.
+   * - `center` (default) — menu centered under the trigger
+   * - `start`  — menu's LEFT edge aligned with trigger's LEFT edge (use for left-side triggers like a sidebar user-row)
+   * - `end`    — menu's RIGHT edge aligned with trigger's RIGHT edge (use for top-right user avatars)
+   */
+  align?: 'center' | 'start' | 'end';
   /** Menu width in pixels. */
   width?: number;
   /** Optional callback fired after any item is clicked (after the item's own onClick). */
@@ -147,7 +152,14 @@ export const SettingsMenu: React.FunctionComponent<SettingsMenuProps> = ({
   if (open && anchor) {
     const gap = 12; // distance from trigger bottom to top edge of menu (caret occupies ~8px)
     const triggerCenter = anchor.left + anchor.width / 2;
-    let left = align === 'end' ? anchor.right - width : triggerCenter - width / 2;
+    let left: number;
+    if (align === 'end') {
+      left = anchor.right - width;
+    } else if (align === 'start') {
+      left = anchor.left;
+    } else {
+      left = triggerCenter - width / 2;
+    }
     const maxLeft = window.innerWidth - width - 8;
     left = Math.max(8, Math.min(left, maxLeft));
     const top = anchor.bottom + gap;

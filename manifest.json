@@ -394,20 +394,21 @@
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "17:113", "page": "Components" }
     },
     "Sidebar": {
-      "description": "Primary vertical navigation. Dark navy background, optional user header (logo + name + organization + settings), sectioned menu items with icons, and an optional list of footer items pinned at the bottom (Notifications, Help, etc.).",
+      "description": "Primary vertical navigation. Dark navy background, optional user header (logo + name + organization + settings), sectioned menu items with icons, and an optional list of footer items pinned at the bottom (Notifications, Help, etc.). Pass `companyMenu` to turn the entire user-row into a single clickable trigger that opens a SettingsMenu (account/company-switcher pattern).",
       "import": "import { Sidebar } from 'bhb-components';",
       "file": "components/Sidebar/Sidebar.tsx",
       "props": {
         "logo": { "type": "ReactNode", "optional": true, "notes": "Renders in the 36×36 square at the top-left of the header." },
         "userName": { "type": "string", "optional": true },
         "organization": { "type": "string", "optional": true },
-        "onSettingsClick": { "type": "() => void", "optional": true, "notes": "Renders a gear icon next to the org name when provided." },
+        "companyMenu": { "type": "SettingsMenuSection[]", "optional": true, "notes": "When provided, the whole user-row (org name + cog) becomes a button that opens a SettingsMenu with these sections. Use for the global account/company-switcher pattern. Takes precedence over onSettingsClick." },
+        "onSettingsClick": { "type": "() => void", "optional": true, "notes": "Plain cog-icon handler used when companyMenu is NOT provided. Renders a small cog button in the user-row that fires this on click." },
         "sections": { "type": "SidebarSection[]", "notes": "Array of { title?, items: SidebarItem[] }. items have id, label, icon?, active?, href?, onClick?" },
         "footerItems": { "type": "SidebarItem[]", "optional": true, "notes": "Items pinned at the bottom of the sidebar (e.g., Notifications, Help)." },
         "ariaLabel": { "type": "string", "default": "Hauptnavigation" }
       },
       "styling": { "width": "298px", "background": "--black-grey", "text": "--white", "sectionTitle": "--jeans-grey", "activeBg": "color-mix brand 16%" },
-      "usage": "<Sidebar userName=\"Peter Berg\" organization=\"Beispiel GmbH\" sections={[{ title: 'Dokumente', items: [{ id: 'belege', label: 'Belegverwaltung', icon: <Icon/>, active: true }] }]} />",
+      "usage": "<Sidebar userName=\"Peter Berg\" organization=\"Beispiel GmbH\" companyMenu={[{ title: 'Unternehmen wechseln', items: [{ id: 'a', label: 'Beispiel GmbH', selected: true }] }, ...]} sections={[{ title: 'Dokumente', items: [{ id: 'belege', label: 'Belegverwaltung', icon: <Icon/>, active: true }] }]} />",
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "6:834", "page": "Components" }
     },
     "Footer": {

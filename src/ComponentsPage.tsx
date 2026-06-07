@@ -101,6 +101,32 @@ const demoFooterLinks = [
   { label: 'Ideen & Roadmap', href: '#' },
 ];
 
+const demoCompanyMenu = [
+  {
+    title: 'Unternehmen wechseln',
+    items: [
+      { id: 'bhb', label: 'Beispiel GmbH', selected: true },
+      { id: 'jon', label: 'Jon Doe GmbH' },
+    ],
+  },
+  {
+    title: 'Unternehmen verwalten',
+    items: [
+      { id: 'data',  label: 'Unternehmensdaten', icon: <BuildingIcon /> },
+      { id: 'set',   label: 'Einstellungen',     icon: <UsersCogIcon /> },
+      { id: 'users', label: 'Nutzerverwaltung',  icon: <FilePlusIcon /> },
+      { id: 'imp',   label: 'Datenimport',       icon: <FileImportIcon /> },
+    ],
+  },
+  {
+    title: 'Mein Nutzerkonto',
+    items: [
+      { id: 'me',  label: 'Meine Daten', icon: <UserCircleIcon /> },
+      { id: 'out', label: 'Abmelden',    icon: <SignInIcon /> },
+    ],
+  },
+];
+
 const variants: ButtonVariant[] = ['primary', 'secondary', 'ghost', 'danger'];
 const sizes: ButtonSize[] = ['large', 'medium', 'small'];
 
@@ -685,7 +711,7 @@ export function ComponentsPage() {
           logo={<Logo width={80} />}
           userName="Peter Berg"
           organization="Beispiel GmbH"
-          onSettingsClick={() => {}}
+          companyMenu={demoCompanyMenu}
           sections={demoSections}
           footerItems={demoFooterItems}
         />
@@ -716,7 +742,7 @@ export function ComponentsPage() {
               logo={<Logo width={80} />}
               userName="Peter Berg"
               organization="Beispiel GmbH"
-              onSettingsClick={() => {}}
+              companyMenu={demoCompanyMenu}
               sections={demoSections}
               footerItems={demoFooterItems}
             />

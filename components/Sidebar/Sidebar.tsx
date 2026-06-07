@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { CogIcon } from '../icons/icons';
+import { SettingsMenu, SettingsMenuSection } from '../SettingsMenu/SettingsMenu';
 import './Sidebar.css';
 
 export interface SidebarItem {
@@ -21,7 +22,18 @@ export interface SidebarProps {
   logo?: React.ReactNode;
   userName?: string;
   organization?: string;
+  /**
+   * Plain cog-icon settings handler. Used when `companyMenu` is NOT provided —
+   * renders a small cog button in the user-row that fires this on click.
+   * Ignored when `companyMenu` is set (the whole row becomes the menu trigger).
+   */
   onSettingsClick?: () => void;
+  /**
+   * When provided, the entire user-row (org name + cog) becomes a single
+   * button that opens a SettingsMenu populated with these sections. Use this
+   * for the global account/company-switcher pattern.
+   */
+  companyMenu?: SettingsMenuSection[];
   sections: SidebarSection[];
   footerItems?: SidebarItem[];
   className?: string;
@@ -69,12 +81,38 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
   userName,
   organization,
   onSettingsClick,
+  companyMenu,
   sections,
   footerItems,
   className,
   ariaLabel = 'Hauptnavigation',
 }) => {
   const showHeader = Boolean(logo || userName || organization);
+
+  // The user-row contents (org name + decorative cog). When `companyMenu` is
+  // provided the row is rendered as a single <button> wrapped in SettingsMenu;
+  // otherwise it's a plain <div> with an optional cog-button child.
+  const userRowInner = (
+    <>
+      {organization && <span className="bhb-sidebar__user-org">{organization}</span>}
+      {companyMenu ? (
+        <span className="bhb-sidebar__settings" aria-hidden="true">
+          <CogIcon size={14} />
+        </span>
+      ) : (
+        onSettingsClick && (
+          <button
+            type="button"
+            className="bhb-sidebar__settings"
+            onClick={onSettingsClick}
+            aria-label="Einstellungen"
+          >
+            <CogIcon size={14} />
+          </button>
+        )
+      )}
+    </>
+  );
 
   return (
     <nav className={cx('bhb-sidebar', className)} aria-label={ariaLabel}>
@@ -83,19 +121,19 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
           {logo && <span className="bhb-sidebar__logo" aria-hidden="true">{logo}</span>}
           <div className="bhb-sidebar__user">
             {userName && <div className="bhb-sidebar__user-name">{userName}</div>}
-            <div className="bhb-sidebar__user-row">
-              {organization && <span className="bhb-sidebar__user-org">{organization}</span>}
-              {onSettingsClick && (
+            {companyMenu ? (
+              <SettingsMenu sections={companyMenu} align="start">
                 <button
                   type="button"
-                  className="bhb-sidebar__settings"
-                  onClick={onSettingsClick}
-                  aria-label="Einstellungen"
+                  className="bhb-sidebar__user-row bhb-sidebar__user-row--button"
+                  aria-label={`Konto- und Unternehmensmenü öffnen${organization ? ` (${organization})` : ''}`}
                 >
-                  <CogIcon size={14} />
+                  {userRowInner}
                 </button>
-              )}
-            </div>
+              </SettingsMenu>
+            ) : (
+              <div className="bhb-sidebar__user-row">{userRowInner}</div>
+            )}
           </div>
         </header>
       )}
