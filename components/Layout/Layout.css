@@ -1,0 +1,32 @@
+/* ============================================================
+   Layout — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 17:113 (Background)
+   Full app shell: sidebar (auto width, full height) + main content (1fr)
+   + optional footer pinned to bottom of main area.
+============================================================ */
+
+.bhb-layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  min-height: 100%;
+  background: var(--snow);
+}
+
+.bhb-layout__sidebar {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.bhb-layout__main {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 32px;
+  overflow: auto;
+}
+
+.bhb-layout__footer {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 8px 32px 32px;
+}

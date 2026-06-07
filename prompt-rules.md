@@ -329,8 +329,24 @@ Items render as `<a>` when `href` is provided, otherwise `<button>`. Active item
 />
 ```
 
+#### Layout
+App shell composing Sidebar + main content + Footer (Figma 17:113). CSS grid: sidebar on the left at auto width (full height), main content in `1fr`, optional footer pinned to the bottom of the main column.
+
+```tsx
+<Layout
+  sidebar={<Sidebar ... />}
+  footer={<Footer ... />}
+>
+  <h1>Startseite</h1>
+  <p>Willkommen zurück, Peter.</p>
+  {/* page content */}
+</Layout>
+```
+
+The Layout fills its container vertically — wrap in `min-height: 100vh` for a full-viewport app shell. Main content area gets 32px padding and snow bg. Footer area gets 8px top / 32px sides+bottom.
+
 #### Footer
-Thin horizontal bar. Inline links separated by `·` dots on the left, copyright on the right.
+Thin horizontal bar (**18px tall**). Inline links separated by `·` dots on the left, copyright on the right. Transparent background — designed to sit on the app's snow content area.
 
 ```tsx
 <Footer

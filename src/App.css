@@ -214,9 +214,30 @@ code {
   overflow: hidden;
 }
 
-/* Footer preview — wider container with background so it stands apart */
+/* Footer preview — wraps Footer with the snow bg + 16px gutters so it visually matches
+   how it sits at the bottom of the main app content. */
 .footer-preview {
-  background: var(--white);
+  background: var(--snow);
+  border: 1px solid var(--rain-grey);
+  padding: 8px 16px;
+  margin: 0 0 1rem;
+}
+
+/* Layout preview — full app shell. Bounded height + overflow:hidden so the demo doesn't
+   take over the page, but tall enough to show all sidebar sections + the pinned footer. */
+.layout-preview {
+  height: 880px;
   border: 1px solid var(--rain-grey);
   margin: 0 0 1rem;
+  overflow: hidden;
+}
+
+.layout-preview__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  background: var(--white);
+  border: 1px dashed var(--rain-grey);
+  color: var(--jeans-grey);
 }

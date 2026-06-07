@@ -15,6 +15,7 @@ import {
   IndustryIcon,
   Input,
   InputWithIcon,
+  Layout,
   Logo,
   QuestionCircleIcon,
   RadioButton,
@@ -24,6 +25,50 @@ import {
   type ButtonSize,
   type ButtonVariant,
 } from '../components';
+
+const demoSections = [
+  { items: [{ id: 'home', label: 'Startseite', icon: <HomeIcon />, active: true }] },
+  {
+    title: 'Dokumente',
+    items: [
+      { id: 'belege', label: 'Belegverwaltung', icon: <FileInvoiceIcon /> },
+      { id: 'rechnung', label: 'Rechnungsstellung', icon: <FilePlusIcon /> },
+    ],
+  },
+  {
+    title: 'Buchen',
+    items: [
+      { id: 'zahlungen', label: 'Zahlungen', icon: <ExchangeIcon /> },
+      { id: 'belege2', label: 'Belege', icon: <FileInvoiceIcon /> },
+      { id: 'erweitert', label: 'Erweitert', icon: <ColumnsIcon /> },
+    ],
+  },
+  {
+    title: 'Anlagegüter',
+    items: [{ id: 'anlagen', label: 'Anlagenverwaltung', icon: <IndustryIcon /> }],
+  },
+  {
+    title: 'Auswertungen',
+    items: [
+      { id: 'abschluss', label: 'Abschluss', icon: <ClipboardListIcon /> },
+      { id: 'controlling', label: 'Controlling', icon: <AnalyticsIcon /> },
+    ],
+  },
+];
+
+const demoFooterItems = [
+  { id: 'notif', label: 'Benachrichtigungen', icon: <BellIcon /> },
+  { id: 'help', label: 'Hilfe & Kontakt', icon: <QuestionCircleIcon /> },
+];
+
+const demoFooterLinks = [
+  { label: 'Impressum', href: '#' },
+  { label: 'Datenschutz', href: '#' },
+  { label: 'AGB', href: '#' },
+  { label: 'Kontakt', href: '#' },
+  { label: 'Hilfe', href: '#' },
+  { label: 'Ideen & Roadmap', href: '#' },
+];
 
 const variants: ButtonVariant[] = ['primary', 'secondary', 'ghost', 'danger'];
 const sizes: ButtonSize[] = ['large', 'medium', 'small'];
@@ -196,66 +241,51 @@ export function ComponentsPage() {
           userName="Peter Berg"
           organization="Beispiel GmbH"
           onSettingsClick={() => {}}
-          sections={[
-            {
-              items: [
-                { id: 'home', label: 'Startseite', icon: <HomeIcon />, active: true },
-              ],
-            },
-            {
-              title: 'Dokumente',
-              items: [
-                { id: 'belege', label: 'Belegverwaltung', icon: <FileInvoiceIcon /> },
-                { id: 'rechnung', label: 'Rechnungsstellung', icon: <FilePlusIcon /> },
-              ],
-            },
-            {
-              title: 'Buchen',
-              items: [
-                { id: 'zahlungen', label: 'Zahlungen', icon: <ExchangeIcon /> },
-                { id: 'belege2', label: 'Belege', icon: <FileInvoiceIcon /> },
-                { id: 'erweitert', label: 'Erweitert', icon: <ColumnsIcon /> },
-              ],
-            },
-            {
-              title: 'Anlagegüter',
-              items: [
-                { id: 'anlagen', label: 'Anlagenverwaltung', icon: <IndustryIcon /> },
-              ],
-            },
-            {
-              title: 'Auswertungen',
-              items: [
-                { id: 'abschluss', label: 'Abschluss', icon: <ClipboardListIcon /> },
-                { id: 'controlling', label: 'Controlling', icon: <AnalyticsIcon /> },
-              ],
-            },
-          ]}
-          footerItems={[
-            { id: 'notif', label: 'Benachrichtigungen', icon: <BellIcon /> },
-            { id: 'help', label: 'Hilfe & Kontakt', icon: <QuestionCircleIcon /> },
-          ]}
+          sections={demoSections}
+          footerItems={demoFooterItems}
         />
       </div>
 
       {/* ============ Footer ============ */}
       <h2>Footer</h2>
       <p className="component-intro">
-        Thin horizontal app footer with inline links + copyright.
+        Thin 18px horizontal app footer with inline links + copyright on a transparent
+        background. Designed to sit at the bottom of the main content area.
         <code>{`import { Footer } from 'bhb-components';`}</code>
       </p>
       <div className="footer-preview">
-        <Footer
-          links={[
-            { label: 'Impressum', href: '#' },
-            { label: 'Datenschutz', href: '#' },
-            { label: 'AGB', href: '#' },
-            { label: 'Kontakt', href: '#' },
-            { label: 'Hilfe', href: '#' },
-            { label: 'Ideen & Roadmap', href: '#' },
-          ]}
-          copyright="© 2026 BuchhaltungsButler"
-        />
+        <Footer links={demoFooterLinks} copyright="© 2026 BuchhaltungsButler" />
+      </div>
+
+      {/* ============ Layout (full app shell) ============ */}
+      <h2>Layout</h2>
+      <p className="component-intro">
+        App shell composing Sidebar + main content + Footer. Matches Figma node 17:113.
+        Sidebar fills the left height; main content scrolls; Footer pins to the bottom.
+        <code>{`import { Layout } from 'bhb-components';`}</code>
+      </p>
+      <div className="layout-preview">
+        <Layout
+          sidebar={
+            <Sidebar
+              logo={<Logo width={80} />}
+              userName="Peter Berg"
+              organization="Beispiel GmbH"
+              onSettingsClick={() => {}}
+              sections={demoSections}
+              footerItems={demoFooterItems}
+            />
+          }
+          footer={<Footer links={demoFooterLinks} copyright="© 2026 BuchhaltungsButler" />}
+        >
+          <h1 className="bhb-text-bold-xxl" style={{ margin: '0 0 0.5rem' }}>Startseite</h1>
+          <p className="bhb-text-m" style={{ margin: '0 0 1.5rem', color: 'var(--jeans-grey)' }}>
+            Willkommen zurück, Peter. Hier ist Ihre Übersicht für heute.
+          </p>
+          <div className="layout-preview__placeholder">
+            <span className="bhb-text-caps-bold-s">Inhaltsbereich</span>
+          </div>
+        </Layout>
       </div>
 
       {/* ============ RadioButton ============ */}

@@ -215,6 +215,19 @@
       "intentColoring": "All icons use currentColor for fills. For success/warning/error coloring, set color on the parent: <ExclamationTriangleIcon style={{ color: 'var(--alert)' }} />. Do not hardcode hex; use tokens.",
       "usage": "<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>"
     },
+    "Layout": {
+      "description": "App shell composing Sidebar + main content + Footer. CSS grid with sidebar (auto width, full height) and main content (1fr); optional footer pins to the bottom of the main content area. Matches BuchhaltungsButler app structure from Figma 17:113.",
+      "import": "import { Layout } from 'bhb-components';",
+      "file": "components/Layout/Layout.tsx",
+      "props": {
+        "sidebar": { "type": "ReactNode", "notes": "Vertical primary nav, typically <Sidebar />. Spans the full height." },
+        "footer": { "type": "ReactNode", "optional": true, "notes": "Thin footer pinned to the bottom of the main content area, typically <Footer />." },
+        "children": { "type": "ReactNode", "notes": "Main page content rendered in the centre column." }
+      },
+      "styling": { "bg": "--snow", "mainPadding": "32px", "footerPadding": "8px 32px 32px" },
+      "usage": "<Layout sidebar={<Sidebar ... />} footer={<Footer ... />}><main>...</main></Layout>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "17:113", "page": "Components" }
+    },
     "Sidebar": {
       "description": "Primary vertical navigation. Dark navy background, optional user header (logo + name + organization + settings), sectioned menu items with icons, and an optional list of footer items pinned at the bottom (Notifications, Help, etc.).",
       "import": "import { Sidebar } from 'bhb-components';",

@@ -35,6 +35,9 @@ export type { SidebarProps, SidebarItem, SidebarSection } from './Sidebar/Sideba
 export { Footer } from './Footer/Footer';
 export type { FooterProps, FooterLink } from './Footer/Footer';
 
+export { Layout } from './Layout/Layout';
+export type { LayoutProps } from './Layout/Layout';
+
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
 
