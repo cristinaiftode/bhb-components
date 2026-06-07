@@ -333,6 +333,22 @@ const [selected, setSelected] = useState<string[]>(['a', 'b']);
 
 Typography is Lato Regular 12px throughout (not bold). Hide the toolbar (don't render it at all) when `count === 0`.
 
+#### ContextMenu
+Right-click dropdown menu (Figma 184:492). Dark navy 280px menu with icon + label items, thin dividers between rows. Wraps a trigger element; right-clicking opens the menu at the cursor position. Portal-rendered, viewport-clamped (won't overflow), closes on Escape, outside click, or item selection. Pass `triggerOnClick` to also open on regular click (use for "⋮" Actions buttons).
+
+```tsx
+<ContextMenu
+  items={[
+    { id: 'view', label: 'Detailansicht öffnen', icon: <EditIcon />, onClick: open },
+    { id: 'pdf',  label: 'PDF anzeigen',        icon: <FilePdfIcon />, onClick: openPdf },
+    { id: 'pay',  label: 'Bezahlen',            icon: <MoneyBillWaveIcon />, onClick: pay },
+    { id: 'del',  label: 'Beleg löschen',       icon: <TrashIcon />, onClick: del },
+  ]}
+>
+  <div className="row">Right-click this row</div>
+</ContextMenu>
+```
+
 ### Dialog components
 
 #### Modal

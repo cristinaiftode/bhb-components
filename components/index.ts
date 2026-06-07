@@ -56,6 +56,9 @@ export type { PopupProps } from './Popup/Popup';
 export { BackLink } from './BackLink/BackLink';
 export type { BackLinkProps } from './BackLink/BackLink';
 
+export { ContextMenu } from './ContextMenu/ContextMenu';
+export type { ContextMenuProps, ContextMenuItem } from './ContextMenu/ContextMenu';
+
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
 

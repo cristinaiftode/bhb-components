@@ -9,12 +9,17 @@ import {
   ClipboardListIcon,
   ColumnsIcon,
   CommentCheckIcon,
+  CommentIcon,
+  ContextMenu,
+  CutIcon,
   DatePicker,
+  EraserIcon,
   ExchangeIcon,
   FileCodeIcon,
   FileInvoiceIcon,
   FilePdfIcon,
   FilePlusIcon,
+  FileTimesIcon,
   Footer,
   HomeIcon,
   IndustryIcon,
@@ -311,6 +316,35 @@ export function ComponentsPage() {
         <div className="state-grid__cell"><Checkbox label="Label" disabled defaultChecked /></div>
         <div className="state-grid__cell"><Checkbox label="Label" readOnly defaultChecked /></div>
       </div>
+
+      {/* ============ ContextMenu ============ */}
+      <h2>ContextMenu</h2>
+      <p className="component-intro">
+        Right-click dropdown menu. Wrap any element with{' '}
+        <code>{`<ContextMenu items={…}>`}</code> to make it right-clickable. Try right-clicking
+        the "Beleg B-001" card below.
+        <code>{`import { ContextMenu } from 'bhb-components';`}</code>
+      </p>
+      <ContextMenu
+        items={[
+          { id: 'split',     label: 'Teilbuchung hinzufügen', icon: <CutIcon /> },
+          { id: 'remove',    label: 'Buchung entfernen',     icon: <EraserIcon /> },
+          { id: 'suggest',   label: 'Vorschläge aktualisieren', icon: <LightbulbIcon /> },
+          { id: 'assign',    label: 'Belege zuweisen',       icon: <FileInvoiceIcon /> },
+          { id: 'beleglos',  label: 'Zahlung als beleglos markieren', icon: <FileTimesIcon /> },
+          { id: 'create',    label: 'Eigenbeleg erstellen',  icon: <FilePlusIcon /> },
+          { id: 'comment',   label: 'Kommentieren',          icon: <CommentIcon /> },
+          { id: 'task',      label: 'Aufgabe erstellen',     icon: <CheckIcon /> },
+          { id: 'asset',     label: 'Anlagegut erfassen',    icon: <IndustryIcon /> },
+          { id: 'delete',    label: 'Zahlung löschen',       icon: <TrashIcon /> },
+        ]}
+      >
+        <div className="contextmenu-demo-target">
+          <span className="contextmenu-demo-target__id">B-001</span>
+          <span className="contextmenu-demo-target__label">Miete &amp; Nebenkosten · 51.890 €</span>
+          <span className="contextmenu-demo-target__hint">Rechtsklick für Aktionen</span>
+        </div>
+      </ContextMenu>
 
       {/* ============ Modal ============ */}
       <h2>Modal</h2>

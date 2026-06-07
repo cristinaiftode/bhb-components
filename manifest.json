@@ -269,6 +269,20 @@
       "usage": "<Popup open={open} onClose={close} title=\"Beleg bearbeiten\" footer={<><Button variant=\"secondary\" onClick={close}>Abbrechen</Button><Button variant=\"primary\" onClick={save}>Speichern</Button></>}><p>Body content…</p></Popup>",
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "23:1248", "page": "Components" }
     },
+    "ContextMenu": {
+      "description": "Right-click dropdown menu (Figma 184:492). Wraps a trigger element; right-clicking it opens the menu at the cursor position. Dark navy 280px-wide menu with icon + label items separated by thin dividers, portal-rendered, closes on Escape, outside click, or item selection.",
+      "import": "import { ContextMenu } from 'bhb-components';",
+      "file": "components/ContextMenu/ContextMenu.tsx",
+      "props": {
+        "items": { "type": "ContextMenuItem[]", "notes": "Each item: { id, label, icon?, disabled?, onClick? }. Icon defaults to ~20px in moon-grey." },
+        "children": { "type": "ReactNode", "notes": "Trigger element to wrap. Right-clicking opens the menu." },
+        "triggerOnClick": { "type": "boolean", "default": false, "notes": "When true, regular left-click also opens — useful for '⋮' or 'Actions' buttons." },
+        "width": { "type": "number", "default": 280 }
+      },
+      "styling": { "bg": "--black-grey", "text": "--moon-grey", "itemHeight": "45px", "padding": "12px 16px", "divider": "color-mix(--white 10%, --black-grey)", "radius": "4px" },
+      "usage": "<ContextMenu items={[{ id: 'edit', label: 'Detailansicht öffnen', icon: <EditIcon/>, onClick: open }]}>{trigger}</ContextMenu>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "184:492", "page": "Components" }
+    },
     "BackLink": {
       "description": "Small steel-grey '← Zurück' back-navigation link. Used inside Popup footers (Figma 27:1433, 297:438) but reusable anywhere a subtle back affordance fits.",
       "import": "import { BackLink } from 'bhb-components';",
