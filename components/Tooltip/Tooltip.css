@@ -1,0 +1,123 @@
+/* ============================================================
+   Tooltip — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 19:116 (Tooltip)
+   Dark navy pill with white text + triangle pointer.
+   4 placements: top / bottom / left / right.
+============================================================ */
+
+.bhb-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.bhb-tooltip-wrapper__trigger {
+  display: inline-block;
+}
+
+.bhb-tooltip {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  white-space: nowrap;
+  background: var(--black-grey);
+  color: var(--white);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-bold);
+  /* Subtle fade-in for delight */
+  animation: bhb-tooltip-fade 0.12s ease-out;
+}
+
+@keyframes bhb-tooltip-fade {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.bhb-tooltip__content {
+  display: block;
+}
+
+.bhb-tooltip__pointer {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+}
+
+/* ---------- Placement: top (tooltip above trigger) ---------- */
+
+.bhb-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+.bhb-tooltip--top .bhb-tooltip__pointer {
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-top-color: var(--black-grey);
+}
+
+/* ---------- Placement: bottom (tooltip below trigger) ---------- */
+
+.bhb-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+
+.bhb-tooltip--bottom .bhb-tooltip__pointer {
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-bottom-color: var(--black-grey);
+}
+
+/* ---------- Placement: left (tooltip to the left of trigger) ---------- */
+
+.bhb-tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+
+.bhb-tooltip--left .bhb-tooltip__pointer {
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-left-color: var(--black-grey);
+}
+
+/* ---------- Placement: right (tooltip to the right of trigger) ---------- */
+
+.bhb-tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}
+
+.bhb-tooltip--right .bhb-tooltip__pointer {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-right-color: var(--black-grey);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bhb-tooltip {
+    animation: none;
+  }
+}

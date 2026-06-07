@@ -220,6 +220,22 @@
       "intentColoring": "All icons use currentColor for fills. For success/warning/error coloring, set color on the parent: <ExclamationTriangleIcon style={{ color: 'var(--alert)' }} />. Do not hardcode hex; use tokens.",
       "usage": "<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>"
     },
+    "Tooltip": {
+      "description": "Interactive tooltip. Wraps a trigger element and shows a dark navy pill with white text on hover OR focus (keyboard accessible). 4 placements (top / bottom / left / right) with a triangle pointer that always points at the trigger. role=tooltip + aria-describedby on the trigger. Escape dismisses.",
+      "import": "import { Tooltip } from 'bhb-components';",
+      "file": "components/Tooltip/Tooltip.tsx",
+      "props": {
+        "content": { "type": "ReactNode", "notes": "What's shown inside the tooltip bubble — string, JSX, anything." },
+        "placement": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "top" },
+        "delay": { "type": "number", "default": 100, "notes": "Milliseconds before showing on hover." },
+        "disabled": { "type": "boolean", "default": false, "notes": "When true, tooltip is suppressed; trigger still renders normally." },
+        "children": { "type": "ReactNode", "notes": "The trigger element. Hover, focus, or touch it to show the tooltip." }
+      },
+      "styling": { "bg": "--black-grey", "text": "--white", "radius": "4px", "fontWeight": "bold", "pointer": "6px CSS-triangle (border trick)" },
+      "behavior": "Shows on mouseenter + focus (delayed). Hides on mouseleave + blur + Escape. pointer-events: none on the bubble so it never blocks clicks.",
+      "usage": "<Tooltip content=\"Miete & Nebenkosten\" placement=\"top\"><Button>Details</Button></Tooltip>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "19:116", "page": "Components" }
+    },
     "Message": {
       "description": "Alert / banner. 3 positions (content / stack / inline) × 7 types (success / info / warning / warning-light / error / brand / inactive). Use stack for top-of-page event surfaces (with × close), content for inline form-level state flags, inline for static informational strips.",
       "import": "import { Message } from 'bhb-components';",

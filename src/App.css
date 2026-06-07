@@ -232,6 +232,19 @@ code {
   overflow: hidden;
 }
 
+/* Tooltip playground: spread the 4 triggers out so the tooltips have room
+   on all sides (don't crowd left/right placements against the page edges). */
+.tooltip-playground {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px 120px;
+  padding: 80px 120px;
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  margin: 0 0 0.5rem;
+  justify-content: center;
+}
+
 /* Message showcase: vertical stack of banners, full row width per row */
 .message-stack {
   display: flex;

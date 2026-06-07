@@ -23,6 +23,7 @@ import {
   Select,
   Sidebar,
   Textarea,
+  Tooltip,
   type ButtonSize,
   type ButtonVariant,
 } from '../components';
@@ -228,6 +229,43 @@ export function ComponentsPage() {
         <Checkbox label="Label" disabled />
         <Checkbox label="Label" disabled defaultChecked />
       </div>
+
+      {/* ============ Tooltip ============ */}
+      <h2>Tooltip</h2>
+      <p className="component-intro">
+        Interactive tooltip wrapping a trigger. Hover or tab to a Button below to see it.
+        <code>{`import { Tooltip } from 'bhb-components';`}</code>
+      </p>
+      <div className="tooltip-playground">
+        <Tooltip
+          content={<><strong>Miete &amp; Nebenkosten</strong><br/>51.890&nbsp;€</>}
+          placement="top"
+        >
+          <Button variant="secondary">Top</Button>
+        </Tooltip>
+        <Tooltip
+          content={<><strong>Miete &amp; Nebenkosten</strong><br/>51.890&nbsp;€</>}
+          placement="bottom"
+        >
+          <Button variant="secondary">Bottom</Button>
+        </Tooltip>
+        <Tooltip
+          content={<><strong>Miete &amp; Nebenkosten</strong><br/>51.890&nbsp;€</>}
+          placement="left"
+        >
+          <Button variant="secondary">Left</Button>
+        </Tooltip>
+        <Tooltip
+          content={<><strong>Miete &amp; Nebenkosten</strong><br/>51.890&nbsp;€</>}
+          placement="right"
+        >
+          <Button variant="secondary">Right</Button>
+        </Tooltip>
+      </div>
+      <p className="showcase-hint">
+        Tooltips are keyboard-accessible — press <code>Tab</code> to focus a button and the
+        tooltip appears. <code>Esc</code> dismisses it.
+      </p>
 
       {/* ============ Message ============ */}
       <h2>Message</h2>

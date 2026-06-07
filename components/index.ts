@@ -41,6 +41,9 @@ export type { LayoutProps } from './Layout/Layout';
 export { Message } from './Message/Message';
 export type { MessageProps, MessageType, MessagePosition } from './Message/Message';
 
+export { Tooltip } from './Tooltip/Tooltip';
+export type { TooltipProps, TooltipPlacement } from './Tooltip/Tooltip';
+
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
 

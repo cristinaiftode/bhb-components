@@ -303,6 +303,29 @@ import { HomeIcon, TrashIcon, BellIcon } from 'bhb-components';
 
 If you need an icon not on this list, add it to `components/icons/icons.tsx` following the existing pattern (use `currentColor` for fills, no hex codes).
 
+### Overlay components
+
+#### Tooltip
+Interactive tooltip that wraps a trigger (Figma 19:116). Dark navy bubble + triangle pointer, 4 placements. Shows on hover AND focus (keyboard-accessible), hides on mouse leave, blur, or Escape. `pointer-events: none` on the bubble so it never intercepts clicks.
+
+```tsx
+<Tooltip content="Miete & Nebenkosten" placement="top">
+  <Button variant="ghost" iconOnly aria-label="Details">
+    <InfoCircleIcon />
+  </Button>
+</Tooltip>
+
+// Rich content
+<Tooltip
+  content={<>Miete & Nebenkosten<br/>51.890 €</>}
+  placement="right"
+>
+  <Anlagenverwaltung />
+</Tooltip>
+```
+
+Props: `content` (the bubble body), `placement` (`top`/`bottom`/`left`/`right`, default `top`), `delay` (ms before showing, default 100), `disabled` (suppress without removing the trigger). The component renders `role="tooltip"` on the bubble and `aria-describedby` on the wrapped trigger for screen readers.
+
 ### Feedback components
 
 #### Message
