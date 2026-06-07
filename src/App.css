@@ -232,6 +232,64 @@ code {
   overflow: hidden;
 }
 
+/* ===========================================================
+   Checkbox / RadioButton state-grid showcase — mirrors Figma's
+   5-state × isChecked grid. `.demo-hover` / `.demo-focus` are
+   SHOWCASE-ONLY classes that force the hover and focus visual
+   states statically so the user can compare side-by-side with
+   Figma without manually hovering/tabbing.
+   =========================================================== */
+
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px 16px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  margin: 0 0 1rem;
+}
+
+.state-grid__head {
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+  color: var(--jeans-grey);
+}
+
+.state-grid__cell {
+  display: flex;
+  align-items: center;
+}
+
+/* Force the hover visual on the checkbox/radio box inside .demo-hover */
+.demo-hover .bhb-checkbox__box,
+.demo-hover .bhb-radio__circle {
+  border-color: var(--brand);
+}
+
+.demo-hover .bhb-checkbox__input:checked + .bhb-checkbox__box,
+.demo-hover .bhb-radio__input:checked + .bhb-radio__circle {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+/* Force the focus visual (same colour as hover + outline ring) */
+.demo-focus .bhb-checkbox__box,
+.demo-focus .bhb-radio__circle {
+  border-color: var(--brand);
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.demo-focus .bhb-checkbox__input:checked + .bhb-checkbox__box,
+.demo-focus .bhb-radio__input:checked + .bhb-radio__circle {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
 /* MultiSelection interactive demo: toolbar pinned above a list of selectable rows. */
 .mselect-demo {
   background: var(--white);

@@ -11,7 +11,7 @@
   font-family: var(--font-family-base);
   font-size: var(--font-size-m);
   line-height: var(--line-height-m);
-  color: var(--black-grey);
+  color: var(--jeans-grey);
   cursor: pointer;
   user-select: none;
 }
@@ -36,19 +36,21 @@
   align-items: center;
   justify-content: center;
   background: var(--white);
-  border: 1px solid var(--rain-grey);
+  border: 1px solid var(--moon-grey);
   border-radius: 50%;
-  transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition: border-color 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 .bhb-radio__dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--white);
   opacity: 0;
   transition: opacity 0.15s ease-out;
 }
+
+/* ---------- Unchecked: hover + focus ---------- */
 
 .bhb-radio:hover .bhb-radio__circle {
   border-color: var(--brand);
@@ -60,6 +62,8 @@
   border-color: var(--brand);
 }
 
+/* ---------- Checked: default (black) ---------- */
+
 .bhb-radio__input:checked + .bhb-radio__circle {
   background: var(--black-grey);
   border-color: var(--black-grey);
@@ -69,30 +73,70 @@
   opacity: 1;
 }
 
+/* ---------- Checked: hover + focus (brand) ---------- */
+
+.bhb-radio:hover .bhb-radio__input:checked + .bhb-radio__circle {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.bhb-radio__input:checked:focus-visible + .bhb-radio__circle {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+/* ---------- Disabled (muted) ---------- */
+
 .bhb-radio__input:disabled + .bhb-radio__circle {
-  background: var(--moon-grey);
-  border-color: var(--rain-grey);
+  background: var(--white);
+  border-color: var(--cloud-grey);
 }
 
 .bhb-radio__input:disabled:checked + .bhb-radio__circle {
-  background: var(--jeans-grey);
-  border-color: var(--jeans-grey);
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
 }
 
 .bhb-radio--disabled,
 .bhb-radio--readonly {
   cursor: default;
-  color: var(--jeans-grey);
 }
+
+.bhb-radio--disabled:hover .bhb-radio__input:not(:checked) + .bhb-radio__circle {
+  border-color: var(--cloud-grey);
+}
+
+.bhb-radio--disabled:hover .bhb-radio__input:checked + .bhb-radio__circle {
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
+}
+
+/* ---------- Readonly (same visual as disabled, doesn't block clicks) ---------- */
 
 .bhb-radio--readonly .bhb-radio__input {
   pointer-events: none;
 }
 
-.bhb-radio__label {
-  color: var(--jeans-grey);
+.bhb-radio--readonly .bhb-radio__circle {
+  border-color: var(--cloud-grey);
 }
 
-.bhb-radio__input:checked ~ .bhb-radio__label {
-  color: var(--black-grey);
+.bhb-radio--readonly .bhb-radio__input:checked + .bhb-radio__circle {
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
+}
+
+.bhb-radio--readonly:hover .bhb-radio__circle {
+  border-color: var(--cloud-grey);
+}
+
+.bhb-radio--readonly:hover .bhb-radio__input:checked + .bhb-radio__circle {
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
+}
+
+/* ---------- Label (always jeans-grey, matches Figma) ---------- */
+
+.bhb-radio__label {
+  color: var(--jeans-grey);
 }

@@ -272,14 +272,29 @@ export function ComponentsPage() {
       {/* ============ Checkbox ============ */}
       <h2>Checkbox</h2>
       <p className="component-intro">
-        Checkbox with optional inline label.
+        Checkbox with optional inline label. Matches Figma 32:1477 — 5 states × isChecked.
+        Hover/Focus rows are forced visually for showcase; the real component shows them on
+        mouse hover or keyboard focus.
         <code>{`import { Checkbox } from 'bhb-components';`}</code>
       </p>
-      <div className="showcase-row">
-        <Checkbox label="Label" />
-        <Checkbox label="Label" defaultChecked />
-        <Checkbox label="Label" disabled />
-        <Checkbox label="Label" disabled defaultChecked />
+      <div className="state-grid">
+        <div className="state-grid__head">Default</div>
+        <div className="state-grid__head">Hover</div>
+        <div className="state-grid__head">Focus</div>
+        <div className="state-grid__head">Disabled</div>
+        <div className="state-grid__head">Readonly</div>
+
+        <div className="state-grid__cell"><Checkbox label="Label" /></div>
+        <div className="state-grid__cell demo-hover"><Checkbox label="Label" /></div>
+        <div className="state-grid__cell demo-focus"><Checkbox label="Label" /></div>
+        <div className="state-grid__cell"><Checkbox label="Label" disabled /></div>
+        <div className="state-grid__cell"><Checkbox label="Label" readOnly /></div>
+
+        <div className="state-grid__cell"><Checkbox label="Label" defaultChecked /></div>
+        <div className="state-grid__cell demo-hover"><Checkbox label="Label" defaultChecked /></div>
+        <div className="state-grid__cell demo-focus"><Checkbox label="Label" defaultChecked /></div>
+        <div className="state-grid__cell"><Checkbox label="Label" disabled defaultChecked /></div>
+        <div className="state-grid__cell"><Checkbox label="Label" readOnly defaultChecked /></div>
       </div>
 
       {/* ============ MultiSelection ============ */}
@@ -483,10 +498,32 @@ export function ComponentsPage() {
       {/* ============ RadioButton ============ */}
       <h2>RadioButton</h2>
       <p className="component-intro">
-        Radio with optional inline label. Use the native <code>name</code> attribute to
-        group radios.
+        Radio with optional inline label. Matches Figma 32:1500 — 5 states × isChecked.
+        Group radios via the native <code>name</code> attribute. Hover/Focus rows are
+        forced for showcase parity.
         <code>{`import { RadioButton } from 'bhb-components';`}</code>
       </p>
+      <div className="state-grid">
+        <div className="state-grid__head">Default</div>
+        <div className="state-grid__head">Hover</div>
+        <div className="state-grid__head">Focus</div>
+        <div className="state-grid__head">Disabled</div>
+        <div className="state-grid__head">Readonly</div>
+
+        <div className="state-grid__cell"><RadioButton name="r-row1-default" label="Label" /></div>
+        <div className="state-grid__cell demo-hover"><RadioButton name="r-row1-hover" label="Label" /></div>
+        <div className="state-grid__cell demo-focus"><RadioButton name="r-row1-focus" label="Label" /></div>
+        <div className="state-grid__cell"><RadioButton name="r-row1-disabled" label="Label" disabled /></div>
+        <div className="state-grid__cell"><RadioButton name="r-row1-readonly" label="Label" readOnly /></div>
+
+        <div className="state-grid__cell"><RadioButton name="r-row2-default" label="Label" defaultChecked /></div>
+        <div className="state-grid__cell demo-hover"><RadioButton name="r-row2-hover" label="Label" defaultChecked /></div>
+        <div className="state-grid__cell demo-focus"><RadioButton name="r-row2-focus" label="Label" defaultChecked /></div>
+        <div className="state-grid__cell"><RadioButton name="r-row2-disabled" label="Label" disabled defaultChecked /></div>
+        <div className="state-grid__cell"><RadioButton name="r-row2-readonly" label="Label" readOnly defaultChecked /></div>
+      </div>
+
+      <h3 className="showcase-h3">Live group (try clicking)</h3>
       <div className="showcase-row">
         <RadioButton
           name="demo"
@@ -502,8 +539,13 @@ export function ComponentsPage() {
           checked={radio === 'b'}
           onChange={() => setRadio('b')}
         />
-        <RadioButton name="demo-disabled" label="Disabled" disabled />
-        <RadioButton name="demo-disabled" label="Disabled" disabled defaultChecked />
+        <RadioButton
+          name="demo"
+          value="c"
+          label="Option C"
+          checked={radio === 'c'}
+          onChange={() => setRadio('c')}
+        />
       </div>
     </>
   );

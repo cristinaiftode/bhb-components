@@ -44,7 +44,9 @@
       "Bash(curl -s -o /tmp/bhb-footer-v2.png \"https://www.figma.com/api/mcp/asset/33665389-86ba-4456-b85c-4d3321566333\")",
       "Bash(curl -s -o /tmp/bhb-background.png \"https://www.figma.com/api/mcp/asset/3bfc9f5c-7c5a-4b4a-8ace-7537565249da\")",
       "Bash(curl -s -o /tmp/bhb-message.png \"https://www.figma.com/api/mcp/asset/231dad2b-23ff-435d-a1f0-5a17b56e736c\")",
-      "mcp__Claude_in_Chrome__read_network_requests"
+      "mcp__Claude_in_Chrome__read_network_requests",
+      "Bash(curl -s -o /tmp/bhb-checkbox-v2.png \"https://www.figma.com/api/mcp/asset/c29f3b29-d87d-44f5-b595-c95e9aebc196\")",
+      "Bash(curl -s -o /tmp/bhb-radio-v2.png \"https://www.figma.com/api/mcp/asset/843973b1-7389-4fde-8700-cc3c7a6bed73\")"
     ]
   }
 }

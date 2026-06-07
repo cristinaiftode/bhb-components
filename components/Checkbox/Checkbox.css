@@ -11,11 +11,12 @@
   font-family: var(--font-family-base);
   font-size: var(--font-size-m);
   line-height: var(--line-height-m);
-  color: var(--black-grey);
+  color: var(--jeans-grey);
   cursor: pointer;
   user-select: none;
 }
 
+/* Visually hidden native input (keeps accessibility + keyboard support) */
 .bhb-checkbox__input {
   position: absolute;
   width: 1px;
@@ -36,9 +37,9 @@
   align-items: center;
   justify-content: center;
   background: var(--white);
-  border: 1px solid var(--rain-grey);
+  border: 1px solid var(--moon-grey);
   border-radius: 0;
-  transition: border-color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition: border-color 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 .bhb-checkbox__check {
@@ -46,6 +47,8 @@
   opacity: 0;
   transition: opacity 0.15s ease-out;
 }
+
+/* ---------- Unchecked: hover + focus ---------- */
 
 .bhb-checkbox:hover .bhb-checkbox__box {
   border-color: var(--brand);
@@ -57,6 +60,8 @@
   border-color: var(--brand);
 }
 
+/* ---------- Checked: default (black) ---------- */
+
 .bhb-checkbox__input:checked + .bhb-checkbox__box {
   background: var(--black-grey);
   border-color: var(--black-grey);
@@ -66,34 +71,71 @@
   opacity: 1;
 }
 
+/* ---------- Checked: hover + focus (brand) ---------- */
+
+.bhb-checkbox:hover .bhb-checkbox__input:checked + .bhb-checkbox__box {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.bhb-checkbox__input:checked:focus-visible + .bhb-checkbox__box {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+/* ---------- Disabled (muted) ---------- */
+
 .bhb-checkbox__input:disabled + .bhb-checkbox__box {
-  background: var(--moon-grey);
-  border-color: var(--rain-grey);
+  background: var(--white);
+  border-color: var(--cloud-grey);
 }
 
 .bhb-checkbox__input:disabled:checked + .bhb-checkbox__box {
-  background: var(--jeans-grey);
-  border-color: var(--jeans-grey);
-}
-
-.bhb-checkbox__input:disabled + .bhb-checkbox__box .bhb-checkbox__check {
-  color: var(--moon-grey);
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
 }
 
 .bhb-checkbox--disabled,
 .bhb-checkbox--readonly {
   cursor: default;
-  color: var(--jeans-grey);
 }
+
+/* Disabled blocks all hover/focus visual feedback */
+.bhb-checkbox--disabled:hover .bhb-checkbox__input:not(:checked) + .bhb-checkbox__box {
+  border-color: var(--cloud-grey);
+}
+
+.bhb-checkbox--disabled:hover .bhb-checkbox__input:checked + .bhb-checkbox__box {
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
+}
+
+/* ---------- Readonly (same visual as disabled, but doesn't block clicks) ---------- */
 
 .bhb-checkbox--readonly .bhb-checkbox__input {
   pointer-events: none;
 }
 
-.bhb-checkbox__label {
-  color: var(--jeans-grey);
+.bhb-checkbox--readonly .bhb-checkbox__box {
+  border-color: var(--cloud-grey);
 }
 
-.bhb-checkbox__input:checked ~ .bhb-checkbox__label {
-  color: var(--black-grey);
+.bhb-checkbox--readonly .bhb-checkbox__input:checked + .bhb-checkbox__box {
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
+}
+
+.bhb-checkbox--readonly:hover .bhb-checkbox__box {
+  border-color: var(--cloud-grey);
+}
+
+.bhb-checkbox--readonly:hover .bhb-checkbox__input:checked + .bhb-checkbox__box {
+  background: var(--rain-grey);
+  border-color: var(--rain-grey);
+}
+
+/* ---------- Label (always jeans-grey, matches Figma) ---------- */
+
+.bhb-checkbox__label {
+  color: var(--jeans-grey);
 }

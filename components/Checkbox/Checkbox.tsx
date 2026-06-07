@@ -43,10 +43,10 @@ export const Checkbox: React.FunctionComponent<CheckboxProps> = ({
       <span className="bhb-checkbox__box" aria-hidden="true">
         <svg className="bhb-checkbox__check" viewBox="0 0 16 16" width="12" height="12">
           <path
-            d="M3 8.5 L6.5 12 L13 4.5"
+            d="M2.5 8.5 L6.5 12.5 L13.5 4.5"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeLinecap="square"
             strokeLinejoin="miter"
           />
