@@ -53,7 +53,15 @@
       "Bash(npx tsc *)",
       "mcp__Claude_in_Chrome__tabs_context_mcp",
       "Bash(curl -s -o /tmp/figma-19-839.png \"https://www.figma.com/api/mcp/asset/c47e6e52-5e91-48e5-a554-1c43048f319a\")",
-      "Bash(curl -s -o /tmp/figma-19-841.png \"https://www.figma.com/api/mcp/asset/1a477e15-bcc4-449f-a974-54d0212fdb41\")"
+      "Bash(curl -s -o /tmp/figma-19-841.png \"https://www.figma.com/api/mcp/asset/1a477e15-bcc4-449f-a974-54d0212fdb41\")",
+      "Bash(python3 -c \"import json; m=json.load\\(open\\('/Users/cristinaiftode/BHB/manifest.json'\\)\\); print\\('\\\\n'.join\\(sorted\\(m.get\\('components',{}\\).keys\\(\\)\\)\\)\\)\")",
+      "Bash(python3 -c \"import json; m=json.load\\(open\\('/Users/cristinaiftode/BHB/manifest.json'\\)\\); print\\('\\\\n'.join\\(sorted\\(m.get\\('tokens',{}\\).get\\('colors',{}\\).keys\\(\\)\\)\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import json; m=json.load\\(open\\('/Users/cristinaiftode/BHB/manifest.json'\\)\\); print\\(len\\(m.get\\('components',{}\\).get\\('Icons',{}\\).get\\('exports',[]\\)\\)\\)\")",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(npm run *)",
+      "Bash(git push *)"
     ]
   }
 }

@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import {
-  AnalyticsIcon,
   ArrowLeftIcon,
   BellIcon,
   BuildingIcon,
