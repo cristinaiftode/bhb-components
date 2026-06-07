@@ -1,11 +1,29 @@
 import { useState } from 'react';
 import { TokensPage } from './TokensPage';
 import { ComponentsPage } from './ComponentsPage';
+import { EingangsbelegePage } from './pages/EingangsbelegePage';
 
-type Tab = 'tokens' | 'components';
+type Tab = 'tokens' | 'components' | 'pages';
 
 function App() {
   const [tab, setTab] = useState<Tab>('components');
+
+  // The Pages tab renders a full-bleed app shell — no max-width <main> wrapper.
+  if (tab === 'pages') {
+    return (
+      <div className="page-shell">
+        <button
+          type="button"
+          className="page-shell__back"
+          onClick={() => setTab('components')}
+          aria-label="Zurück zur Showcase"
+        >
+          ← Showcase
+        </button>
+        <EingangsbelegePage onBack={() => setTab('components')} />
+      </div>
+    );
+  }
 
   return (
     <main>
@@ -32,6 +50,15 @@ function App() {
           onClick={() => setTab('tokens')}
         >
           Tokens
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={false}
+          className="tabs__tab"
+          onClick={() => setTab('pages')}
+        >
+          Pages
         </button>
       </nav>
 

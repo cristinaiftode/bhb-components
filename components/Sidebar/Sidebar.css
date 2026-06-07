@@ -47,6 +47,14 @@
   --bhb-icon-fill: transparent;
 }
 
+.bhb-sidebar__header-extra {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 14px 16px 0 0;
+}
+
 .bhb-sidebar__user {
   flex: 1 1 auto;
   min-width: 0;

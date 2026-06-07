@@ -1,0 +1,420 @@
+/* ============================================================
+   Eingangsbelege page — Figma 19:638.
+   Composition demo: Layout + Sidebar + custom main content
+   built from existing components (Select, Input, Button, Checkbox,
+   Tag, MultiSelection, ContextMenu).
+   ============================================================ */
+
+.eingangsbelege {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 40px 32px 24px;
+  gap: 24px;
+}
+
+/* ---------- Bell icon (passed to Sidebar.headerExtra) ---------- */
+
+.eingangsbelege-notif {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--rain-grey);
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.eingangsbelege-notif:hover {
+  color: var(--white);
+}
+
+.eingangsbelege-notif__dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+  border: 2px solid var(--black-grey);
+}
+
+/* ---------- Top toolbar ---------- */
+
+.eingangsbelege__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.eingangsbelege__toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eingangsbelege__toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eingangsbelege__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--jeans-grey);
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.eingangsbelege__back:hover {
+  color: var(--black-grey);
+}
+
+.eingangsbelege__back:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.eingangsbelege__view-select {
+  width: 264px;
+}
+
+.eingangsbelege__search {
+  width: 260px;
+}
+
+/* "⋯" overflow button matched to the Hochladen button height (48px). */
+.eingangsbelege__more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 48px;
+  padding: 0;
+  background: var(--cloud-grey);
+  color: var(--black-grey);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 0;
+  transition: background-color 0.15s ease-out;
+}
+
+.eingangsbelege__more-btn:hover {
+  background: var(--rain-grey);
+}
+
+.eingangsbelege__more-btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* ---------- Filter row ---------- */
+
+.eingangsbelege__filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.eingangsbelege__filter-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eingangsbelege__filter-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.eingangsbelege__filter-label {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  color: var(--black-grey);
+}
+
+/* Inline dropdown links (Konto / Filter auswählen): borderless, like a link. */
+.eingangsbelege__filter-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  color: var(--black-grey);
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.eingangsbelege__filter-link:hover {
+  color: var(--brand);
+}
+
+.eingangsbelege__filter-link:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.eingangsbelege__filter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--jeans-grey);
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.eingangsbelege__filter-icon:hover {
+  color: var(--black-grey);
+}
+
+.eingangsbelege__filter-divider {
+  display: inline-block;
+  width: 1px;
+  height: 21px;
+  background: var(--rain-grey);
+}
+
+/* ---------- Column headers ---------- */
+
+.eingangsbelege__cols {
+  display: grid;
+  grid-template-columns: 156px 1fr 120px;
+  align-items: center;
+  gap: 24px;
+  padding: 0 0 8px 80px;
+  border-bottom: 1px solid var(--rain-grey);
+}
+
+.eingangsbelege__col {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+  color: var(--jeans-grey);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s ease-out;
+}
+
+.eingangsbelege__col:hover {
+  color: var(--black-grey);
+}
+
+.eingangsbelege__col--amount {
+  justify-self: start;
+}
+
+.eingangsbelege__sort {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 0.6;
+  font-size: 7px;
+}
+
+.eingangsbelege__sort-up,
+.eingangsbelege__sort-down {
+  color: var(--moon-grey);
+}
+
+/* ---------- Row list ---------- */
+
+.eingangsbelege__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.eingangsbelege__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px 68px minmax(160px, 1fr) 100px 1px minmax(0, 1.6fr) 72px;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rain-grey);
+}
+
+.eingangsbelege__row:last-child {
+  border-bottom: none;
+}
+
+.eingangsbelege__row-check {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Document preview thumbnail */
+.eingangsbelege__thumb {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 68px;
+  height: 96px;
+  padding: 10px 8px;
+  gap: 7px;
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  border-radius: 2px;
+}
+
+.eingangsbelege__thumb-line {
+  height: 4px;
+  background: var(--cloud-grey);
+  border-radius: 1px;
+}
+
+.eingangsbelege__thumb-line--head {
+  height: 8px;
+  width: 60%;
+  background: var(--rain-grey);
+  margin-bottom: 4px;
+}
+
+.eingangsbelege__thumb-line--short {
+  width: 50%;
+}
+
+.eingangsbelege__row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.eingangsbelege__row-vendor {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-l);
+  font-weight: var(--font-weight-bold);
+  color: var(--black-grey);
+}
+
+.eingangsbelege__row-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--jeans-grey);
+}
+
+.eingangsbelege__row-tag {
+  display: inline-flex;
+}
+
+.eingangsbelege__row-amount {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-l);
+  font-weight: var(--font-weight-bold);
+  color: var(--black-grey);
+  font-variant-numeric: tabular-nums;
+}
+
+.eingangsbelege__row-sep {
+  width: 1px;
+  height: 96px;
+  background: var(--rain-grey);
+}
+
+.eingangsbelege__row-desc {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--black-grey);
+}
+
+/* Status circle on the far right — placeholder for a row-level indicator
+   (e.g. read/unread, mini avatar). Decorative for the demo. */
+.eingangsbelege__row-status {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--mist);
+  justify-self: center;
+}
+
+/* ---------- MultiSelection bar with trailing overflow ⋯ ---------- */
+
+.eingangsbelege__multibar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+  margin-top: auto;
+  background: var(--white);
+  box-shadow: 0 -2px 8px color-mix(in srgb, var(--ink) 6%, transparent);
+  z-index: 1;
+}
+
+.eingangsbelege__multibar > :first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Trailing "⋯" matches MultiSelection segment styling (steel-grey bg, white) */
+.eingangsbelege__multibar-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 56px;
+  background: var(--steel-grey);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  line-height: 0;
+  transition: background-color 0.15s ease-out;
+}
+
+.eingangsbelege__multibar-more:hover {
+  background: var(--black-grey);
+}
+
+.eingangsbelege__multibar-more:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}

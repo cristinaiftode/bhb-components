@@ -23,6 +23,12 @@ export interface SidebarProps {
   userName?: string;
   organization?: string;
   /**
+   * Optional ReactNode rendered in the top-right corner of the sidebar
+   * header (alongside the user info). Typical use: a notification bell
+   * with an unread badge.
+   */
+  headerExtra?: React.ReactNode;
+  /**
    * Plain cog-icon settings handler. Used when `companyMenu` is NOT provided —
    * renders a small cog button in the user-row that fires this on click.
    * Ignored when `companyMenu` is set (the whole row becomes the menu trigger).
@@ -80,6 +86,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
   logo,
   userName,
   organization,
+  headerExtra,
   onSettingsClick,
   companyMenu,
   sections,
@@ -87,7 +94,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
   className,
   ariaLabel = 'Hauptnavigation',
 }) => {
-  const showHeader = Boolean(logo || userName || organization);
+  const showHeader = Boolean(logo || userName || organization || headerExtra);
 
   // The user-row contents (org name + decorative cog). When `companyMenu` is
   // provided the row is rendered as a single <button> wrapped in SettingsMenu;
@@ -135,6 +142,9 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
               <div className="bhb-sidebar__user-row">{userRowInner}</div>
             )}
           </div>
+          {headerExtra && (
+            <div className="bhb-sidebar__header-extra">{headerExtra}</div>
+          )}
         </header>
       )}
 
