@@ -104,9 +104,17 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   color: var(--jeans-grey);
+}
+
+/* Match Figma's 14px icon size regardless of what size the consumer passed
+   into the icon component. SVG width/height attributes lose to CSS, so this
+   normalises the visual without the consumer having to remember `size={14}`. */
+.bhb-multi-selection__action-icon > svg {
+  width: 14px;
+  height: 14px;
 }
 
 .bhb-multi-selection__action--active .bhb-multi-selection__action-icon {

@@ -85,8 +85,50 @@ const demoFooterLinks = [
 const variants: ButtonVariant[] = ['primary', 'secondary', 'ghost', 'danger'];
 const sizes: ButtonSize[] = ['large', 'medium', 'small'];
 
+type Beleg = { id: string; label: string; amount: string; confirmed: boolean };
+
+const initialBelege: Beleg[] = [
+  { id: 'B-001', label: 'Miete & Nebenkosten',     amount: '51.890 €', confirmed: false },
+  { id: 'B-002', label: 'Bürobedarf',              amount: '128,40 €', confirmed: false },
+  { id: 'B-003', label: 'Reisekosten Berlin',      amount: '742,15 €', confirmed: false },
+  { id: 'B-004', label: 'Software-Abonnement',     amount: '49,00 €',  confirmed: false },
+  { id: 'B-005', label: 'Strom (Q3)',              amount: '1.402,55 €', confirmed: false },
+];
+
 export function ComponentsPage() {
   const [radio, setRadio] = useState('a');
+
+  // MultiSelection interactive demo state
+  const [belege, setBelege] = useState<Beleg[]>(initialBelege);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+
+  const toggleBeleg = (id: string) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const clearSelection = () => setSelected(new Set());
+
+  const confirmSelected = () => {
+    setBelege(prev =>
+      prev.map(b => (selected.has(b.id) ? { ...b, confirmed: true } : b)),
+    );
+    clearSelection();
+  };
+
+  const deleteSelected = () => {
+    setBelege(prev => prev.filter(b => !selected.has(b.id)));
+    clearSelection();
+  };
+
+  const resetDemo = () => {
+    setBelege(initialBelege);
+    clearSelection();
+  };
 
   return (
     <>
@@ -243,26 +285,67 @@ export function ComponentsPage() {
       {/* ============ MultiSelection ============ */}
       <h2>MultiSelection</h2>
       <p className="component-intro">
-        Batch-action toolbar shown when N items are selected. Mark one action{' '}
-        <code>active</code> to highlight it green.
+        Batch-action toolbar shown when N items are selected. Tick rows below to see the
+        toolbar appear — <strong>Bestätigen</strong> marks them confirmed,{' '}
+        <strong>Löschen</strong> removes them.
         <code>{`import { MultiSelection } from 'bhb-components';`}</code>
       </p>
-      <div className="multiselection-preview">
-        <MultiSelection
-          count={2}
-          itemLabel="ausgewählte Belege"
-          actions={[
-            { id: 'confirm', label: 'Bestätigen', icon: <CheckIcon />, active: true, onClick: () => {} },
-            { id: 'redo', label: 'Bestätigen', icon: <RedoIcon />, onClick: () => {} },
-            { id: 'lock', label: 'Festschreiben', icon: <LockIcon />, onClick: () => {} },
-            { id: 'refresh', label: 'Aktualisieren', icon: <LightbulbIcon />, onClick: () => {} },
-            { id: 'assign', label: 'Zuweisen', icon: <TruckIcon />, onClick: () => {} },
-            { id: 'account', label: 'Kontieren', icon: <ListIcon />, onClick: () => {} },
-            { id: 'allocate', label: 'Zuordnen', icon: <LandmarkIcon />, onClick: () => {} },
-            { id: 'transfer', label: 'Überweisen', icon: <MoneyBillWaveIcon />, onClick: () => {} },
-            { id: 'delete', label: 'Löschen', icon: <TrashIcon />, onClick: () => {} },
-          ]}
-        />
+
+      <div className="mselect-demo">
+        <div className="mselect-demo__toolbar">
+          {selected.size > 0 ? (
+            <MultiSelection
+              count={selected.size}
+              itemLabel={selected.size === 1 ? 'ausgewählter Beleg' : 'ausgewählte Belege'}
+              actions={[
+                { id: 'confirm',  label: 'Bestätigen',    icon: <CheckIcon />,         active: true, onClick: confirmSelected },
+                { id: 'redo',     label: 'Bestätigen',    icon: <RedoIcon />,          onClick: clearSelection },
+                { id: 'lock',     label: 'Festschreiben', icon: <LockIcon />,          onClick: () => {} },
+                { id: 'refresh',  label: 'Aktualisieren', icon: <LightbulbIcon />,     onClick: () => {} },
+                { id: 'assign',   label: 'Zuweisen',      icon: <TruckIcon />,         onClick: () => {} },
+                { id: 'account',  label: 'Kontieren',     icon: <ListIcon />,          onClick: () => {} },
+                { id: 'allocate', label: 'Zuordnen',      icon: <LandmarkIcon />,      onClick: () => {} },
+                { id: 'transfer', label: 'Überweisen',    icon: <MoneyBillWaveIcon />, onClick: () => {} },
+                { id: 'delete',   label: 'Löschen',       icon: <TrashIcon />,         onClick: deleteSelected },
+              ]}
+            />
+          ) : (
+            <div className="mselect-demo__hint">
+              Wählen Sie einen oder mehrere Belege aus, um die Aktionsleiste zu sehen.
+            </div>
+          )}
+        </div>
+
+        <ul className="mselect-demo__list">
+          {belege.map(b => (
+            <li key={b.id} className="mselect-demo__row">
+              <Checkbox
+                checked={selected.has(b.id)}
+                onChange={() => toggleBeleg(b.id)}
+                label={
+                  <span className="mselect-demo__row-label">
+                    <span className="mselect-demo__row-id">{b.id}</span>
+                    <span>{b.label}</span>
+                  </span>
+                }
+              />
+              <span className="mselect-demo__row-amount">{b.amount}</span>
+              {b.confirmed && (
+                <span className="mselect-demo__row-status">
+                  <CheckIcon size={14} /> Bestätigt
+                </span>
+              )}
+            </li>
+          ))}
+          {belege.length === 0 && (
+            <li className="mselect-demo__empty">
+              Alle Belege gelöscht.{' '}
+              <button type="button" onClick={resetDemo} className="mselect-demo__reset">
+                Demo zurücksetzen
+              </button>
+            </li>
+          )}
+        </ul>
       </div>
 
       {/* ============ Tooltip ============ */}
