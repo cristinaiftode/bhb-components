@@ -264,30 +264,19 @@ code {
   align-items: center;
 }
 
-/* Force the hover visual on the checkbox/radio box inside .demo-hover */
+/* Force the hover visual: only the OUTER border turns brand. The inner fill
+   (when checked) stays black-grey — matching Figma's two-layer structure. */
 .demo-hover .bhb-checkbox__box,
 .demo-hover .bhb-radio__circle {
   border-color: var(--brand);
 }
 
-.demo-hover .bhb-checkbox__input:checked + .bhb-checkbox__box,
-.demo-hover .bhb-radio__input:checked + .bhb-radio__circle {
-  background: var(--brand);
-  border-color: var(--brand);
-}
-
-/* Force the focus visual (same colour as hover + outline ring) */
+/* Force the focus visual: same as hover + outline ring */
 .demo-focus .bhb-checkbox__box,
 .demo-focus .bhb-radio__circle {
   border-color: var(--brand);
   outline: 2px solid var(--brand);
   outline-offset: 2px;
-}
-
-.demo-focus .bhb-checkbox__input:checked + .bhb-checkbox__box,
-.demo-focus .bhb-radio__input:checked + .bhb-radio__circle {
-  background: var(--brand);
-  border-color: var(--brand);
 }
 
 /* MultiSelection interactive demo: toolbar pinned above a list of selectable rows. */

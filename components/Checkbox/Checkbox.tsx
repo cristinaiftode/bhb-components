@@ -41,16 +41,18 @@ export const Checkbox: React.FunctionComponent<CheckboxProps> = ({
         className="bhb-checkbox__input"
       />
       <span className="bhb-checkbox__box" aria-hidden="true">
-        <svg className="bhb-checkbox__check" viewBox="0 0 16 16" width="12" height="12">
-          <path
-            d="M2.5 8.5 L6.5 12.5 L13.5 4.5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="square"
-            strokeLinejoin="miter"
-          />
-        </svg>
+        <span className="bhb-checkbox__fill">
+          <svg className="bhb-checkbox__check" viewBox="0 0 9 7" width="9" height="7">
+            <path
+              d="M0.5 3.5 L3.25 6 L8.5 0.75"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+            />
+          </svg>
+        </span>
       </span>
       {label !== undefined && <span className="bhb-checkbox__label">{label}</span>}
     </label>

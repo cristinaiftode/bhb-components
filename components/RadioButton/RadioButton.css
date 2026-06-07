@@ -1,7 +1,14 @@
 /* ============================================================
    RadioButton — bhb-components
    Figma: file fUcrmr5PRAIQulDadSGsB8, node 32:1500 (radiobutton)
-   States: Default / Hover / Focus / Disabled / Readonly  ×  isChecked True / False
+   Two-layer structure (matches Figma exactly):
+   - Outer .bhb-radio__circle: 16×16 circle, white bg, 1px border
+       Border colour:  jeans-grey   (Default / Disabled / Readonly)
+                       brand        (Hover / Focus)
+       Border NEVER changes on checked.
+   - Inner .bhb-radio__dot: 10×10 dot, visible only when :checked.
+       Fill colour:    black-grey   (Default / Hover / Focus)
+                       jeans-grey   (Disabled / Readonly)
 ============================================================ */
 
 .bhb-radio {
@@ -28,119 +35,73 @@
   border: 0;
 }
 
+/* ---------- Outer 16×16 circle ---------- */
+
 .bhb-radio__circle {
+  position: relative;
   flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 16px;
+  height: 16px;
   background: var(--white);
-  border: 1px solid var(--moon-grey);
+  border: 1px solid var(--jeans-grey);
   border-radius: 50%;
-  transition: border-color 0.15s ease-out, background-color 0.15s ease-out;
+  transition: border-color 0.15s ease-out;
 }
+
+/* ---------- Inner 10×10 dot (only visible when checked) ---------- */
 
 .bhb-radio__dot {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--white);
-  opacity: 0;
-  transition: opacity 0.15s ease-out;
-}
-
-/* ---------- Unchecked: hover + focus ---------- */
-
-.bhb-radio:hover .bhb-radio__circle {
-  border-color: var(--brand);
-}
-
-.bhb-radio__input:focus-visible + .bhb-radio__circle {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-  border-color: var(--brand);
-}
-
-/* ---------- Checked: default (black) ---------- */
-
-.bhb-radio__input:checked + .bhb-radio__circle {
   background: var(--black-grey);
-  border-color: var(--black-grey);
+  opacity: 0;
+  transition: opacity 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 .bhb-radio__input:checked + .bhb-radio__circle .bhb-radio__dot {
   opacity: 1;
 }
 
-/* ---------- Checked: hover + focus (brand) ---------- */
+/* ---------- Hover / Focus: brand border (does NOT depend on checked) ---------- */
 
-.bhb-radio:hover .bhb-radio__input:checked + .bhb-radio__circle {
-  background: var(--brand);
+.bhb-radio:hover .bhb-radio__circle {
   border-color: var(--brand);
 }
 
-.bhb-radio__input:checked:focus-visible + .bhb-radio__circle {
-  background: var(--brand);
+.bhb-radio__input:focus-visible + .bhb-radio__circle {
   border-color: var(--brand);
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
-/* ---------- Disabled (muted) ---------- */
-
-.bhb-radio__input:disabled + .bhb-radio__circle {
-  background: var(--white);
-  border-color: var(--cloud-grey);
-}
-
-.bhb-radio__input:disabled:checked + .bhb-radio__circle {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
-}
+/* ---------- Disabled + Readonly ---------- */
 
 .bhb-radio--disabled,
 .bhb-radio--readonly {
   cursor: default;
 }
 
-.bhb-radio--disabled:hover .bhb-radio__input:not(:checked) + .bhb-radio__circle {
-  border-color: var(--cloud-grey);
-}
-
-.bhb-radio--disabled:hover .bhb-radio__input:checked + .bhb-radio__circle {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
-}
-
-/* ---------- Readonly (same visual as disabled, doesn't block clicks) ---------- */
-
 .bhb-radio--readonly .bhb-radio__input {
   pointer-events: none;
 }
 
-.bhb-radio--readonly .bhb-radio__circle {
-  border-color: var(--cloud-grey);
-}
-
-.bhb-radio--readonly .bhb-radio__input:checked + .bhb-radio__circle {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
-}
-
+.bhb-radio--disabled .bhb-radio__circle,
+.bhb-radio--disabled:hover .bhb-radio__circle,
+.bhb-radio--readonly .bhb-radio__circle,
 .bhb-radio--readonly:hover .bhb-radio__circle {
-  border-color: var(--cloud-grey);
+  border-color: var(--jeans-grey);
 }
 
-.bhb-radio--readonly:hover .bhb-radio__input:checked + .bhb-radio__circle {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
+.bhb-radio--disabled .bhb-radio__dot,
+.bhb-radio--readonly .bhb-radio__dot {
+  background: var(--jeans-grey);
 }
 
-/* ---------- Label (Figma-verified per state) ----------
-   Rule from Figma 32:1500 (same as Checkbox):
-   - Unchecked (any state)              → --jeans-grey
-   - Checked + interactive              → --black-grey (Default / Hover / Focus)
-   - Checked + Disabled or Readonly     → --jeans-grey (stays muted)
-*/
+/* ---------- Label (Figma-verified) ---------- */
 
 .bhb-radio__label {
   color: var(--jeans-grey);
@@ -150,7 +111,6 @@
   color: var(--black-grey);
 }
 
-/* Disabled + readonly override: label stays jeans-grey even when checked */
 .bhb-radio--disabled .bhb-radio__input:checked ~ .bhb-radio__label,
 .bhb-radio--readonly .bhb-radio__input:checked ~ .bhb-radio__label {
   color: var(--jeans-grey);

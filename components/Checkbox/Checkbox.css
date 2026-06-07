@@ -1,7 +1,16 @@
 /* ============================================================
    Checkbox — bhb-components
    Figma: file fUcrmr5PRAIQulDadSGsB8, node 32:1477 (checkbox)
-   States: Default / Hover / Focus / Disabled / Readonly  ×  isChecked True / False
+   Two-layer structure (matches Figma exactly):
+   - Outer .bhb-checkbox__box: 16×16, white bg, 1px border
+       Border colour:  jeans-grey   (Default / Disabled / Readonly)
+                       brand        (Hover / Focus)
+       Border NEVER changes on checked.
+   - Inner .bhb-checkbox__fill: 14×14 inset (1px inside border),
+     visible only when :checked.
+       Fill colour:    black-grey   (Default / Hover / Focus)
+                       jeans-grey   (Disabled / Readonly)
+     White checkmark vector (9×7) centred inside.
 ============================================================ */
 
 .bhb-checkbox {
@@ -16,7 +25,7 @@
   user-select: none;
 }
 
-/* Visually hidden native input (keeps accessibility + keyboard support) */
+/* Visually hidden native input (keeps keyboard / a11y) */
 .bhb-checkbox__input {
   position: absolute;
   width: 1px;
@@ -29,116 +38,82 @@
   border: 0;
 }
 
+/* ---------- Outer 16×16 box ---------- */
+
 .bhb-checkbox__box {
+  position: relative;
   flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 16px;
+  height: 16px;
   background: var(--white);
-  border: 1px solid var(--moon-grey);
+  border: 1px solid var(--jeans-grey);
   border-radius: 0;
-  transition: border-color 0.15s ease-out, background-color 0.15s ease-out;
+  transition: border-color 0.15s ease-out;
 }
 
-.bhb-checkbox__check {
+/* ---------- Inner 14×14 fill (only visible when checked) ---------- */
+
+.bhb-checkbox__fill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background: var(--black-grey);
   color: var(--white);
   opacity: 0;
-  transition: opacity 0.15s ease-out;
+  transition: opacity 0.15s ease-out, background-color 0.15s ease-out;
 }
 
-/* ---------- Unchecked: hover + focus ---------- */
+.bhb-checkbox__input:checked + .bhb-checkbox__box .bhb-checkbox__fill {
+  opacity: 1;
+}
+
+/* ---------- Hover / Focus: brand border (does NOT depend on checked) ---------- */
 
 .bhb-checkbox:hover .bhb-checkbox__box {
   border-color: var(--brand);
 }
 
 .bhb-checkbox__input:focus-visible + .bhb-checkbox__box {
+  border-color: var(--brand);
   outline: 2px solid var(--brand);
   outline-offset: 2px;
-  border-color: var(--brand);
 }
 
-/* ---------- Checked: default (black) ---------- */
-
-.bhb-checkbox__input:checked + .bhb-checkbox__box {
-  background: var(--black-grey);
-  border-color: var(--black-grey);
-}
-
-.bhb-checkbox__input:checked + .bhb-checkbox__box .bhb-checkbox__check {
-  opacity: 1;
-}
-
-/* ---------- Checked: hover + focus (brand) ---------- */
-
-.bhb-checkbox:hover .bhb-checkbox__input:checked + .bhb-checkbox__box {
-  background: var(--brand);
-  border-color: var(--brand);
-}
-
-.bhb-checkbox__input:checked:focus-visible + .bhb-checkbox__box {
-  background: var(--brand);
-  border-color: var(--brand);
-}
-
-/* ---------- Disabled (muted) ---------- */
-
-.bhb-checkbox__input:disabled + .bhb-checkbox__box {
-  background: var(--white);
-  border-color: var(--cloud-grey);
-}
-
-.bhb-checkbox__input:disabled:checked + .bhb-checkbox__box {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
-}
+/* ---------- Disabled + Readonly ----------
+   Border stays jeans-grey (no hover/focus override).
+   Inner fill (when checked) is jeans-grey instead of black-grey.
+*/
 
 .bhb-checkbox--disabled,
 .bhb-checkbox--readonly {
   cursor: default;
 }
 
-/* Disabled blocks all hover/focus visual feedback */
-.bhb-checkbox--disabled:hover .bhb-checkbox__input:not(:checked) + .bhb-checkbox__box {
-  border-color: var(--cloud-grey);
-}
-
-.bhb-checkbox--disabled:hover .bhb-checkbox__input:checked + .bhb-checkbox__box {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
-}
-
-/* ---------- Readonly (same visual as disabled, but doesn't block clicks) ---------- */
-
 .bhb-checkbox--readonly .bhb-checkbox__input {
   pointer-events: none;
 }
 
-.bhb-checkbox--readonly .bhb-checkbox__box {
-  border-color: var(--cloud-grey);
-}
-
-.bhb-checkbox--readonly .bhb-checkbox__input:checked + .bhb-checkbox__box {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
-}
-
+.bhb-checkbox--disabled .bhb-checkbox__box,
+.bhb-checkbox--disabled:hover .bhb-checkbox__box,
+.bhb-checkbox--readonly .bhb-checkbox__box,
 .bhb-checkbox--readonly:hover .bhb-checkbox__box {
-  border-color: var(--cloud-grey);
+  border-color: var(--jeans-grey);
 }
 
-.bhb-checkbox--readonly:hover .bhb-checkbox__input:checked + .bhb-checkbox__box {
-  background: var(--rain-grey);
-  border-color: var(--rain-grey);
+.bhb-checkbox--disabled .bhb-checkbox__fill,
+.bhb-checkbox--readonly .bhb-checkbox__fill {
+  background: var(--jeans-grey);
 }
 
-/* ---------- Label (Figma-verified per state) ----------
-   Rule from Figma 32:1477:
-   - Unchecked (any state)              → --jeans-grey
-   - Checked + interactive              → --black-grey (Default / Hover / Focus)
-   - Checked + Disabled or Readonly     → --jeans-grey (stays muted)
+/* ---------- Label (Figma-verified) ----------
+   Unchecked: jeans-grey
+   Checked + interactive: black-grey
+   Checked + disabled/readonly: stays jeans-grey
 */
 
 .bhb-checkbox__label {
@@ -149,7 +124,6 @@
   color: var(--black-grey);
 }
 
-/* Disabled + readonly override: label stays jeans-grey even when checked */
 .bhb-checkbox--disabled .bhb-checkbox__input:checked ~ .bhb-checkbox__label,
 .bhb-checkbox--readonly .bhb-checkbox__input:checked ~ .bhb-checkbox__label {
   color: var(--jeans-grey);
