@@ -297,6 +297,7 @@ import { HomeIcon, TrashIcon, BellIcon } from 'bhb-components';
 ```
 
 **Available icons** (grouped):
+- *Form fields:* CalendarIcon (DatePicker), CaretDownIcon (Select chevron)
 - *Nav:* HomeIcon, FileInvoiceIcon, FilePlusIcon, ExchangeIcon, ColumnsIcon, IndustryIcon, ClipboardListIcon, AnalyticsIcon, BellIcon, QuestionCircleIcon, CogIcon
 - *Status / common:* CheckIcon, CheckCircleIcon, TimesIcon, TrashIcon, ExclamationTriangleIcon, InfoCircleIcon, ArrowLeftIcon, SyncIcon, RedoIcon, ListIcon, LockIcon, LightbulbIcon, CommentIcon, CutIcon, EraserIcon, FileIcon, FileTimesIcon, TruckIcon, LandmarkIcon
 - *Popup-footer (24×24):* ShieldCheckIcon, CommentCheckIcon, FilePdfIcon, FileCodeIcon, HandHoldingUsdIcon, MoneyBillWaveIcon

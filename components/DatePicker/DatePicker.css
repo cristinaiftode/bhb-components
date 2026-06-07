@@ -62,11 +62,13 @@
 
 .bhb-datepicker__icon {
   flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 12px;
   color: var(--jeans-grey);
-  font-size: 20px;
-  line-height: 1;
   pointer-events: none;
+  transition: color 0.2s ease-out;
 }
 
 .bhb-datepicker__field:hover .bhb-datepicker__icon,

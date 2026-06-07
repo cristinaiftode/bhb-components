@@ -73,9 +73,12 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--jeans-grey);
-  font-size: var(--font-size-m);
-  line-height: 1;
+  line-height: 0;
+  transition: color 0.2s ease-out;
 }
 
 .bhb-select__control:hover ~ .bhb-select__chevron,

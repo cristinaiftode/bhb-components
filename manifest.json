@@ -208,6 +208,7 @@
         "...rest": { "type": "SVGAttributes<SVGSVGElement>", "notes": "Spread onto the <svg> element." }
       },
       "available": [
+        "CalendarIcon", "CaretDownIcon",
         "HomeIcon", "FileInvoiceIcon", "FilePlusIcon", "ExchangeIcon", "ColumnsIcon",
         "IndustryIcon", "ClipboardListIcon", "AnalyticsIcon", "BellIcon", "QuestionCircleIcon",
         "CogIcon", "CheckIcon", "CheckCircleIcon", "TimesIcon", "TrashIcon",

@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { CaretDownIcon } from '../icons/icons';
 import './Select.css';
 
 export interface SelectOption {
@@ -77,7 +78,9 @@ export const Select: React.FunctionComponent<SelectProps> = ({
               ))
             : children}
         </select>
-        <span className="bhb-select__chevron" aria-hidden="true">▾</span>
+        <span className="bhb-select__chevron" aria-hidden="true">
+          <CaretDownIcon size={12} />
+        </span>
       </div>
       {helper && (
         <span id={helperId} className="bhb-select__helper">

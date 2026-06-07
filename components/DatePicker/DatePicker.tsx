@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { CalendarIcon } from '../icons/icons';
 import './DatePicker.css';
 
 export interface DatePickerProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
@@ -58,7 +59,9 @@ export const DatePicker: React.FunctionComponent<DatePickerProps> = ({
           aria-describedby={helper ? helperId : undefined}
           className="bhb-datepicker__control"
         />
-        <span className="bhb-datepicker__icon" aria-hidden="true">▦</span>
+        <span className="bhb-datepicker__icon" aria-hidden="true">
+          <CalendarIcon />
+        </span>
       </div>
       {helper && (
         <span id={helperId} className="bhb-datepicker__helper">
