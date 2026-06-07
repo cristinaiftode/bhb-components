@@ -61,7 +61,9 @@
       "Bash(gh auth *)",
       "Bash(gh repo *)",
       "Bash(npm run *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(gh api *)"
     ]
   }
 }
