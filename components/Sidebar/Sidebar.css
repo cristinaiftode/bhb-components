@@ -23,26 +23,37 @@
 
 .bhb-sidebar__header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
+  align-items: stretch;
+  height: 64px;
+  flex: 0 0 auto;
+  padding: 0;
   border-bottom: 1px solid color-mix(in srgb, var(--rain-grey) 15%, transparent);
 }
 
 .bhb-sidebar__logo {
-  flex: 0 0 auto;
+  flex: 0 0 80px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--white);
+  width: 80px;
+  height: 64px;
+  /* The Logo SVG provides its own white banderole; no bg/padding needed. */
+  background: transparent;
   color: var(--black-grey);
-  line-height: 1;
-  padding: 4px;
+  padding: 0;
+  line-height: 0;
+
+  /* Logo SVG uses currentColor for the bow tie; keep dark on white. */
+  --bhb-icon-fill: transparent;
 }
 
 .bhb-sidebar__user {
   flex: 1 1 auto;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 16px;
 }
 
 .bhb-sidebar__user-name {
@@ -58,7 +69,7 @@
 .bhb-sidebar__user-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 2px;
 }
 
@@ -74,13 +85,17 @@
 
 .bhb-sidebar__settings {
   flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   border: none;
-  padding: 4px;
+  padding: 0;
+  width: 14px;
+  height: 14px;
   color: var(--rain-grey);
   cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
+  line-height: 0;
   transition: color 0.15s ease-out;
 }
 

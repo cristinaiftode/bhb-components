@@ -192,7 +192,7 @@ export function ComponentsPage() {
       </p>
       <div className="sidebar-preview">
         <Sidebar
-          logo={<Logo width={40} />}
+          logo={<Logo width={80} />}
           userName="Peter Berg"
           organization="Beispiel GmbH"
           onSettingsClick={() => {}}

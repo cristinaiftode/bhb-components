@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { CogIcon } from '../icons/icons';
 import './Sidebar.css';
 
 export interface SidebarItem {
@@ -91,7 +92,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
                   onClick={onSettingsClick}
                   aria-label="Einstellungen"
                 >
-                  <span aria-hidden>⚙</span>
+                  <CogIcon size={14} />
                 </button>
               )}
             </div>
