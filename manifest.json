@@ -271,6 +271,22 @@
       "usage": "<Popup open={open} onClose={close} title=\"Beleg bearbeiten\" footer={<><Button variant=\"secondary\" onClick={close}>Abbrechen</Button><Button variant=\"primary\" onClick={save}>Speichern</Button></>}><p>Body content…</p></Popup>",
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "23:1248", "page": "Components" }
     },
+    "SettingsMenu": {
+      "description": "Sectioned popover menu anchored under a trigger (Figma 357:477). 260px wide with a small top caret pointing at the trigger. Each section has an optional caps header + a list of items. Items render as icon + label, OR as a check-marked entry when `selected` is true (signals 'currently active'). Used for the global account/company switcher in the app header — wraps the user avatar / company name, opens on click. Closes on Escape, outside click, or item selection. Portal-rendered.",
+      "import": "import { SettingsMenu } from 'bhb-components';",
+      "file": "components/SettingsMenu/SettingsMenu.tsx",
+      "props": {
+        "sections": { "type": "SettingsMenuSection[]", "notes": "Each section: { title?, items: SettingsMenuItem[] }. Item: { id, label, icon?, selected?, disabled?, onClick? }." },
+        "children": { "type": "ReactElement", "notes": "Trigger element. Clicking it toggles the menu open. SettingsMenu clones the element to attach a ref + onClick handler." },
+        "align": { "type": "enum", "values": ["center", "end"], "default": "center", "notes": "Horizontal alignment relative to the trigger. Use 'end' for a top-right user avatar." },
+        "width": { "type": "number", "default": 260 },
+        "onItemClick": { "type": "(item) => void", "optional": true, "notes": "Fired after any item is clicked (after that item's own onClick)." }
+      },
+      "styling": { "bg": "--snow", "divider": "1px --cloud-grey between sections", "sectionPadding": "16px", "itemGap": "12px", "stackGap": "16px", "selectedLabel": "--steel-grey", "selectedCheck": "--success-shade", "regularLabel": "--black-grey", "header": "Lato Regular 12/16 caps, --steel-grey" },
+      "iconRecommendations": "Use 20×20 icons from the library: BuildingIcon (Unternehmensdaten), UsersCogIcon (Einstellungen), FilePlusIcon (Nutzerverwaltung), FileImportIcon (Datenimport), UserCircleIcon (Meine Daten), SignInIcon (Abmelden/Anmelden).",
+      "usage": "<SettingsMenu align=\"end\" sections={[{ title: 'Unternehmen wechseln', items: [{ id: 'a', label: 'BHB GmbH', selected: true }, { id: 'b', label: 'Jon Doe GmbH', onClick: switchCo }] }, { title: 'Mein Nutzerkonto', items: [{ id: 'me', label: 'Meine Daten', icon: <UserCircleIcon/> }, { id: 'out', label: 'Abmelden', icon: <SignInIcon/>, onClick: logout }] }]}><button>BHB GmbH ▾</button></SettingsMenu>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "357:477", "page": "Components" }
+    },
     "Tag": {
       "description": "Small inline status pill (Figma 274:416). 24px tall, rounded 2px, with a leading 16×16 icon + label. 4 semantic variants: 'info' (mist bg + steel-grey text + paper-plane), 'success' (success-light + success-shade + check), 'warning' (warning-light + warning + exclamation-circle), 'error' (alert-light + alert-shade + exclamation-triangle). Use to flag the state of a row, record, or item inside tables and lists (e.g. 'Bezahlt', 'Offen', 'Überfällig'). Each variant ships with a default icon; pass `icon` to override or `icon={null}` to hide.",
       "import": "import { Tag } from 'bhb-components';",

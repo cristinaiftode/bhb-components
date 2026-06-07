@@ -3,6 +3,7 @@ import {
   AnalyticsIcon,
   BackLink,
   BellIcon,
+  BuildingIcon,
   Button,
   CheckIcon,
   Checkbox,
@@ -16,6 +17,7 @@ import {
   EraserIcon,
   ExchangeIcon,
   FileCodeIcon,
+  FileImportIcon,
   FileInvoiceIcon,
   FilePdfIcon,
   FilePlusIcon,
@@ -40,13 +42,17 @@ import {
   RadioButton,
   RedoIcon,
   Select,
+  SettingsMenu,
   ShieldCheckIcon,
   Sidebar,
+  SignInIcon,
   Tag,
   Textarea,
   Tooltip,
   TrashIcon,
   TruckIcon,
+  UserCircleIcon,
+  UsersCogIcon,
   type ButtonSize,
   type ButtonVariant,
 } from '../components';
@@ -346,6 +352,50 @@ export function ComponentsPage() {
           <span className="contextmenu-demo-target__hint">Rechtsklick für Aktionen</span>
         </div>
       </ContextMenu>
+
+      {/* ============ SettingsMenu ============ */}
+      <h2>SettingsMenu</h2>
+      <p className="component-intro">
+        Global account/company switcher dropdown. Anchored under a trigger with a caret on top.
+        Click the BHB GmbH chip to open. Click outside or press <code>Esc</code> to close.
+        <code>{`import { SettingsMenu } from 'bhb-components';`}</code>
+      </p>
+      <div className="settingsmenu-demo">
+        <SettingsMenu
+          align="end"
+          sections={[
+            {
+              title: 'Unternehmen wechseln',
+              items: [
+                { id: 'bhb', label: 'BHB GmbH', selected: true },
+                { id: 'jon', label: 'Jon Doe GmbH' },
+              ],
+            },
+            {
+              title: 'Unternehmen verwalten',
+              items: [
+                { id: 'data',  label: 'Unternehmensdaten', icon: <BuildingIcon /> },
+                { id: 'set',   label: 'Einstellungen',     icon: <UsersCogIcon /> },
+                { id: 'users', label: 'Nutzerverwaltung',  icon: <FilePlusIcon /> },
+                { id: 'imp',   label: 'Datenimport',       icon: <FileImportIcon /> },
+              ],
+            },
+            {
+              title: 'Mein Nutzerkonto',
+              items: [
+                { id: 'me',  label: 'Meine Daten', icon: <UserCircleIcon /> },
+                { id: 'out', label: 'Abmelden',    icon: <SignInIcon /> },
+              ],
+            },
+          ]}
+        >
+          <button type="button" className="settingsmenu-demo__trigger">
+            <span className="settingsmenu-demo__trigger-avatar">BHB</span>
+            <span className="settingsmenu-demo__trigger-name">BHB GmbH</span>
+            <span className="settingsmenu-demo__trigger-caret">▾</span>
+          </button>
+        </SettingsMenu>
+      </div>
 
       {/* ============ Modal ============ */}
       <h2>Modal</h2>

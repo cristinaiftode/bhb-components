@@ -1,0 +1,131 @@
+/* ============================================================
+   SettingsMenu — sectioned popover menu with top caret.
+   Figma: node 357:477 ("SettingsMenu").
+   ============================================================ */
+
+.bhb-settings-menu {
+  position: fixed;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: var(--snow);
+  box-shadow: 0 0 2px color-mix(in srgb, var(--ink) 25%, transparent);
+}
+
+/* Caret on top — 12px square rotated 45° so a diamond corner pokes up.
+   Sits half above the menu, points at the trigger center. */
+.bhb-settings-menu__caret {
+  position: absolute;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  background: var(--snow);
+  transform: translateX(-50%) rotate(45deg);
+  /* Drop shadow is on the menu's top edge — caret needs a touch on its
+     top-left to keep the silhouette consistent. */
+  box-shadow: -1px -1px 2px color-mix(in srgb, var(--ink) 15%, transparent);
+  /* The bottom-right of the caret is covered by the menu body, so the
+     shadow on those edges doesn't show. */
+}
+
+/* ---------- Section ---------- */
+
+.bhb-settings-menu__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid var(--cloud-grey);
+}
+
+.bhb-settings-menu__section:last-child {
+  border-bottom: none;
+}
+
+.bhb-settings-menu__section-title {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+  color: var(--steel-grey);
+}
+
+.bhb-settings-menu__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- Item ---------- */
+
+.bhb-settings-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-regular);
+  color: var(--black-grey);
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.bhb-settings-menu__item:hover:not(.bhb-settings-menu__item--disabled) {
+  color: var(--brand);
+}
+
+.bhb-settings-menu__item:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Selected (currently-active) entry — muted label colour + green check icon. */
+.bhb-settings-menu__item--selected {
+  color: var(--steel-grey);
+  cursor: default;
+}
+
+.bhb-settings-menu__item--selected:hover {
+  color: var(--steel-grey);
+}
+
+/* Items with no leading icon get a 32px left-pad so their label aligns with
+   icon-having items (icon 20 + gap 12 = 32). */
+.bhb-settings-menu__item--no-icon {
+  padding-left: 32px;
+}
+
+.bhb-settings-menu__item--disabled {
+  color: var(--rain-grey);
+  cursor: not-allowed;
+}
+
+.bhb-settings-menu__item-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+}
+
+/* Check icon (on selected items) renders in success green, regardless of label colour. */
+.bhb-settings-menu__item-icon--check {
+  color: var(--success-shade);
+}
+
+.bhb-settings-menu__item-label {
+  flex: 1 1 auto;
+  min-width: 0;
+}

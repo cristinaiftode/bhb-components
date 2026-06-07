@@ -62,6 +62,13 @@ export type { ContextMenuProps, ContextMenuItem } from './ContextMenu/ContextMen
 export { Tag } from './Tag/Tag';
 export type { TagProps, TagType } from './Tag/Tag';
 
+export { SettingsMenu } from './SettingsMenu/SettingsMenu';
+export type {
+  SettingsMenuProps,
+  SettingsMenuSection,
+  SettingsMenuItem,
+} from './SettingsMenu/SettingsMenu';
+
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
 
@@ -110,5 +117,11 @@ export {
   FileCodeIcon,
   HandHoldingUsdIcon,
   MoneyBillWaveIcon,
+  // SettingsMenu icons
+  BuildingIcon,
+  UsersCogIcon,
+  FileImportIcon,
+  UserCircleIcon,
+  SignInIcon,
 } from './icons/icons';
 export type { IconProps } from './icons/icons';

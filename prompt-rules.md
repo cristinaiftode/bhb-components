@@ -354,6 +354,50 @@ const [selected, setSelected] = useState<string[]>(['a', 'b']);
 
 Typography is Lato Regular 12px throughout (not bold). Hide the toolbar (don't render it at all) when `count === 0`.
 
+#### SettingsMenu
+Sectioned popover anchored under a trigger (Figma 357:477). 260px wide, light theme (snow bg), with a small caret on top that points at the trigger. Used for the **global account/company switcher** in the app header — wrap the user avatar or company name with `<SettingsMenu sections={…}>`, and clicking it opens the menu.
+
+Each section has an optional caps header + a list of items. Items render two ways:
+- **Standard**: `{ id, label, icon }` — leading icon + label.
+- **Selected**: `{ id, label, selected: true }` — green ✓ check icon at the left, label in `--steel-grey` (signals "currently active, can't pick again").
+
+```tsx
+<SettingsMenu
+  align="end"
+  sections={[
+    {
+      title: 'Unternehmen wechseln',
+      items: [
+        { id: 'bhb',  label: 'BHB GmbH',     selected: true },
+        { id: 'jon',  label: 'Jon Doe GmbH', onClick: () => switchCompany('jon') },
+      ],
+    },
+    {
+      title: 'Unternehmen verwalten',
+      items: [
+        { id: 'data',  label: 'Unternehmensdaten', icon: <BuildingIcon /> },
+        { id: 'set',   label: 'Einstellungen',     icon: <UsersCogIcon /> },
+        { id: 'users', label: 'Nutzerverwaltung',  icon: <FilePlusIcon /> },
+        { id: 'imp',   label: 'Datenimport',       icon: <FileImportIcon /> },
+      ],
+    },
+    {
+      title: 'Mein Nutzerkonto',
+      items: [
+        { id: 'me',  label: 'Meine Daten', icon: <UserCircleIcon /> },
+        { id: 'out', label: 'Abmelden',    icon: <SignInIcon />, onClick: logout },
+      ],
+    },
+  ]}
+>
+  <button className="user-trigger">BHB GmbH ▾</button>
+</SettingsMenu>
+```
+
+Use `align="end"` when the trigger sits at the top-right corner (common for a user avatar). Closes on Escape, outside click, or item selection.
+
+Don't confuse with **ContextMenu** (right-click row-actions, dark theme) or **Popup** (large structured surface for forms). SettingsMenu is specifically the global account dropdown pattern.
+
 #### ContextMenu
 Right-click dropdown menu (Figma 184:492). Dark navy 280px menu with icon + label items, thin dividers between rows. Wraps a trigger element; right-clicking opens the menu at the cursor position. Portal-rendered, viewport-clamped (won't overflow), closes on Escape, outside click, or item selection. Pass `triggerOnClick` to also open on regular click (use for "⋮" Actions buttons).
 

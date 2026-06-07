@@ -462,6 +462,59 @@ code {
   margin: 0 0 1rem;
 }
 
+/* SettingsMenu showcase: top-right trigger so the menu has room to open downward
+   without spilling off the right edge of the showcase frame. */
+.settingsmenu-demo {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--rain-grey);
+  margin: 0 0 1rem;
+}
+
+.settingsmenu-demo__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px 6px 6px;
+  background: var(--snow);
+  border: 1px solid var(--cloud-grey);
+  border-radius: 4px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-m);
+  color: var(--black-grey);
+  cursor: pointer;
+  transition: border-color 0.15s ease-out;
+}
+
+.settingsmenu-demo__trigger:hover {
+  border-color: var(--brand);
+}
+
+.settingsmenu-demo__trigger-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-caps);
+}
+
+.settingsmenu-demo__trigger-name {
+  font-weight: var(--font-weight-bold);
+}
+
+.settingsmenu-demo__trigger-caret {
+  color: var(--jeans-grey);
+  font-size: var(--font-size-s);
+}
+
 .layout-preview__placeholder {
   display: flex;
   align-items: center;
