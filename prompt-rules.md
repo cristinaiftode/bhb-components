@@ -333,6 +333,76 @@ const [selected, setSelected] = useState<string[]>(['a', 'b']);
 
 Typography is Lato Regular 12px throughout (not bold). Hide the toolbar (don't render it at all) when `count === 0`.
 
+### Dialog components
+
+#### Modal
+Compact dialog (Figma 151:301). 608×auto, 8px radius, white bg. Layout: title → body → footer with 16px gaps. Portal + backdrop, Escape and backdrop-click close, body scroll locked while open. Use for confirmations and short forms.
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Button onClick={() => setOpen(true)}>Beleg löschen</Button>
+
+<Modal
+  open={open}
+  onClose={() => setOpen(false)}
+  title="Wirklich löschen?"
+  footer={
+    <>
+      <Button variant="secondary" onClick={() => setOpen(false)}>Abbrechen</Button>
+      <Button variant="danger" onClick={confirmDelete}>Löschen</Button>
+    </>
+  }
+>
+  Dieser Vorgang kann nicht rückgängig gemacht werden.
+</Modal>
+```
+
+#### Popup
+Large overlay surface (Figma 23:1248). Three zones:
+- **Header bar** — mist `--mist` bg, 80px tall, bold title on the left, × close button on the right
+- **Body** — white bg, your content
+- **Footer bar** — white bg, 96px tall, right-aligned action Buttons
+
+Optional `footerLeft` slot for a back link or row of tool icons — when set, footer is `space-between`. Use Popup when you need more vertical real estate than Modal can comfortably hold (forms, file previews, multi-section wizards).
+
+Every Figma footer composition is achievable via composition:
+
+```tsx
+// 1 button
+<Popup ... footer={<Button variant="primary">OK</Button>} />
+
+// 2 buttons (secondary + primary)
+<Popup ... footer={<><Button variant="secondary">Abbrechen</Button><Button variant="primary">Speichern</Button></>} />
+
+// 3 buttons
+<Popup ... footer={<><Button variant="secondary">Abbrechen</Button><Button variant="secondary">Entwurf speichern</Button><Button variant="primary">Senden</Button></>} />
+
+// With BackLink on the left
+<Popup ...
+  footerLeft={<BackLink onClick={goBack} />}
+  footer={<><Button variant="secondary">Abbrechen</Button><Button variant="primary">Weiter</Button></>}
+/>
+
+// With tool icons on the left (icon-only Buttons)
+<Popup ...
+  footerLeft={<>
+    <Button iconOnly variant="ghost" aria-label="Kommentar"><CommentCheckIcon /></Button>
+    <Button iconOnly variant="ghost" aria-label="PDF"><FilePdfIcon /></Button>
+    <Button iconOnly variant="ghost" aria-label="Löschen"><TrashIcon /></Button>
+  </>}
+  footer={<><Button variant="secondary">Abbrechen</Button><Button variant="primary">Speichern</Button></>}
+/>
+```
+
+#### BackLink
+Small "← Zurück" link in steel-grey. Renders as `<button>` or `<a href>` if `href` is provided.
+
+```tsx
+<BackLink onClick={goBack}>Zurück</BackLink>
+<BackLink href="/list">Zurück zur Liste</BackLink>
+```
+
 ### Overlay components
 
 #### Tooltip

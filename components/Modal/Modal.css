@@ -1,0 +1,69 @@
+/* ============================================================
+   Modal — bhb-components
+   Figma: file fUcrmr5PRAIQulDadSGsB8, node 151:301
+   Compact dialog: 608×auto, 8px radius, padding 16/28/28/28, gap 16.
+============================================================ */
+
+.bhb-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: color-mix(in srgb, var(--ink) 50%, transparent);
+  animation: bhb-modal-backdrop-fade 0.15s ease-out;
+}
+
+@keyframes bhb-modal-backdrop-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.bhb-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 608px;
+  max-width: 100%;
+  max-height: calc(100vh - 48px);
+  padding: 16px 28px 28px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--ink) 40%, transparent);
+  font-family: var(--font-family-base);
+  color: var(--black-grey);
+  overflow: hidden;
+  animation: bhb-modal-pop 0.18s ease-out;
+}
+
+@keyframes bhb-modal-pop {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.bhb-modal__title {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--black-grey);
+}
+
+.bhb-modal__body {
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--black-grey);
+  overflow-y: auto;
+}
+
+.bhb-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bhb-modal-backdrop,
+  .bhb-modal { animation: none; }
+}

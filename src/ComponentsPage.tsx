@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import {
   AnalyticsIcon,
+  BackLink,
   BellIcon,
   Button,
   CheckIcon,
   Checkbox,
   ClipboardListIcon,
   ColumnsIcon,
+  CommentCheckIcon,
   DatePicker,
   ExchangeIcon,
+  FileCodeIcon,
   FileInvoiceIcon,
+  FilePdfIcon,
   FilePlusIcon,
   Footer,
   HomeIcon,
@@ -23,12 +27,15 @@ import {
   LockIcon,
   Logo,
   Message,
+  Modal,
   MoneyBillWaveIcon,
   MultiSelection,
+  Popup,
   QuestionCircleIcon,
   RadioButton,
   RedoIcon,
   Select,
+  ShieldCheckIcon,
   Sidebar,
   Textarea,
   Tooltip,
@@ -95,8 +102,16 @@ const initialBelege: Beleg[] = [
   { id: 'B-005', label: 'Strom (Q3)',              amount: '1.402,55 €', confirmed: false },
 ];
 
+type PopupKey = null | 'simple' | 'back' | 'three' | 'tools';
+
 export function ComponentsPage() {
   const [radio, setRadio] = useState('a');
+
+  // Modal demo state
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // Popup demo state (single state holds which variant is open, if any)
+  const [popup, setPopup] = useState<PopupKey>(null);
 
   // MultiSelection interactive demo state
   const [belege, setBelege] = useState<Beleg[]>(initialBelege);
@@ -296,6 +311,111 @@ export function ComponentsPage() {
         <div className="state-grid__cell"><Checkbox label="Label" disabled defaultChecked /></div>
         <div className="state-grid__cell"><Checkbox label="Label" readOnly defaultChecked /></div>
       </div>
+
+      {/* ============ Modal ============ */}
+      <h2>Modal</h2>
+      <p className="component-intro">
+        Compact dialog (608×auto). Click to open — backdrop click or <code>Esc</code> closes.
+        <code>{`import { Modal } from 'bhb-components';`}</code>
+      </p>
+      <div className="showcase-row">
+        <Button variant="danger" onClick={() => setModalOpen(true)}>Beleg löschen…</Button>
+      </div>
+      <Modal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Wirklich löschen?"
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setModalOpen(false)}>Abbrechen</Button>
+            <Button variant="danger" onClick={() => setModalOpen(false)}>Löschen</Button>
+          </>
+        }
+      >
+        Dieser Vorgang kann nicht rückgängig gemacht werden.
+      </Modal>
+
+      {/* ============ Popup ============ */}
+      <h2>Popup</h2>
+      <p className="component-intro">
+        Large overlay surface (1000×auto) with mist header bar + white footer bar. Four
+        footer compositions demonstrated below — every Figma variant is achievable via
+        composition. Backdrop click or <code>Esc</code> closes.
+        <code>{`import { Popup, BackLink } from 'bhb-components';`}</code>
+      </p>
+      <div className="showcase-row">
+        <Button onClick={() => setPopup('simple')}>2 buttons</Button>
+        <Button onClick={() => setPopup('three')}>3 buttons</Button>
+        <Button onClick={() => setPopup('back')}>Back + 2 buttons</Button>
+        <Button onClick={() => setPopup('tools')}>Tools + 2 buttons</Button>
+      </div>
+
+      <Popup
+        open={popup === 'simple'}
+        onClose={() => setPopup(null)}
+        title="Beleg bearbeiten"
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setPopup(null)}>Abbrechen</Button>
+            <Button variant="primary" onClick={() => setPopup(null)}>Speichern</Button>
+          </>
+        }
+      >
+        <p style={{ margin: 0 }}>Sample popup body content. Put forms, previews, or whatever workflow needs more space than a Modal.</p>
+      </Popup>
+
+      <Popup
+        open={popup === 'three'}
+        onClose={() => setPopup(null)}
+        title="Rechnung versenden"
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setPopup(null)}>Abbrechen</Button>
+            <Button variant="secondary" onClick={() => setPopup(null)}>Entwurf speichern</Button>
+            <Button variant="primary" onClick={() => setPopup(null)}>Senden</Button>
+          </>
+        }
+      >
+        <p style={{ margin: 0 }}>Three buttons in the footer: secondary · secondary · primary.</p>
+      </Popup>
+
+      <Popup
+        open={popup === 'back'}
+        onClose={() => setPopup(null)}
+        title="Wizard · Schritt 2 von 3"
+        footerLeft={<BackLink onClick={() => setPopup(null)}>Zurück</BackLink>}
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setPopup(null)}>Abbrechen</Button>
+            <Button variant="primary" onClick={() => setPopup(null)}>Weiter</Button>
+          </>
+        }
+      >
+        <p style={{ margin: 0 }}>Footer is split — BackLink on the left, action Buttons on the right.</p>
+      </Popup>
+
+      <Popup
+        open={popup === 'tools'}
+        onClose={() => setPopup(null)}
+        title="Beleg ansehen"
+        footerLeft={
+          <>
+            <Button iconOnly variant="ghost" size="medium" aria-label="Kommentar"><CommentCheckIcon /></Button>
+            <Button iconOnly variant="ghost" size="medium" aria-label="PDF herunterladen"><FilePdfIcon /></Button>
+            <Button iconOnly variant="ghost" size="medium" aria-label="Quellcode"><FileCodeIcon /></Button>
+            <Button iconOnly variant="ghost" size="medium" aria-label="Festschreiben"><ShieldCheckIcon /></Button>
+            <Button iconOnly variant="ghost" size="medium" aria-label="Löschen"><TrashIcon /></Button>
+          </>
+        }
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setPopup(null)}>Abbrechen</Button>
+            <Button variant="primary" onClick={() => setPopup(null)}>Speichern</Button>
+          </>
+        }
+      >
+        <p style={{ margin: 0 }}>Footer left slot holds icon-only Buttons (tools / shortcuts). Footer right has the primary action pair.</p>
+      </Popup>
 
       {/* ============ MultiSelection ============ */}
       <h2>MultiSelection</h2>

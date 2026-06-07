@@ -1,0 +1,39 @@
+/* ============================================================
+   BackLink — bhb-components
+   Figma: Popup footer "Zurück" pattern (27:1433, 297:438)
+   Small steel-grey arrow + label, used for back navigation.
+============================================================ */
+
+.bhb-backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-l);
+  font-weight: var(--font-weight-regular);
+  color: var(--steel-grey);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.bhb-backlink:hover {
+  color: var(--black-grey);
+}
+
+.bhb-backlink:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.bhb-backlink__icon {
+  flex: 0 0 auto;
+}
+
+.bhb-backlink__label {
+  display: inline-block;
+}

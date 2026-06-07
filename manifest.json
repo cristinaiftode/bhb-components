@@ -224,6 +224,62 @@
       "intentColoring": "All icons use currentColor for fills. For success/warning/error coloring, set color on the parent: <ExclamationTriangleIcon style={{ color: 'var(--alert)' }} />. Do not hardcode hex; use tokens.",
       "usage": "<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>"
     },
+    "Modal": {
+      "description": "Compact dialog (Figma 151:301). 608×auto by default, 8px radius, white bg, padding 16/28/28/28 with 16px gap stack: title → body → footer. Rendered via portal, semi-transparent ink backdrop. Closes on backdrop click + Escape. aria-modal.",
+      "import": "import { Modal } from 'bhb-components';",
+      "file": "components/Modal/Modal.tsx",
+      "props": {
+        "open": { "type": "boolean", "notes": "Controlled open state." },
+        "onClose": { "type": "() => void", "notes": "Called on backdrop click, Escape, or any custom close action." },
+        "title": { "type": "ReactNode", "optional": true },
+        "children": { "type": "ReactNode", "optional": true, "notes": "Body content." },
+        "footer": { "type": "ReactNode", "optional": true, "notes": "Typically Button(s)." },
+        "width": { "type": "number | string", "default": 608 },
+        "closeOnBackdropClick": { "type": "boolean", "default": true },
+        "closeOnEscape": { "type": "boolean", "default": true },
+        "ariaLabel": { "type": "string", "optional": true, "notes": "Required when no visible title." }
+      },
+      "usage": "<Modal open={open} onClose={close} title=\"Wirklich löschen?\" footer={<><Button variant=\"secondary\">Abbrechen</Button><Button variant=\"danger\">Löschen</Button></>}>Dieser Vorgang kann nicht rückgängig gemacht werden.</Modal>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "151:301", "page": "Components" }
+    },
+    "Popup": {
+      "description": "Large overlay surface (Figma 23:1248) with three zones: mist header bar (80px, bold title + × close), white body, white footer bar (96px, right-aligned action buttons). Optional footerLeft slot for back link or tool icons — when set, footer is justify-content: space-between. Portal-rendered, aria-modal, backdrop click + Escape close, body scroll-locked while open.",
+      "import": "import { Popup } from 'bhb-components';",
+      "file": "components/Popup/Popup.tsx",
+      "props": {
+        "open": { "type": "boolean" },
+        "onClose": { "type": "() => void" },
+        "title": { "type": "ReactNode", "optional": true, "notes": "Shown in the header bar, Lato Bold size XXML." },
+        "children": { "type": "ReactNode", "optional": true, "notes": "Body content between header and footer." },
+        "footer": { "type": "ReactNode", "optional": true, "notes": "Right-aligned action buttons in the footer bar." },
+        "footerLeft": { "type": "ReactNode", "optional": true, "notes": "Left-aligned footer slot. Use for <BackLink /> or a row of icon-only Buttons." },
+        "width": { "type": "number | string", "default": 1000 },
+        "closeOnBackdropClick": { "type": "boolean", "default": true },
+        "closeOnEscape": { "type": "boolean", "default": true },
+        "closeLabel": { "type": "string", "default": "Schließen" }
+      },
+      "footerCompositions": {
+        "1 button":      "<Popup footer={<Button variant=\"primary\">…</Button>} />",
+        "2 buttons":     "<Popup footer={<><Button variant=\"secondary\">…</Button><Button variant=\"primary\">…</Button></>} />",
+        "3 buttons":     "<Popup footer={<><Button variant=\"secondary\">…</Button><Button variant=\"secondary\">…</Button><Button variant=\"primary\">…</Button></>} />",
+        "1 + back":      "<Popup footerLeft={<BackLink onClick={…} />} footer={<Button variant=\"primary\">…</Button>} />",
+        "2 + back":      "<Popup footerLeft={<BackLink onClick={…} />} footer={<><Button>…</Button><Button>…</Button></>} />",
+        "2 + tool icons":"<Popup footerLeft={<><Button iconOnly><CommentCheckIcon/></Button>…</>} footer={<><Button>…</Button><Button>…</Button></>} />"
+      },
+      "usage": "<Popup open={open} onClose={close} title=\"Beleg bearbeiten\" footer={<><Button variant=\"secondary\" onClick={close}>Abbrechen</Button><Button variant=\"primary\" onClick={save}>Speichern</Button></>}><p>Body content…</p></Popup>",
+      "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "componentSetId": "23:1248", "page": "Components" }
+    },
+    "BackLink": {
+      "description": "Small steel-grey '← Zurück' back-navigation link. Used inside Popup footers (Figma 27:1433, 297:438) but reusable anywhere a subtle back affordance fits.",
+      "import": "import { BackLink } from 'bhb-components';",
+      "file": "components/BackLink/BackLink.tsx",
+      "props": {
+        "children": { "type": "ReactNode", "default": "Zurück" },
+        "href": { "type": "string", "optional": true, "notes": "Renders as <a> when provided; otherwise <button>." },
+        "onClick": { "type": "() => void", "optional": true }
+      },
+      "usage": "<BackLink onClick={goBack}>Zurück</BackLink>"
+    },
     "MultiSelection": {
       "description": "Horizontal batch-action toolbar shown when N items are selected. Left segment shows the count badge + descriptive label (jeans-grey bg, white text). Right segments are action buttons with icon + label, separated by 1px rain-grey dividers. Mark one action as `active` to highlight it in success green (e.g. the primary 'Bestätigen').",
       "import": "import { MultiSelection } from 'bhb-components';",

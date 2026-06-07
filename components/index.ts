@@ -45,7 +45,16 @@ export { Tooltip } from './Tooltip/Tooltip';
 export type { TooltipProps, TooltipPlacement } from './Tooltip/Tooltip';
 
 export { MultiSelection } from './MultiSelection/MultiSelection';
-export type { MultiSelectionProps, MultiSelectionAction } from './MultiSelection/MultiSelection';
+export type { MultiSelectionProps, MultiSelectionAction, MultiSelectionTone } from './MultiSelection/MultiSelection';
+
+export { Modal } from './Modal/Modal';
+export type { ModalProps } from './Modal/Modal';
+
+export { Popup } from './Popup/Popup';
+export type { PopupProps } from './Popup/Popup';
+
+export { BackLink } from './BackLink/BackLink';
+export type { BackLinkProps } from './BackLink/BackLink';
 
 export { Logo } from './Logo/Logo';
 export type { LogoProps } from './Logo/Logo';
