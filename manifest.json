@@ -204,7 +204,7 @@
       "figma": { "fileKey": "fUcrmr5PRAIQulDadSGsB8", "source": "designer-provided SVG" }
     },
     "Icons": {
-      "description": "SVG icon set, ~30 components, all monochrome via `currentColor`. Pass any icon as a React node into Button.iconLeft, Sidebar item.icon, InputWithIcon.iconLeft, etc. All icons accept { size?: number; className?: string; ...SVGAttributes } props.",
+      "description": "SVG icon set, 45 components, all monochrome via `currentColor`. Pass any icon as a React node into Button.iconLeft, Sidebar item.icon, InputWithIcon.iconLeft, MultiSelection action.icon, Tag.icon, etc. All icons accept { size?: number; className?: string; ...SVGAttributes } props.",
       "import": "import { HomeIcon, BellIcon, TrashIcon /* ... */ } from 'bhb-components';",
       "file": "components/icons/icons.tsx",
       "props": {
@@ -213,15 +213,18 @@
         "...rest": { "type": "SVGAttributes<SVGSVGElement>", "notes": "Spread onto the <svg> element." }
       },
       "available": [
-        "CalendarIcon", "CaretDownIcon",
-        "HomeIcon", "FileInvoiceIcon", "FilePlusIcon", "ExchangeIcon", "ColumnsIcon",
-        "IndustryIcon", "ClipboardListIcon", "AnalyticsIcon", "BellIcon", "QuestionCircleIcon",
-        "CogIcon", "CheckIcon", "CheckCircleIcon", "TimesIcon", "TrashIcon",
-        "ExclamationTriangleIcon", "InfoCircleIcon", "ArrowLeftIcon", "SyncIcon", "RedoIcon",
-        "ListIcon", "LockIcon", "LightbulbIcon", "CommentIcon", "CutIcon", "EraserIcon",
-        "FileIcon", "FileTimesIcon", "TruckIcon", "LandmarkIcon",
-        "ShieldCheckIcon", "CommentCheckIcon", "FilePdfIcon", "FileCodeIcon",
-        "HandHoldingUsdIcon", "MoneyBillWaveIcon"
+        "AnalyticsIcon", "ArrowLeftIcon", "BellIcon", "BuildingIcon",
+        "CalendarIcon", "CaretDownIcon", "CheckCircleIcon", "CheckIcon",
+        "ClipboardListIcon", "CogIcon", "ColumnsIcon", "CommentCheckIcon",
+        "CommentIcon", "CutIcon", "EraserIcon", "ExchangeIcon",
+        "ExclamationCircleIcon", "ExclamationTriangleIcon", "FileCodeIcon", "FileIcon",
+        "FileImportIcon", "FileInvoiceIcon", "FilePdfIcon", "FilePlusIcon",
+        "FileTimesIcon", "HandHoldingUsdIcon", "HomeIcon", "IndustryIcon",
+        "InfoCircleIcon", "LandmarkIcon", "LightbulbIcon", "ListIcon",
+        "LockIcon", "MoneyBillWaveIcon", "PaperPlaneIcon", "QuestionCircleIcon",
+        "RedoIcon", "ShieldCheckIcon", "SignInIcon", "SyncIcon",
+        "TimesIcon", "TrashIcon", "TruckIcon", "UserCircleIcon",
+        "UsersCogIcon"
       ],
       "intentColoring": "All icons use currentColor for fills. For success/warning/error coloring, set color on the parent: <ExclamationTriangleIcon style={{ color: 'var(--alert)' }} />. Do not hardcode hex; use tokens.",
       "usage": "<Button iconLeft={<TrashIcon size={16} />}>Löschen</Button>"
