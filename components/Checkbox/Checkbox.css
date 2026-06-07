@@ -134,8 +134,23 @@
   border-color: var(--rain-grey);
 }
 
-/* ---------- Label (always jeans-grey, matches Figma) ---------- */
+/* ---------- Label (Figma-verified per state) ----------
+   Rule from Figma 32:1477:
+   - Unchecked (any state)              → --jeans-grey
+   - Checked + interactive              → --black-grey (Default / Hover / Focus)
+   - Checked + Disabled or Readonly     → --jeans-grey (stays muted)
+*/
 
 .bhb-checkbox__label {
+  color: var(--jeans-grey);
+}
+
+.bhb-checkbox__input:checked ~ .bhb-checkbox__label {
+  color: var(--black-grey);
+}
+
+/* Disabled + readonly override: label stays jeans-grey even when checked */
+.bhb-checkbox--disabled .bhb-checkbox__input:checked ~ .bhb-checkbox__label,
+.bhb-checkbox--readonly .bhb-checkbox__input:checked ~ .bhb-checkbox__label {
   color: var(--jeans-grey);
 }
